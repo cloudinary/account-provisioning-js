@@ -1,6 +1,6 @@
 # Cloudinary Provisioning API
 
-This generator creates TypeScript/JavaScript client for Cloudinary Provisioning API.
+The Cloudinary Account Provisioning SDK allows you to quickly and easily integrate your application with Cloudinary.
 
 ### Building
 
