@@ -5,19 +5,31 @@
 
 import { RequestFile } from './models';
 
-export class AccessKeyUpdateRequest {
+export class AccessKey {
     /**
     * The name of the access key.
     */
     'name'?: string;
     /**
+    * The API key.
+    */
+    'apiKey'?: string;
+    /**
+    * The API secret.
+    */
+    'apiSecret'?: string;
+    /**
+    * The date when the access key was created.
+    */
+    'createdAt'?: Date;
+    /**
+    * The date when the access key was last updated.
+    */
+    'updatedAt'?: Date;
+    /**
     * Whether the access key is enabled or disabled.
     */
     'enabled'?: boolean;
-    /**
-    * Designates the access key for a specific purpose while allowing it to be used for other purposes, as well.  This action replaces any previously assigned key. **Possible values**: `webhooks` 
-    */
-    'dedicatedFor'?: AccessKeyUpdateRequest.DedicatedForEnum;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,23 +40,33 @@ export class AccessKeyUpdateRequest {
             "type": "string"
         },
         {
+            "name": "apiKey",
+            "baseName": "api_key",
+            "type": "string"
+        },
+        {
+            "name": "apiSecret",
+            "baseName": "api_secret",
+            "type": "string"
+        },
+        {
+            "name": "createdAt",
+            "baseName": "created_at",
+            "type": "Date"
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updated_at",
+            "type": "Date"
+        },
+        {
             "name": "enabled",
             "baseName": "enabled",
             "type": "boolean"
-        },
-        {
-            "name": "dedicatedFor",
-            "baseName": "dedicated_for",
-            "type": "AccessKeyUpdateRequest.DedicatedForEnum"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeyUpdateRequest.attributeTypeMap;
+        return AccessKey.attributeTypeMap;
     }
 }
 
-export namespace AccessKeyUpdateRequest {
-    export enum DedicatedForEnum {
-        Webhooks = <any> 'webhooks'
-    }
-}

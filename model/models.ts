@@ -1,23 +1,25 @@
 import localVarRequest from 'request';
 
+export * from './accessKey';
 export * from './accessKeyRequest';
-export * from './accessKeyResponse';
 export * from './accessKeyUpdateRequest';
 export * from './accessKeysResponse';
-export * from './messageResponse';
+export * from './apiAccessKey';
+export * from './createUserRequest';
+export * from './errorResponse';
+export * from './errorResponseError';
+export * from './productEnvironment';
 export * from './productEnvironmentRequest';
-export * from './productEnvironmentResponse';
+export * from './productEnvironmentUpdateRequest';
 export * from './productEnvironmentsResponse';
+export * from './successResponse';
 export * from './user';
 export * from './userGroup';
 export * from './userGroupRequest';
-export * from './userGroupResponse';
-export * from './userGroupUserRequest';
-export * from './userGroupUserResponse';
+export * from './userGroupUser';
 export * from './userGroupUsersResponse';
 export * from './userGroupsResponse';
 export * from './userRequest';
-export * from './userResponse';
 export * from './usersResponse';
 
 import * as fs from 'fs';
@@ -33,24 +35,26 @@ export interface RequestDetailedFile {
 export type RequestFile = string | Buffer | fs.ReadStream | RequestDetailedFile;
 
 
+import { AccessKey } from './accessKey';
 import { AccessKeyRequest } from './accessKeyRequest';
-import { AccessKeyResponse } from './accessKeyResponse';
 import { AccessKeyUpdateRequest } from './accessKeyUpdateRequest';
 import { AccessKeysResponse } from './accessKeysResponse';
-import { MessageResponse } from './messageResponse';
+import { ApiAccessKey } from './apiAccessKey';
+import { CreateUserRequest } from './createUserRequest';
+import { ErrorResponse } from './errorResponse';
+import { ErrorResponseError } from './errorResponseError';
+import { ProductEnvironment } from './productEnvironment';
 import { ProductEnvironmentRequest } from './productEnvironmentRequest';
-import { ProductEnvironmentResponse } from './productEnvironmentResponse';
+import { ProductEnvironmentUpdateRequest } from './productEnvironmentUpdateRequest';
 import { ProductEnvironmentsResponse } from './productEnvironmentsResponse';
+import { SuccessResponse } from './successResponse';
 import { User } from './user';
 import { UserGroup } from './userGroup';
 import { UserGroupRequest } from './userGroupRequest';
-import { UserGroupResponse } from './userGroupResponse';
-import { UserGroupUserRequest } from './userGroupUserRequest';
-import { UserGroupUserResponse } from './userGroupUserResponse';
+import { UserGroupUser } from './userGroupUser';
 import { UserGroupUsersResponse } from './userGroupUsersResponse';
 import { UserGroupsResponse } from './userGroupsResponse';
 import { UserRequest } from './userRequest';
-import { UserResponse } from './userResponse';
 import { UsersResponse } from './usersResponse';
 
 /* tslint:disable:no-unused-variable */
@@ -66,27 +70,32 @@ let primitives = [
                  ];
 
 let enumsMap: {[index: string]: any} = {
+        "AccessKeyUpdateRequest.DedicatedForEnum": AccessKeyUpdateRequest.DedicatedForEnum,
+        "CreateUserRequest.RoleEnum": CreateUserRequest.RoleEnum,
+        "UserRequest.RoleEnum": UserRequest.RoleEnum,
 }
 
 let typeMap: {[index: string]: any} = {
+    "AccessKey": AccessKey,
     "AccessKeyRequest": AccessKeyRequest,
-    "AccessKeyResponse": AccessKeyResponse,
     "AccessKeyUpdateRequest": AccessKeyUpdateRequest,
     "AccessKeysResponse": AccessKeysResponse,
-    "MessageResponse": MessageResponse,
+    "ApiAccessKey": ApiAccessKey,
+    "CreateUserRequest": CreateUserRequest,
+    "ErrorResponse": ErrorResponse,
+    "ErrorResponseError": ErrorResponseError,
+    "ProductEnvironment": ProductEnvironment,
     "ProductEnvironmentRequest": ProductEnvironmentRequest,
-    "ProductEnvironmentResponse": ProductEnvironmentResponse,
+    "ProductEnvironmentUpdateRequest": ProductEnvironmentUpdateRequest,
     "ProductEnvironmentsResponse": ProductEnvironmentsResponse,
+    "SuccessResponse": SuccessResponse,
     "User": User,
     "UserGroup": UserGroup,
     "UserGroupRequest": UserGroupRequest,
-    "UserGroupResponse": UserGroupResponse,
-    "UserGroupUserRequest": UserGroupUserRequest,
-    "UserGroupUserResponse": UserGroupUserResponse,
+    "UserGroupUser": UserGroupUser,
     "UserGroupUsersResponse": UserGroupUsersResponse,
     "UserGroupsResponse": UserGroupsResponse,
     "UserRequest": UserRequest,
-    "UserResponse": UserResponse,
     "UsersResponse": UsersResponse,
 }
 

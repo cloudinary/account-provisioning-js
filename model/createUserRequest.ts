@@ -4,20 +4,21 @@
  */
 
 import { RequestFile } from './models';
+import { UserRequest } from './userRequest';
 
-export class UserRequest {
+export class CreateUserRequest {
     /**
     * The user\'s name.
     */
-    'name'?: string;
+    'name': string;
     /**
     * A unique email address, which serves as the login name and notification address.
     */
-    'email'?: string;
+    'email': string;
     /**
     * The role to assign.
     */
-    'role'?: UserRequest.RoleEnum;
+    'role': CreateUserRequest.RoleEnum;
     /**
     * A list of product environment IDs that this user can access. Ignored if the role is `master_admin`.  **Default**: all product environments. 
     */
@@ -43,7 +44,7 @@ export class UserRequest {
         {
             "name": "role",
             "baseName": "role",
-            "type": "UserRequest.RoleEnum"
+            "type": "CreateUserRequest.RoleEnum"
         },
         {
             "name": "subAccountIds",
@@ -57,11 +58,11 @@ export class UserRequest {
         }    ];
 
     static getAttributeTypeMap() {
-        return UserRequest.attributeTypeMap;
+        return CreateUserRequest.attributeTypeMap;
     }
 }
 
-export namespace UserRequest {
+export namespace CreateUserRequest {
     export enum RoleEnum {
         MasterAdmin = <any> 'master_admin',
         Admin = <any> 'admin',

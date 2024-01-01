@@ -1,6 +1,6 @@
 /**
- * Cloudinary Provisioning API
- * Manage product environments, users and user groups using the RESTful Provisioning API
+ * Cloudinary Account Provisioning API
+ * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise). 
  */
 
 
@@ -9,9 +9,11 @@ import http from 'http';
 import 'dotenv/config';
 
 /* tslint:disable:no-unused-locals */
-import { MessageResponse } from '../model/messageResponse';
+import { CreateUserRequest } from '../model/createUserRequest';
+import { ErrorResponse } from '../model/errorResponse';
+import { SuccessResponse } from '../model/successResponse';
+import { User } from '../model/user';
 import { UserRequest } from '../model/userRequest';
-import { UserResponse } from '../model/userResponse';
 import { UsersResponse } from '../model/usersResponse';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -28,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum UsersApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.1 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.2 (Node ${process.versions.node})`;
 
 export class UsersApi {
     protected _basePath = defaultBasePath;
@@ -131,9 +133,9 @@ export class UsersApi {
     /**
      * Create a new user.
      * @summary Create user
-     * @param userRequest User details
+     * @param createUserRequest User details
      */
-    public async createUser (userRequest?: UserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserResponse;  }> {
+    public async createUser (createUserRequest?: CreateUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -160,7 +162,7 @@ export class UsersApi {
             // Additionally, parses the response body as JSON.
             // We always set json to true because we always want to send json
             json: true,
-            body: ObjectSerializer.serialize(userRequest, "UserRequest")
+            body: ObjectSerializer.serialize(createUserRequest, "CreateUserRequest")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -182,13 +184,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserResponse;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserResponse");
+                            body = ObjectSerializer.deserialize(body, "User");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -201,9 +203,9 @@ export class UsersApi {
     /**
      * Delete a specific user.
      * @summary Delete user
-     * @param userId 
+     * @param userId The ID of the user.
      */
-    public async deleteUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: MessageResponse;  }> {
+    public async deleteUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -257,13 +259,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: MessageResponse;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "MessageResponse");
+                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -276,9 +278,9 @@ export class UsersApi {
     /**
      * Retrieve a specific user.
      * @summary Get user
-     * @param userId 
+     * @param userId The ID of the user.
      */
-    public async getUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserResponse;  }> {
+    public async getUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -332,13 +334,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserResponse;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserResponse");
+                            body = ObjectSerializer.deserialize(body, "User");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -349,14 +351,18 @@ export class UsersApi {
         });
     }
     /**
-     * Retrieve an array of users.
+     * Returns an array of all users in the account, or if conditions are specified, returns the relevant users. 
      * @summary Get users
-     * @param pending Whether to return pending users. Default false (all users)
-     * @param ids A list of up to 100 user IDs.
+     * @param pending Whether to return pending users. **Default**: &#x60;false&#x60; (all users) 
+     * @param ids A list of up to 100 user IDs.  When provided, other parameters are ignored.
      * @param prefix Returns users where the name begins with the specified case-insensitive string.
      * @param subAccountId Only returns users who have access to the specified account.
+     * @param lastLogin Specifies a date range for last login.
+     * @param from All last logins after this date, given in the format: yyyy-mm-dd. 
+     * @param to All last logins before this date, given in the format: yyyy-mm-dd. 
+     * @param unionType Whether to return users who last logged in within the specified date range (include) or those who didn\&#39;t last log in within the range (exclude). **Possible values**: &#x60;include&#x60;, &#x60;exclude&#x60;. **Default**: &#x60;include&#x60;. 
      */
-    public async getUsers (pending?: boolean, ids?: Array<string>, prefix?: string, subAccountId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UsersResponse;  }> {
+    public async getUsers (pending?: boolean, ids?: Array<string>, prefix?: string, subAccountId?: string, lastLogin?: boolean, from?: string, to?: string, unionType?: 'include' | 'exclude', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UsersResponse;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -383,6 +389,22 @@ export class UsersApi {
 
         if (subAccountId !== undefined) {
             localVarQueryParameters['sub_account_id'] = ObjectSerializer.serialize(subAccountId, "string");
+        }
+
+        if (lastLogin !== undefined) {
+            localVarQueryParameters['last_login'] = ObjectSerializer.serialize(lastLogin, "boolean");
+        }
+
+        if (from !== undefined) {
+            localVarQueryParameters['from'] = ObjectSerializer.serialize(from, "string");
+        }
+
+        if (to !== undefined) {
+            localVarQueryParameters['to'] = ObjectSerializer.serialize(to, "string");
+        }
+
+        if (unionType !== undefined) {
+            localVarQueryParameters['union_type'] = ObjectSerializer.serialize(unionType, "'include' | 'exclude'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -439,10 +461,10 @@ export class UsersApi {
     /**
      * Update the details of a user.
      * @summary Update user
-     * @param userId 
+     * @param userId The ID of the user.
      * @param userRequest Updated user details
      */
-    public async updateUser (userId: string, userRequest?: UserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserResponse;  }> {
+    public async updateUser (userId: string, userRequest?: UserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -497,13 +519,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserResponse;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserResponse");
+                            body = ObjectSerializer.deserialize(body, "User");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

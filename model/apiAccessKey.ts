@@ -4,34 +4,45 @@
  */
 
 import { RequestFile } from './models';
-import { AccessKey } from './accessKey';
 
-export class AccessKeysResponse {
+/**
+* Brief details of a single API Access Key.
+*/
+export class ApiAccessKey {
     /**
-    * The list of the access keys.
+    * The API key.
     */
-    'accessKeys'?: Array<AccessKey>;
+    'key'?: string;
     /**
-    * Total number of the access keys.
+    * The API secret.
     */
-    'total'?: number;
+    'secret'?: string;
+    /**
+    * Whether the access key is enabled or disabled.
+    */
+    'enabled'?: boolean;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "accessKeys",
-            "baseName": "access_keys",
-            "type": "Array<AccessKey>"
+            "name": "key",
+            "baseName": "key",
+            "type": "string"
         },
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            "name": "secret",
+            "baseName": "secret",
+            "type": "string"
+        },
+        {
+            "name": "enabled",
+            "baseName": "enabled",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeysResponse.attributeTypeMap;
+        return ApiAccessKey.attributeTypeMap;
     }
 }
 

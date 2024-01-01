@@ -4,34 +4,45 @@
  */
 
 import { RequestFile } from './models';
-import { AccessKey } from './accessKey';
 
-export class AccessKeysResponse {
+/**
+* User group user.
+*/
+export class UserGroupUser {
     /**
-    * The list of the access keys.
+    * The user\'s ID.
     */
-    'accessKeys'?: Array<AccessKey>;
+    'id'?: string;
     /**
-    * Total number of the access keys.
+    * The user\'s name.
     */
-    'total'?: number;
+    'name'?: string;
+    /**
+    * The user\'s email.
+    */
+    'email'?: string;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "accessKeys",
-            "baseName": "access_keys",
-            "type": "Array<AccessKey>"
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
         },
         {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "baseName": "email",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeysResponse.attributeTypeMap;
+        return UserGroupUser.attributeTypeMap;
     }
 }
 

@@ -1,7 +1,7 @@
 export * from './accessKeysApi';
 import { AccessKeysApi } from './accessKeysApi';
-export * from './environmentsApi';
-import { EnvironmentsApi } from './environmentsApi';
+export * from './productEnvironmentsApi';
+import { ProductEnvironmentsApi } from './productEnvironmentsApi';
 export * from './userGroupsApi';
 import { UserGroupsApi } from './userGroupsApi';
 export * from './usersApi';
@@ -17,7 +17,7 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccessKeysApi, EnvironmentsApi, UserGroupsApi, UsersApi];
+export const APIS = [AccessKeysApi, ProductEnvironmentsApi, UserGroupsApi, UsersApi];
 
 export interface IAccountUrlConfig {
 accountUrl?: string;

@@ -5,19 +5,23 @@
 
 import { RequestFile } from './models';
 
-export class AccessKeyUpdateRequest {
+export class ProductEnvironmentUpdateRequest {
     /**
-    * The name of the access key.
+    * The display name for the product environment.
     */
     'name'?: string;
     /**
-    * Whether the access key is enabled or disabled.
+    * The Cloudinary cloud name. An error is returned if the requested name already exists. **Note**: Can only be changed for accounts with fewer than 1000 images. 
+    */
+    'cloudName'?: string;
+    /**
+    * Custom attributes associated with the product environment.
+    */
+    'customAttributes'?: object;
+    /**
+    * Whether the product environment is enabled. **Default**: true. 
     */
     'enabled'?: boolean;
-    /**
-    * Designates the access key for a specific purpose while allowing it to be used for other purposes, as well.  This action replaces any previously assigned key. **Possible values**: `webhooks` 
-    */
-    'dedicatedFor'?: AccessKeyUpdateRequest.DedicatedForEnum;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,23 +32,23 @@ export class AccessKeyUpdateRequest {
             "type": "string"
         },
         {
+            "name": "cloudName",
+            "baseName": "cloud_name",
+            "type": "string"
+        },
+        {
+            "name": "customAttributes",
+            "baseName": "custom_attributes",
+            "type": "object"
+        },
+        {
             "name": "enabled",
             "baseName": "enabled",
             "type": "boolean"
-        },
-        {
-            "name": "dedicatedFor",
-            "baseName": "dedicated_for",
-            "type": "AccessKeyUpdateRequest.DedicatedForEnum"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeyUpdateRequest.attributeTypeMap;
+        return ProductEnvironmentUpdateRequest.attributeTypeMap;
     }
 }
 
-export namespace AccessKeyUpdateRequest {
-    export enum DedicatedForEnum {
-        Webhooks = <any> 'webhooks'
-    }
-}

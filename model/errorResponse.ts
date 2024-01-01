@@ -4,34 +4,22 @@
  */
 
 import { RequestFile } from './models';
-import { AccessKey } from './accessKey';
+import { ErrorResponseError } from './errorResponseError';
 
-export class AccessKeysResponse {
-    /**
-    * The list of the access keys.
-    */
-    'accessKeys'?: Array<AccessKey>;
-    /**
-    * Total number of the access keys.
-    */
-    'total'?: number;
+export class ErrorResponse {
+    'error'?: ErrorResponseError;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "accessKeys",
-            "baseName": "access_keys",
-            "type": "Array<AccessKey>"
-        },
-        {
-            "name": "total",
-            "baseName": "total",
-            "type": "number"
+            "name": "error",
+            "baseName": "error",
+            "type": "ErrorResponseError"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeysResponse.attributeTypeMap;
+        return ErrorResponse.attributeTypeMap;
     }
 }
 

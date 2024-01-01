@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **addUserToUserGroup**
-> UserGroupUserResponse addUserToUserGroup(groupId, userId)
+> UserGroupUser addUserToUserGroup(groupId, userId)
 
 Add a user to a group with the specified ID.
 
@@ -31,30 +31,28 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
-// string
-userId: "user_id_example",
-};
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+// string | The ID of the user.
+const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
-apiInstance.addUserToUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.addUserToUserGroup(groupId, userId)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
- **userId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
+ **userId** | **string**| The ID of the user. |
 
 
 ### Return type
 
-**UserGroupUserResponse**
+**UserGroupUser**
 
 ### Authorization
 
@@ -69,12 +67,18 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | User added to group successfully |  -  |
+**200** | User added to group successfully |  -  |
+**400** | Bad request. |  -  |
+**401** | Authorization required. |  -  |
+**403** | Not allowed. |  -  |
+**404** | Not found. |  -  |
+**409** | Already exists. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createUserGroup**
-> UserGroupResponse createUserGroup()
+> UserGroup createUserGroup()
 
 Create a new user group for the account.
 
@@ -90,18 +94,16 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
 // UserGroupRequest | User group details (optional)
-userGroupRequest: {
-    name: "name_example",
-  },
-};
+const userGroupRequest = {
+    name: "Designers",
+  };
 
-apiInstance.createUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.createUserGroup(userGroupRequest)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**UserGroupResponse**
+**UserGroup**
 
 ### Authorization
 
@@ -127,12 +129,18 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | User group created successfully |  -  |
+**200** | User group created successfully |  -  |
+**400** | Bad request. |  -  |
+**401** | Authorization required. |  -  |
+**403** | Not allowed. |  -  |
+**404** | Not found. |  -  |
+**409** | Already exists. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **deleteUserGroup**
-> MessageResponse deleteUserGroup(groupId)
+> SuccessResponse deleteUserGroup(groupId)
 
 Delete a user group with the specified ID.
 
@@ -148,27 +156,25 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
-};
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
-apiInstance.deleteUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.deleteUserGroup(groupId)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
 
 
 ### Return type
 
-**MessageResponse**
+**SuccessResponse**
 
 ### Authorization
 
@@ -184,11 +190,16 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User group deleted successfully |  -  |
+**400** | Bad request. |  -  |
+**401** | Authorization required. |  -  |
+**403** | Not allowed. |  -  |
+**404** | Not found. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getUserGroup**
-> UserGroupResponse getUserGroup(groupId)
+> UserGroup getUserGroup(groupId)
 
 Retrieve a specific user group.
 
@@ -204,27 +215,25 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
-};
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
-apiInstance.getUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.getUserGroup(groupId)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
 
 
 ### Return type
 
-**UserGroupResponse**
+**UserGroup**
 
 ### Authorization
 
@@ -240,6 +249,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful operation |  -  |
+**401** | Authorization required. |  -  |
+**404** | Not found. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -260,13 +272,12 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body:any = {};
 
-apiInstance.getUserGroups(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.getUserGroups()
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 This endpoint does not need any parameter.
@@ -290,6 +301,9 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful operation |  -  |
+**401** | Authorization required. |  -  |
+**404** | Not found. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -310,22 +324,20 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
-};
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
-apiInstance.getUsersInUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.getUsersInUserGroup(groupId)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
 
 
 ### Return type
@@ -346,11 +358,14 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful operation |  -  |
+**401** | Authorization required. |  -  |
+**404** | Not found. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **removeUserFromUserGroup**
-> UserGroupUserResponse removeUserFromUserGroup(groupId, userId)
+> UserGroupUsersResponse removeUserFromUserGroup(groupId, userId)
 
 Remove a user from a group with the specified ID.
 
@@ -366,30 +381,28 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
-// string
-userId: "user_id_example",
-};
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+// string | The ID of the user.
+const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
-apiInstance.removeUserFromUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.removeUserFromUserGroup(groupId, userId)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
- **userId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
+ **userId** | **string**| The ID of the user. |
 
 
 ### Return type
 
-**UserGroupUserResponse**
+**UserGroupUsersResponse**
 
 ### Authorization
 
@@ -405,11 +418,16 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User removed from group successfully |  -  |
+**400** | Bad request. |  -  |
+**401** | Authorization required. |  -  |
+**403** | Not allowed. |  -  |
+**404** | Not found. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **updateUserGroup**
-> UserGroupResponse updateUserGroup(groupId)
+> UserGroup updateUserGroup(groupId)
 
 Update the name of a specified user group.
 
@@ -425,32 +443,30 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
-let body = {
-// string
-groupId: "group_id_example",
+// string | The ID of the user group.
+const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 // UserGroupRequest | Updated user group details (optional)
-userGroupRequest: {
-    name: "name_example",
-  },
-};
+const userGroupRequest = {
+    name: "Designers",
+  };
 
-apiInstance.updateUserGroup(body).then((data:any) => {
-console.log('API called successfully. Returned data: ' + JSON.stringify(data.body));
-}).catch((error:any) => console.error(error));
+// Example using parameters
+apiInstance.updateUserGroup(groupId, userGroupRequest)
+    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
+    .catch((error:any) => console.error(error));
 ```
-
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **string**|  |
+ **groupId** | **string**| The ID of the user group. |
  **userGroupRequest** | **UserGroupRequest**| Updated user group details |
 
 
 ### Return type
 
-**UserGroupResponse**
+**UserGroup**
 
 ### Authorization
 
@@ -466,6 +482,12 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User group updated successfully |  -  |
+**400** | Bad request. |  -  |
+**401** | Authorization required. |  -  |
+**403** | Not allowed. |  -  |
+**404** | Not found. |  -  |
+**409** | Already exists. |  -  |
+**420** | Max usage rate exceeded. |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
