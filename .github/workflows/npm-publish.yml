@@ -16,8 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          always-auth: 'true'
+          always-auth: 'true'    
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
         
 
   publish-npm:
