@@ -3,8 +3,9 @@ name: Node.js Package to npm
 # trigger when a release is created
 on:
   workflow_dispatch:
-  release:
-    types: [created]
+  push:
+    tags:
+      - "*.*.*"
 
 jobs:
   build:
