@@ -17,9 +17,10 @@ jobs:
         with:
           node-version: 20
           always-auth: 'true'
+      - run: npm set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_TOKEN }}    
       - run: npm ci
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         
 
   publish-npm:
@@ -34,5 +35,5 @@ jobs:
       - run: npm prepare    
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           
