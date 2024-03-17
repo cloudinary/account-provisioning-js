@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum ProductEnvironmentsApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.2 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.3 (Node ${process.versions.node})`;
 
 export class ProductEnvironmentsApi {
     protected _basePath = defaultBasePath;
@@ -89,7 +89,7 @@ export class ProductEnvironmentsApi {
 
         const parts = new URL(this._accountUrl);
 
-        if(parts.protocol !== 'cloudinary:'){
+        if(parts.protocol !== 'account:'){
             console.error('Invalid/missing CLOUDINARY_ACCOUNT_URL');
             return;
         }
@@ -135,7 +135,7 @@ export class ProductEnvironmentsApi {
      * @summary Create product environment
      * @param productEnvironmentRequest Product environment details
      */
-    public async createProductEnvironment (productEnvironmentRequest: ProductEnvironmentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }> {
+    public async createProductEnvironment (productEnvironmentRequest: ProductEnvironmentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }> {
         const localVarPath = this.basePath + '/sub_accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -189,14 +189,13 @@ export class ProductEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "ProductEnvironment");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -210,7 +209,7 @@ export class ProductEnvironmentsApi {
      * @summary Delete product environment
      * @param subAccountId The ID of the product environment.
      */
-    public async deleteProductEnvironment (subAccountId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
+    public async deleteProductEnvironment (subAccountId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -264,14 +263,13 @@ export class ProductEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -285,7 +283,7 @@ export class ProductEnvironmentsApi {
      * @summary Get product environment
      * @param subAccountId The ID of the product environment.
      */
-    public async getProductEnvironment (subAccountId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }> {
+    public async getProductEnvironment (subAccountId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -339,14 +337,13 @@ export class ProductEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "ProductEnvironment");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -362,7 +359,7 @@ export class ProductEnvironmentsApi {
      * @param ids A list of up to 100 product environment IDs. When provided, other parameters are ignored.
      * @param prefix Returns product environments where the name begins with the specified case-insensitive string.
      */
-    public async getProductEnvironments (enabled?: boolean, ids?: Array<string>, prefix?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ProductEnvironmentsResponse;  }> {
+    public async getProductEnvironments (enabled?: boolean, ids?: Array<string>, prefix?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironmentsResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -422,14 +419,13 @@ export class ProductEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ProductEnvironmentsResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: ProductEnvironmentsResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "ProductEnvironmentsResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -444,7 +440,7 @@ export class ProductEnvironmentsApi {
      * @param subAccountId The ID of the product environment.
      * @param productEnvironmentUpdateRequest Updated product environment details
      */
-    public async updateProductEnvironment (subAccountId: string, productEnvironmentUpdateRequest?: ProductEnvironmentUpdateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }> {
+    public async updateProductEnvironment (subAccountId: string, productEnvironmentUpdateRequest?: ProductEnvironmentUpdateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -499,14 +495,13 @@ export class ProductEnvironmentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: ProductEnvironment;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "ProductEnvironment");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }

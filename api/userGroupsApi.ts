@@ -31,7 +31,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum UserGroupsApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.2 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.3 (Node ${process.versions.node})`;
 
 export class UserGroupsApi {
     protected _basePath = defaultBasePath;
@@ -90,7 +90,7 @@ export class UserGroupsApi {
 
         const parts = new URL(this._accountUrl);
 
-        if(parts.protocol !== 'cloudinary:'){
+        if(parts.protocol !== 'account:'){
             console.error('Invalid/missing CLOUDINARY_ACCOUNT_URL');
             return;
         }
@@ -137,7 +137,7 @@ export class UserGroupsApi {
      * @param groupId The ID of the user group.
      * @param userId The ID of the user.
      */
-    public async addUserToUserGroup (groupId: string, userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroupUser;  }> {
+    public async addUserToUserGroup (groupId: string, userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupUser;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}/users/{user_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)))
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
@@ -197,14 +197,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroupUser;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroupUser;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroupUser");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -218,7 +217,7 @@ export class UserGroupsApi {
      * @summary Create User Group
      * @param userGroupRequest User group details
      */
-    public async createUserGroup (userGroupRequest?: UserGroupRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroup;  }> {
+    public async createUserGroup (userGroupRequest?: UserGroupRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroup;  }> {
         const localVarPath = this.basePath + '/user_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -267,14 +266,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroup");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -288,7 +286,7 @@ export class UserGroupsApi {
      * @summary Delete User Group
      * @param groupId The ID of the user group.
      */
-    public async deleteUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
+    public async deleteUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -342,14 +340,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -363,7 +360,7 @@ export class UserGroupsApi {
      * @summary Get User Group
      * @param groupId The ID of the user group.
      */
-    public async getUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroup;  }> {
+    public async getUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroup;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -417,14 +414,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroup");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -437,7 +433,7 @@ export class UserGroupsApi {
      * Retrieve an array of all user groups in the account.
      * @summary Get User Groups
      */
-    public async getUserGroups (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroupsResponse;  }> {
+    public async getUserGroups (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupsResponse;  }> {
         const localVarPath = this.basePath + '/user_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -485,14 +481,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroupsResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroupsResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroupsResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -506,7 +501,7 @@ export class UserGroupsApi {
      * @summary Get Users in User Group
      * @param groupId The ID of the user group.
      */
-    public async getUsersInUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroupUsersResponse;  }> {
+    public async getUsersInUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupUsersResponse;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}/users'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -560,14 +555,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroupUsersResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroupUsersResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroupUsersResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -582,7 +576,7 @@ export class UserGroupsApi {
      * @param groupId The ID of the user group.
      * @param userId The ID of the user.
      */
-    public async removeUserFromUserGroup (groupId: string, userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroupUsersResponse;  }> {
+    public async removeUserFromUserGroup (groupId: string, userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupUsersResponse;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}/users/{user_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)))
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
@@ -642,14 +636,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroupUsersResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroupUsersResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroupUsersResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -664,7 +657,7 @@ export class UserGroupsApi {
      * @param groupId The ID of the user group.
      * @param userGroupRequest Updated user group details
      */
-    public async updateUserGroup (groupId: string, userGroupRequest?: UserGroupRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UserGroup;  }> {
+    public async updateUserGroup (groupId: string, userGroupRequest?: UserGroupRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroup;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -719,14 +712,13 @@ export class UserGroupsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UserGroup;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UserGroup");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }

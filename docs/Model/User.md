@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **lastLogin** | **Date** | The date when the user was last logged in. | [optional] 
 **allSubAccounts** | **boolean** |  | [optional] 
 **groups** | **Array&lt;string&gt;** | The list of user groups. | [optional] 
-**subAccountIds** | **Array&lt;string&gt;** | The list of the product environments IDs. | [optional] 
+**subAccountIds** | **string** | The list of the product environments IDs. | [optional] 
 
 

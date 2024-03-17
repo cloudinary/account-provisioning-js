@@ -1,6 +1,6 @@
 {
 "name": "@cloudinary/account-provisioning",
-"version": "0.0.2",
+"version": "0.0.3",
 "files": ["dist/*"],
 "description": "NodeJS client for @cloudinary/account-provisioning",
 "main": "./api.js",

@@ -33,8 +33,8 @@ const createUserRequest = null;
 
 // Example using parameters
 apiInstance.createUser(createUserRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -93,8 +93,8 @@ const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.deleteUser(userId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -152,8 +152,8 @@ const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.getUser(userId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -225,8 +225,8 @@ const unionType = "include";
 
 // Example using parameters
 apiInstance.getUsers(pending, ids, prefix, subAccountId, lastLogin, from, to, unionType)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -299,8 +299,8 @@ const userRequest = {
 
 // Example using parameters
 apiInstance.updateUser(userId, userRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters

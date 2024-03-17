@@ -49,7 +49,7 @@ export class User {
     /**
     * The list of the product environments IDs.
     */
-    'subAccountIds'?: Array<string>;
+    'subAccountIds'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -107,7 +107,7 @@ export class User {
         {
             "name": "subAccountIds",
             "baseName": "sub_account_ids",
-            "type": "Array<string>"
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {

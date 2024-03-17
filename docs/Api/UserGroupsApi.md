@@ -38,8 +38,8 @@ const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.addUserToUserGroup(groupId, userId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -101,8 +101,8 @@ const userGroupRequest = {
 
 // Example using parameters
 apiInstance.createUserGroup(userGroupRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -161,8 +161,8 @@ const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
 // Example using parameters
 apiInstance.deleteUserGroup(groupId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -220,8 +220,8 @@ const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
 // Example using parameters
 apiInstance.getUserGroup(groupId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -275,8 +275,8 @@ const apiInstance = new UserGroupsApi(configuration);
 
 // Example using parameters
 apiInstance.getUserGroups()
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -329,8 +329,8 @@ const groupId = "7f08f1f1fc910bf1f25274aef11d27";
 
 // Example using parameters
 apiInstance.getUsersInUserGroup(groupId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -388,8 +388,8 @@ const userId = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.removeUserFromUserGroup(groupId, userId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -452,8 +452,8 @@ const userGroupRequest = {
 
 // Example using parameters
 apiInstance.updateUserGroup(groupId, userGroupRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters

@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum UsersApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.2 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.3 (Node ${process.versions.node})`;
 
 export class UsersApi {
     protected _basePath = defaultBasePath;
@@ -89,7 +89,7 @@ export class UsersApi {
 
         const parts = new URL(this._accountUrl);
 
-        if(parts.protocol !== 'cloudinary:'){
+        if(parts.protocol !== 'account:'){
             console.error('Invalid/missing CLOUDINARY_ACCOUNT_URL');
             return;
         }
@@ -135,7 +135,7 @@ export class UsersApi {
      * @summary Create user
      * @param createUserRequest User details
      */
-    public async createUser (createUserRequest?: CreateUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
+    public async createUser (createUserRequest?: CreateUserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -184,14 +184,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "User");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -205,7 +204,7 @@ export class UsersApi {
      * @summary Delete user
      * @param userId The ID of the user.
      */
-    public async deleteUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
+    public async deleteUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -259,14 +258,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -280,7 +278,7 @@ export class UsersApi {
      * @summary Get user
      * @param userId The ID of the user.
      */
-    public async getUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
+    public async getUser (userId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -334,14 +332,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "User");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -362,7 +359,7 @@ export class UsersApi {
      * @param to All last logins before this date, given in the format: yyyy-mm-dd. 
      * @param unionType Whether to return users who last logged in within the specified date range (include) or those who didn\&#39;t last log in within the range (exclude). **Possible values**: &#x60;include&#x60;, &#x60;exclude&#x60;. **Default**: &#x60;include&#x60;. 
      */
-    public async getUsers (pending?: boolean, ids?: Array<string>, prefix?: string, subAccountId?: string, lastLogin?: boolean, from?: string, to?: string, unionType?: 'include' | 'exclude', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UsersResponse;  }> {
+    public async getUsers (pending?: boolean, ids?: Array<string>, prefix?: string, subAccountId?: string, lastLogin?: boolean, from?: string, to?: string, unionType?: 'include' | 'exclude', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UsersResponse;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -442,14 +439,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UsersResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: UsersResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "UsersResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -464,7 +460,7 @@ export class UsersApi {
      * @param userId The ID of the user.
      * @param userRequest Updated user details
      */
-    public async updateUser (userId: string, userRequest?: UserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: User;  }> {
+    public async updateUser (userId: string, userRequest?: UserRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: User;  }> {
         const localVarPath = this.basePath + '/users/{user_id}'
             .replace('{' + 'user_id' + '}', encodeURIComponent(String(userId)));
         let localVarQueryParameters: any = {};
@@ -519,14 +515,13 @@ export class UsersApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: User;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: User;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "User");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }

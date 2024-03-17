@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum AccessKeysApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.2 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.0.3 (Node ${process.versions.node})`;
 
 export class AccessKeysApi {
     protected _basePath = defaultBasePath;
@@ -89,7 +89,7 @@ export class AccessKeysApi {
 
         const parts = new URL(this._accountUrl);
 
-        if(parts.protocol !== 'cloudinary:'){
+        if(parts.protocol !== 'account:'){
             console.error('Invalid/missing CLOUDINARY_ACCOUNT_URL');
             return;
         }
@@ -136,7 +136,7 @@ export class AccessKeysApi {
      * @param subAccountId The ID of the product environment.
      * @param key The access key (api key).
      */
-    public async deleteAccessKey (subAccountId: string, key: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
+    public async deleteAccessKey (subAccountId: string, key: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}/access_keys/{key}'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)))
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
@@ -196,14 +196,13 @@ export class AccessKeysApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -218,7 +217,7 @@ export class AccessKeysApi {
      * @param subAccountId The ID of the product environment.
      * @param name The access key name.
      */
-    public async deleteAccessKeyByName (subAccountId: string, name: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }> {
+    public async deleteAccessKeyByName (subAccountId: string, name: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}/access_keys'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -281,14 +280,13 @@ export class AccessKeysApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: SuccessResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "SuccessResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -303,7 +301,7 @@ export class AccessKeysApi {
      * @param subAccountId The ID of the product environment.
      * @param accessKeyRequest Access key details
      */
-    public async generateAccessKey (subAccountId: string, accessKeyRequest?: AccessKeyRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: AccessKey;  }> {
+    public async generateAccessKey (subAccountId: string, accessKeyRequest?: AccessKeyRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: AccessKey;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}/access_keys'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -358,14 +356,13 @@ export class AccessKeysApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: AccessKey;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: AccessKey;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "AccessKey");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -383,7 +380,7 @@ export class AccessKeysApi {
      * @param sortBy Which response parameter to sort by. **Possible values**: &#x60;api_key&#x60;, &#x60;created_at&#x60;, &#x60;name&#x60;, &#x60;enabled&#x60;. 
      * @param sortOrder Control the order of returned keys. **Possible values**: &#x60;desc&#x60; (default), &#x60;asc&#x60;. 
      */
-    public async getAccessKeys (subAccountId: string, pageSize?: number, page?: number, sortBy?: 'api_key' | 'created_at' | 'name' | 'enabled', sortOrder?: 'desc' | 'asc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: AccessKeysResponse;  }> {
+    public async getAccessKeys (subAccountId: string, pageSize?: number, page?: number, sortBy?: 'api_key' | 'created_at' | 'name' | 'enabled', sortOrder?: 'desc' | 'asc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: AccessKeysResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}/access_keys'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)));
         let localVarQueryParameters: any = {};
@@ -453,14 +450,13 @@ export class AccessKeysApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: AccessKeysResponse;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: AccessKeysResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "AccessKeysResponse");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }
@@ -476,7 +472,7 @@ export class AccessKeysApi {
      * @param key The access key (api key).
      * @param accessKeyUpdateRequest Access key details for update
      */
-    public async updateAccessKey (subAccountId: string, key: string, accessKeyUpdateRequest?: AccessKeyUpdateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: AccessKey;  }> {
+    public async updateAccessKey (subAccountId: string, key: string, accessKeyUpdateRequest?: AccessKeyUpdateRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: AccessKey;  }> {
         const localVarPath = this.basePath + '/sub_accounts/{sub_account_id}/access_keys/{key}'
             .replace('{' + 'sub_account_id' + '}', encodeURIComponent(String(subAccountId)))
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
@@ -537,14 +533,13 @@ export class AccessKeysApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: AccessKey;  }>((resolve, reject) => {
+            return new Promise<{ response?: http.IncomingMessage; body: AccessKey;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "AccessKey");
-                            resolve({ response: response, body: body });
+                                    resolve(body);
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
                         }

@@ -1,4 +1,7 @@
+.github/workflows/npm-publish.yml
 .gitignore
+.openapi-generator-ignore
+API_VERSION
 AccessKey.md
 AccessKeyRequest.md
 AccessKeyUpdateRequest.md
@@ -17,6 +20,7 @@ ProductEnvironmentsResponse.md
 README.md
 README.md
 SuccessResponse.md
+TEMPLATE_VERSION
 User.md
 UserGroup.md
 UserGroupRequest.md
@@ -27,6 +31,7 @@ UserGroupsResponse.md
 UserRequest.md
 UsersApi.md
 UsersResponse.md
+VERSION
 api.ts
 api/accessKeysApi.ts
 api/apis.ts

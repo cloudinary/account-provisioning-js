@@ -35,8 +35,8 @@ const key = "814814814814814";
 
 // Example using parameters
 apiInstance.deleteAccessKey(subAccountId, key)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -97,8 +97,8 @@ const name = "main_key";
 
 // Example using parameters
 apiInstance.deleteAccessKeyByName(subAccountId, name)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -162,8 +162,8 @@ const accessKeyRequest = {
 
 // Example using parameters
 apiInstance.generateAccessKey(subAccountId, accessKeyRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -231,8 +231,8 @@ const sortOrder = "asc";
 
 // Example using parameters
 apiInstance.getAccessKeys(subAccountId, pageSize, page, sortBy, sortOrder)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -300,8 +300,8 @@ const accessKeyUpdateRequest = {
 
 // Example using parameters
 apiInstance.updateAccessKey(subAccountId, key, accessKeyUpdateRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters

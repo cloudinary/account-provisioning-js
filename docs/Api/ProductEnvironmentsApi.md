@@ -38,8 +38,8 @@ const productEnvironmentRequest = {
 
 // Example using parameters
 apiInstance.createProductEnvironment(productEnvironmentRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -97,8 +97,8 @@ const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
 
 // Example using parameters
 apiInstance.deleteProductEnvironment(subAccountId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -156,8 +156,8 @@ const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
 
 // Example using parameters
 apiInstance.getProductEnvironment(subAccountId)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -220,8 +220,8 @@ const prefix = "product";
 
 // Example using parameters
 apiInstance.getProductEnvironments(enabled, ids, prefix)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
@@ -289,8 +289,8 @@ const productEnvironmentUpdateRequest = {
 
 // Example using parameters
 apiInstance.updateProductEnvironment(subAccountId, productEnvironmentUpdateRequest)
-    .then((data:any) => { console.log('API called successfully. Returned data: ' + JSON.stringify(data.body)); })
-    .catch((error:any) => console.error(error));
+    .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
+    .catch((error) => console.error(error));
 ```
 
 ### Parameters
