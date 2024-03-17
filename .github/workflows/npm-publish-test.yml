@@ -15,9 +15,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-        env:
-           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
+        
   # publish to npm
   publish-npm:
     needs: build
