@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum ProductEnvironmentsApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.1.0 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.1.1 (Node ${process.versions.node})`;
 
 export class ProductEnvironmentsApi {
     protected _basePath = defaultBasePath;
