@@ -1,6 +1,6 @@
 {
 "name": "@cloudinary/account-provisioning",
-"version": "0.1.1",
+"version": "0.1.2",
 "files": ["dist/*"],
 "description": "NodeJS client for @cloudinary/account-provisioning",
 "main": "./api.js",
@@ -10,7 +10,7 @@
 "clean": "rm -Rf node_modules/ *.js",
 "build": "tsc",
 "test": "npm run build && node dist/client.js",
-"prepare": "cp -R ./docs README.md LICENSE.md package.json ./dist"
+"prepare:dist": "cp -R ./docs README.md LICENSE.md package.json ./dist"
 },
 "author": "Cloudinary",
 "license": "MIT",
