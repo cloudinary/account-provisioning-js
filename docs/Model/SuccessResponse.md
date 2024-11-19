@@ -2,8 +2,8 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**message** | **string** |  | [optional] 
+| Name         | Type          | Description   | Notes         |
+| ------------ | ------------- | ------------- | ------------- |
+| **message** | **string** |  | [optional]  |
 
 

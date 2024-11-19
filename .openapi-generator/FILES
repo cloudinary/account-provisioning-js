@@ -1,3 +1,4 @@
+../code-samples/nodejs.yml
 .github/workflows/npm-publish.yml
 .gitignore
 .openapi-generator-ignore
@@ -24,6 +25,7 @@ TEMPLATE_VERSION
 User.md
 UserGroup.md
 UserGroupRequest.md
+UserGroupSummary.md
 UserGroupUser.md
 UserGroupUsersResponse.md
 UserGroupsApi.md
@@ -56,6 +58,7 @@ model/successResponse.ts
 model/user.ts
 model/userGroup.ts
 model/userGroupRequest.ts
+model/userGroupSummary.ts
 model/userGroupUser.ts
 model/userGroupUsersResponse.ts
 model/userGroupsResponse.ts

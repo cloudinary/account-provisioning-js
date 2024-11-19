@@ -1,6 +1,6 @@
 /**
  * Cloudinary Account Provisioning API
- * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise). 
+ * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise).  The API uses **Basic Authentication** over HTTPS. Your **Provisioning Key** and **Provisioning Secret** are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the [Cloudinary Console](https://console.cloudinary.com/pm) under **Settings > Account > Provisioning API Access**, or they can be obtained from the provisioning environment variable available on your Cloudinary Console [Dashboard](https://console.cloudinary.com/pm/developer-dashboard).  The Provisioning API has dedicated SDKs for the following languages:  * [JavaScript](https://github.com/cloudinary/account-provisioning-js) * [PHP](https://github.com/cloudinary/account-provisioning-php) * [Java](https://github.com/cloudinary/account-provisioning-java)  Useful links: * [Provisioning API reference (Classic)](https://cloudinary.com/documentation/provisioning_api_1) 
  */
 
 
@@ -31,7 +31,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum UserGroupsApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.1.5 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.2.0 (Node ${process.versions.node})`;
 
 export class UserGroupsApi {
     protected _basePath = defaultBasePath;
@@ -359,8 +359,9 @@ export class UserGroupsApi {
      * Retrieve a specific user group.
      * @summary Get User Group
      * @param groupId The ID of the user group.
+     * @param extendedDetails Whether to only return extended (true) or basic information about the group (false).  **Default**: false. 
      */
-    public async getUserGroup (groupId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroup;  }> {
+    public async getUserGroup (groupId: string, extendedDetails?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroup;  }> {
         const localVarPath = this.basePath + '/user_groups/{group_id}'
             .replace('{' + 'group_id' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -377,6 +378,10 @@ export class UserGroupsApi {
         // verify required parameter 'groupId' is not null or undefined
         if (groupId === null || groupId === undefined) {
             throw new Error('Required parameter groupId was null or undefined when calling getUserGroup.');
+        }
+
+        if (extendedDetails !== undefined) {
+            localVarQueryParameters['extended_details'] = ObjectSerializer.serialize(extendedDetails, "boolean");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -432,8 +437,9 @@ export class UserGroupsApi {
     /**
      * Retrieve an array of all user groups in the account.
      * @summary Get User Groups
+     * @param extendedDetails Whether to only return extended (true) or basic information about the group (false).  **Default**: false. 
      */
-    public async getUserGroups (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupsResponse;  }> {
+    public async getUserGroups (extendedDetails?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UserGroupsResponse;  }> {
         const localVarPath = this.basePath + '/user_groups';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -445,6 +451,10 @@ export class UserGroupsApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
         let localVarFormParams: any = {};
+
+        if (extendedDetails !== undefined) {
+            localVarQueryParameters['extended_details'] = ObjectSerializer.serialize(extendedDetails, "boolean");
+        }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
 

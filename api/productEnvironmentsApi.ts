@@ -1,6 +1,6 @@
 /**
  * Cloudinary Account Provisioning API
- * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise). 
+ * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise).  The API uses **Basic Authentication** over HTTPS. Your **Provisioning Key** and **Provisioning Secret** are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the [Cloudinary Console](https://console.cloudinary.com/pm) under **Settings > Account > Provisioning API Access**, or they can be obtained from the provisioning environment variable available on your Cloudinary Console [Dashboard](https://console.cloudinary.com/pm/developer-dashboard).  The Provisioning API has dedicated SDKs for the following languages:  * [JavaScript](https://github.com/cloudinary/account-provisioning-js) * [PHP](https://github.com/cloudinary/account-provisioning-php) * [Java](https://github.com/cloudinary/account-provisioning-java)  Useful links: * [Provisioning API reference (Classic)](https://cloudinary.com/documentation/provisioning_api_1) 
  */
 
 
@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum ProductEnvironmentsApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.1.5 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.2.0 (Node ${process.versions.node})`;
 
 export class ProductEnvironmentsApi {
     protected _basePath = defaultBasePath;
@@ -357,9 +357,10 @@ export class ProductEnvironmentsApi {
      * @summary Get product environments
      * @param enabled Whether to only return enabled product environments (true) or disabled product environments (false).  **Default**: all product environments are returned (both enabled and disabled). 
      * @param ids A list of up to 100 product environment IDs. When provided, other parameters are ignored.
+     * @param cloudNames A list of up to 100 product environment cloud names.
      * @param prefix Returns product environments where the name begins with the specified case-insensitive string.
      */
-    public async getProductEnvironments (enabled?: boolean, ids?: Array<string>, prefix?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironmentsResponse;  }> {
+    public async getProductEnvironments (enabled?: boolean, ids?: Array<string>, cloudNames?: Array<string>, prefix?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: ProductEnvironmentsResponse;  }> {
         const localVarPath = this.basePath + '/sub_accounts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -378,6 +379,10 @@ export class ProductEnvironmentsApi {
 
         if (ids !== undefined) {
             localVarQueryParameters['ids'] = ObjectSerializer.serialize(ids, "Array<string>");
+        }
+
+        if (cloudNames !== undefined) {
+            localVarQueryParameters['cloud_names'] = ObjectSerializer.serialize(cloudNames, "Array<string>");
         }
 
         if (prefix !== undefined) {

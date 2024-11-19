@@ -2,8 +2,8 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**userGroups** | [**Array&lt;UserGroup&gt;**](UserGroup.md) | A list of user groups. | [optional] 
+| Name         | Type          | Description   | Notes         |
+| ------------ | ------------- | ------------- | ------------- |
+| **userGroups** | [**Array&lt;UserGroup&gt;**](UserGroup.md) | A list of user groups. | [optional]  |
 
 

@@ -1,38 +1,77 @@
-Cloudinary Account Provisioning API
-=========================
-## About
-The Cloudinary Account Provisioning SDK allows you to quickly and easily integrate your application with Cloudinary.
-This is the TypeScript SDK for Cloudinary Account Provisioning API.
+# Cloudinary Cloudinary Account Provisioning API
 
-## Key Features
-### Account Provisioning API
-- [AccessKeysApi](docs/Api/AccessKeysApi.md)
-- [ProductEnvironmentsApi](docs/Api/ProductEnvironmentsApi.md)
-- [UserGroupsApi](docs/Api/UserGroupsApi.md)
-- [UsersApi](docs/Api/UsersApi.md)
+Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API. 
+
+Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise).
+
+The API uses **Basic Authentication** over HTTPS. Your **Provisioning Key** and **Provisioning Secret** are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the [Cloudinary Console](https://console.cloudinary.com/pm) under **Settings > Account > Provisioning API Access**, or they can be obtained from the provisioning environment variable available on your Cloudinary Console [Dashboard](https://console.cloudinary.com/pm/developer-dashboard).
+
+The Provisioning API has dedicated SDKs for the following languages:
+
+* [JavaScript](https://github.com/cloudinary/account-provisioning-js)
+* [PHP](https://github.com/cloudinary/account-provisioning-php)
+* [Java](https://github.com/cloudinary/account-provisioning-java)
+
+Useful links:
+* [Provisioning API reference (Classic)](https://cloudinary.com/documentation/provisioning_api_1)
+
+
+### API Endpoints
+
+All URIs are relative to *https://api.cloudinary.com/v1_1/provisioning/accounts/ACCOUNT_ID*
+
+| Class | Method | HTTP request | Description |
+| ------------ | ------------- | ------------- | ------------- |
+*AccessKeysApi* | [**deleteAccessKey**](AccessKeysApi.md#deleteAccessKey) | **DELETE** /sub_accounts/{sub_account_id}/access_keys/{key} | Delete access key
+*AccessKeysApi* | [**deleteAccessKeyByName**](AccessKeysApi.md#deleteAccessKeyByName) | **DELETE** /sub_accounts/{sub_account_id}/access_keys | Delete access key by name
+*AccessKeysApi* | [**generateAccessKey**](AccessKeysApi.md#generateAccessKey) | **POST** /sub_accounts/{sub_account_id}/access_keys | Generate an access key
+*AccessKeysApi* | [**getAccessKeys**](AccessKeysApi.md#getAccessKeys) | **GET** /sub_accounts/{sub_account_id}/access_keys | Get access keys
+*AccessKeysApi* | [**updateAccessKey**](AccessKeysApi.md#updateAccessKey) | **PUT** /sub_accounts/{sub_account_id}/access_keys/{key} | Update an access key
+*ProductEnvironmentsApi* | [**createProductEnvironment**](ProductEnvironmentsApi.md#createProductEnvironment) | **POST** /sub_accounts | Create product environment
+*ProductEnvironmentsApi* | [**deleteProductEnvironment**](ProductEnvironmentsApi.md#deleteProductEnvironment) | **DELETE** /sub_accounts/{sub_account_id} | Delete product environment
+*ProductEnvironmentsApi* | [**getProductEnvironment**](ProductEnvironmentsApi.md#getProductEnvironment) | **GET** /sub_accounts/{sub_account_id} | Get product environment
+*ProductEnvironmentsApi* | [**getProductEnvironments**](ProductEnvironmentsApi.md#getProductEnvironments) | **GET** /sub_accounts | Get product environments
+*ProductEnvironmentsApi* | [**updateProductEnvironment**](ProductEnvironmentsApi.md#updateProductEnvironment) | **PUT** /sub_accounts/{sub_account_id} | Update product environment
+*UserGroupsApi* | [**addUserToUserGroup**](UserGroupsApi.md#addUserToUserGroup) | **POST** /user_groups/{group_id}/users/{user_id} | Add User to User Group
+*UserGroupsApi* | [**createUserGroup**](UserGroupsApi.md#createUserGroup) | **POST** /user_groups | Create User Group
+*UserGroupsApi* | [**deleteUserGroup**](UserGroupsApi.md#deleteUserGroup) | **DELETE** /user_groups/{group_id} | Delete User Group
+*UserGroupsApi* | [**getUserGroup**](UserGroupsApi.md#getUserGroup) | **GET** /user_groups/{group_id} | Get User Group
+*UserGroupsApi* | [**getUserGroups**](UserGroupsApi.md#getUserGroups) | **GET** /user_groups | Get User Groups
+*UserGroupsApi* | [**getUsersInUserGroup**](UserGroupsApi.md#getUsersInUserGroup) | **GET** /user_groups/{group_id}/users | Get Users in User Group
+*UserGroupsApi* | [**removeUserFromUserGroup**](UserGroupsApi.md#removeUserFromUserGroup) | **DELETE** /user_groups/{group_id}/users/{user_id} | Remove User from User Group
+*UserGroupsApi* | [**updateUserGroup**](UserGroupsApi.md#updateUserGroup) | **PUT** /user_groups/{group_id} | Update User Group
+*UsersApi* | [**createUser**](UsersApi.md#createUser) | **POST** /users | Create user
+*UsersApi* | [**deleteUser**](UsersApi.md#deleteUser) | **DELETE** /users/{user_id} | Delete user
+*UsersApi* | [**getUser**](UsersApi.md#getUser) | **GET** /users/{user_id} | Get user
+*UsersApi* | [**getUsers**](UsersApi.md#getUsers) | **GET** /users | Get users
+*UsersApi* | [**updateUser**](UsersApi.md#updateUser) | **PUT** /users/{user_id} | Update user
+
 
 ### Models
-- [AccessKey](docs/Model/AccessKey.md)
-- [AccessKeyRequest](docs/Model/AccessKeyRequest.md)
-- [AccessKeyUpdateRequest](docs/Model/AccessKeyUpdateRequest.md)
-- [AccessKeysResponse](docs/Model/AccessKeysResponse.md)
-- [ApiAccessKey](docs/Model/ApiAccessKey.md)
-- [CreateUserRequest](docs/Model/CreateUserRequest.md)
-- [ErrorResponse](docs/Model/ErrorResponse.md)
-- [ErrorResponseError](docs/Model/ErrorResponseError.md)
-- [ProductEnvironment](docs/Model/ProductEnvironment.md)
-- [ProductEnvironmentRequest](docs/Model/ProductEnvironmentRequest.md)
-- [ProductEnvironmentUpdateRequest](docs/Model/ProductEnvironmentUpdateRequest.md)
-- [ProductEnvironmentsResponse](docs/Model/ProductEnvironmentsResponse.md)
-- [SuccessResponse](docs/Model/SuccessResponse.md)
-- [User](docs/Model/User.md)
-- [UserGroup](docs/Model/UserGroup.md)
-- [UserGroupRequest](docs/Model/UserGroupRequest.md)
-- [UserGroupUser](docs/Model/UserGroupUser.md)
-- [UserGroupUsersResponse](docs/Model/UserGroupUsersResponse.md)
-- [UserGroupsResponse](docs/Model/UserGroupsResponse.md)
-- [UserRequest](docs/Model/UserRequest.md)
-- [UsersResponse](docs/Model/UsersResponse.md)
+
+ - [AccessKey](AccessKey.md)
+ - [AccessKeyRequest](AccessKeyRequest.md)
+ - [AccessKeyUpdateRequest](AccessKeyUpdateRequest.md)
+ - [AccessKeysResponse](AccessKeysResponse.md)
+ - [ApiAccessKey](ApiAccessKey.md)
+ - [CreateUserRequest](CreateUserRequest.md)
+ - [ErrorResponse](ErrorResponse.md)
+ - [ErrorResponseError](ErrorResponseError.md)
+ - [ProductEnvironment](ProductEnvironment.md)
+ - [ProductEnvironmentRequest](ProductEnvironmentRequest.md)
+ - [ProductEnvironmentUpdateRequest](ProductEnvironmentUpdateRequest.md)
+ - [ProductEnvironmentsResponse](ProductEnvironmentsResponse.md)
+ - [SuccessResponse](SuccessResponse.md)
+ - [User](User.md)
+ - [UserGroup](UserGroup.md)
+ - [UserGroupRequest](UserGroupRequest.md)
+ - [UserGroupSummary](UserGroupSummary.md)
+ - [UserGroupUser](UserGroupUser.md)
+ - [UserGroupUsersResponse](UserGroupUsersResponse.md)
+ - [UserGroupsResponse](UserGroupsResponse.md)
+ - [UserRequest](UserRequest.md)
+ - [UsersResponse](UsersResponse.md)
+
 
 ## Installation
 ```bash

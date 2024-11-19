@@ -19,7 +19,12 @@ Delete a specific access key.
 ### Example
 
 ```typescript
-import { AccessKeysApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    AccessKeysApi,
+    IAccountUrlConfig,
+    type SuccessResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -29,9 +34,9 @@ const apiInstance = new AccessKeysApi(configuration);
 // const apiInstance = new AccessKeysApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // string | The access key (api key).
-const key = "814814814814814";
+const key: string = "814814814814814";
 
 // Example using parameters
 apiInstance.deleteAccessKey(subAccountId, key)
@@ -81,7 +86,12 @@ Delete a specific access key by name.
 ### Example
 
 ```typescript
-import { AccessKeysApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    AccessKeysApi,
+    IAccountUrlConfig,
+    type SuccessResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -91,9 +101,9 @@ const apiInstance = new AccessKeysApi(configuration);
 // const apiInstance = new AccessKeysApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // string | The access key name.
-const name = "main_key";
+const name: string = "main_key";
 
 // Example using parameters
 apiInstance.deleteAccessKeyByName(subAccountId, name)
@@ -143,7 +153,13 @@ Generate a new access key.
 ### Example
 
 ```typescript
-import { AccessKeysApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    AccessKeysApi,
+    IAccountUrlConfig,
+    type AccessKeyRequest,
+    type AccessKey,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -153,9 +169,9 @@ const apiInstance = new AccessKeysApi(configuration);
 // const apiInstance = new AccessKeysApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // AccessKeyRequest | Access key details (optional)
-const accessKeyRequest = {
+const accessKeyRequest: AccessKeyRequest = {
     name: "main_key",
     enabled: true,
   };
@@ -209,7 +225,12 @@ Retrieve an array of all access keys for a product environment.
 ### Example
 
 ```typescript
-import { AccessKeysApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    AccessKeysApi,
+    IAccountUrlConfig,
+    type AccessKeysResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -219,15 +240,15 @@ const apiInstance = new AccessKeysApi(configuration);
 // const apiInstance = new AccessKeysApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // number | How many entries to display on each page. (optional)
-const pageSize = 1;
+const pageSize: number = 1;
 // number | Which page to return (maximum pages 100). **Default**: All pages are returned.  (optional)
-const page = 1;
+const page: number = 1;
 // 'api_key' | 'created_at' | 'name' | 'enabled' | Which response parameter to sort by. **Possible values**: `api_key`, `created_at`, `name`, `enabled`.  (optional)
-const sortBy = "created_at";
+const sortBy: 'api_key' | 'created_at' | 'name' | 'enabled' = "created_at";
 // 'desc' | 'asc' | Control the order of returned keys. **Possible values**: `desc` (default), `asc`.  (optional)
-const sortOrder = "asc";
+const sortOrder: 'desc' | 'asc' = "asc";
 
 // Example using parameters
 apiInstance.getAccessKeys(subAccountId, pageSize, page, sortBy, sortOrder)
@@ -278,7 +299,13 @@ Update the name and/or status of an existing access key.
 ### Example
 
 ```typescript
-import { AccessKeysApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    AccessKeysApi,
+    IAccountUrlConfig,
+    type AccessKey,
+    type AccessKeyUpdateRequest,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -288,11 +315,11 @@ const apiInstance = new AccessKeysApi(configuration);
 // const apiInstance = new AccessKeysApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // string | The access key (api key).
-const key = "814814814814814";
+const key: string = "814814814814814";
 // AccessKeyUpdateRequest | Access key details for update (optional)
-const accessKeyUpdateRequest = {
+const accessKeyUpdateRequest: AccessKeyUpdateRequest = {
     name: "main_key",
     enabled: true,
     dedicatedFor: "webhooks",

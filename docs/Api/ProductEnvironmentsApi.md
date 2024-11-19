@@ -19,7 +19,13 @@ Create a new product environment. Any users that have access to all product envi
 ### Example
 
 ```typescript
-import { ProductEnvironmentsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    ProductEnvironmentsApi,
+    IAccountUrlConfig,
+    type ProductEnvironmentRequest,
+    type ProductEnvironment,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -29,7 +35,7 @@ const apiInstance = new ProductEnvironmentsApi(configuration);
 // const apiInstance = new ProductEnvironmentsApi();
 
 // ProductEnvironmentRequest | Product environment details
-const productEnvironmentRequest = {
+const productEnvironmentRequest: ProductEnvironmentRequest = {
     name: "Product3 Application",
     cloudName: "product3",
     baseSubAccountId: "0aaaaa1bbbbb2ccccc3ddddd4eeeee5f",
@@ -83,7 +89,12 @@ Delete a specific product environment.
 ### Example
 
 ```typescript
-import { ProductEnvironmentsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    ProductEnvironmentsApi,
+    IAccountUrlConfig,
+    type SuccessResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -93,7 +104,7 @@ const apiInstance = new ProductEnvironmentsApi(configuration);
 // const apiInstance = new ProductEnvironmentsApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 
 // Example using parameters
 apiInstance.deleteProductEnvironment(subAccountId)
@@ -142,7 +153,12 @@ Retrieve a specific product environment.
 ### Example
 
 ```typescript
-import { ProductEnvironmentsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    ProductEnvironmentsApi,
+    IAccountUrlConfig,
+    type ProductEnvironment,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -152,7 +168,7 @@ const apiInstance = new ProductEnvironmentsApi(configuration);
 // const apiInstance = new ProductEnvironmentsApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 
 // Example using parameters
 apiInstance.getProductEnvironment(subAccountId)
@@ -200,7 +216,12 @@ Return an array of all product environments, or if conditions are specified,  re
 ### Example
 
 ```typescript
-import { ProductEnvironmentsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    ProductEnvironmentsApi,
+    IAccountUrlConfig,
+    type ProductEnvironmentsResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -210,16 +231,20 @@ const apiInstance = new ProductEnvironmentsApi(configuration);
 // const apiInstance = new ProductEnvironmentsApi();
 
 // boolean | Whether to only return enabled product environments (true) or disabled product environments (false).  **Default**: all product environments are returned (both enabled and disabled).  (optional)
-const enabled = true;
+const enabled: boolean = true;
 // Array<string> | A list of up to 100 product environment IDs. When provided, other parameters are ignored. (optional)
-const ids = [
+const ids: Array<string> = [
     "ids_example",
   ];
+// Array<string> | A list of up to 100 product environment cloud names. (optional)
+const cloudNames: Array<string> = [
+    "cloud_names_example",
+  ];
 // string | Returns product environments where the name begins with the specified case-insensitive string. (optional)
-const prefix = "product";
+const prefix: string = "product";
 
 // Example using parameters
-apiInstance.getProductEnvironments(enabled, ids, prefix)
+apiInstance.getProductEnvironments(enabled, ids, cloudNames, prefix)
     .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
     .catch((error) => console.error(error));
 ```
@@ -230,6 +255,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **enabled** | **boolean**| Whether to only return enabled product environments (true) or disabled product environments (false).  **Default**: all product environments are returned (both enabled and disabled).  |
  **ids** | **Array<string>**| A list of up to 100 product environment IDs. When provided, other parameters are ignored. |
+ **cloudNames** | **Array<string>**| A list of up to 100 product environment cloud names. |
  **prefix** | **string**| Returns product environments where the name begins with the specified case-insensitive string. |
 
 
@@ -268,7 +294,13 @@ Update the details of a product environment.
 ### Example
 
 ```typescript
-import { ProductEnvironmentsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    ProductEnvironmentsApi,
+    IAccountUrlConfig,
+    type ProductEnvironmentUpdateRequest,
+    type ProductEnvironment,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -278,9 +310,9 @@ const apiInstance = new ProductEnvironmentsApi(configuration);
 // const apiInstance = new ProductEnvironmentsApi();
 
 // string | The ID of the product environment.
-const subAccountId = "abcde1fghij2klmno3pqrst4uvwxy5z";
+const subAccountId: string = "abcde1fghij2klmno3pqrst4uvwxy5z";
 // ProductEnvironmentUpdateRequest | Updated product environment details (optional)
-const productEnvironmentUpdateRequest = {
+const productEnvironmentUpdateRequest: ProductEnvironmentUpdateRequest = {
     name: "Product3 Application",
     cloudName: "product3",
     customAttributes: {},

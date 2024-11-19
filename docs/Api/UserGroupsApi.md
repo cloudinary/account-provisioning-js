@@ -22,7 +22,12 @@ Add a user to a group with the specified ID.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupUser,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -32,9 +37,9 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
 // string | The ID of the user.
-const userId = "0abed8dfcc039ea05e2a1d494fd442";
+const userId: string = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.addUserToUserGroup(groupId, userId)
@@ -85,7 +90,13 @@ Create a new user group for the account.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupRequest,
+    type UserGroup,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -95,8 +106,9 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // UserGroupRequest | User group details (optional)
-const userGroupRequest = {
+const userGroupRequest: UserGroupRequest = {
     name: "Designers",
+    extendedDetails: false,
   };
 
 // Example using parameters
@@ -147,7 +159,12 @@ Delete a user group with the specified ID.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type SuccessResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -157,7 +174,7 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
 
 // Example using parameters
 apiInstance.deleteUserGroup(groupId)
@@ -206,7 +223,12 @@ Retrieve a specific user group.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroup,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -216,10 +238,12 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
+// boolean | Whether to only return extended (true) or basic information about the group (false).  **Default**: false.  (optional)
+const extendedDetails: boolean = true;
 
 // Example using parameters
-apiInstance.getUserGroup(groupId)
+apiInstance.getUserGroup(groupId, extendedDetails)
     .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
     .catch((error) => console.error(error));
 ```
@@ -229,6 +253,7 @@ apiInstance.getUserGroup(groupId)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **string**| The ID of the user group. |
+ **extendedDetails** | **boolean**| Whether to only return extended (true) or basic information about the group (false).  **Default**: false.  |
 
 
 ### Return type
@@ -263,7 +288,12 @@ Retrieve an array of all user groups in the account.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupsResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -272,15 +302,20 @@ const apiInstance = new UserGroupsApi(configuration);
 // Or by default an environment variable can be used:
 // const apiInstance = new UserGroupsApi();
 
+// boolean | Whether to only return extended (true) or basic information about the group (false).  **Default**: false.  (optional)
+const extendedDetails: boolean = true;
 
 // Example using parameters
-apiInstance.getUserGroups()
+apiInstance.getUserGroups(extendedDetails)
     .then((result) => { console.log('API called successfully. Returned data: ' + JSON.stringify(result)); })
     .catch((error) => console.error(error));
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **extendedDetails** | **boolean**| Whether to only return extended (true) or basic information about the group (false).  **Default**: false.  |
 
 
 ### Return type
@@ -315,7 +350,12 @@ Retrieve the users in the group with the specified ID.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupUsersResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -325,7 +365,7 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
 
 // Example using parameters
 apiInstance.getUsersInUserGroup(groupId)
@@ -372,7 +412,12 @@ Remove a user from a group with the specified ID.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupUsersResponse,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -382,9 +427,9 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
 // string | The ID of the user.
-const userId = "0abed8dfcc039ea05e2a1d494fd442";
+const userId: string = "0abed8dfcc039ea05e2a1d494fd442";
 
 // Example using parameters
 apiInstance.removeUserFromUserGroup(groupId, userId)
@@ -434,7 +479,13 @@ Update the name of a specified user group.
 ### Example
 
 ```typescript
-import { UserGroupsApi, IAccountUrlConfig} from '@cloudinary/account-provisioning';
+import {
+    UserGroupsApi,
+    IAccountUrlConfig,
+    type UserGroupRequest,
+    type UserGroup,
+    type ErrorResponse,
+} from '@cloudinary/account-provisioning';
 
 // Configuration can be passed in:
 const configuration: IAccountUrlConfig = {accountUrl: '<account_url>'}
@@ -444,10 +495,11 @@ const apiInstance = new UserGroupsApi(configuration);
 // const apiInstance = new UserGroupsApi();
 
 // string | The ID of the user group.
-const groupId = "7f08f1f1fc910bf1f25274aef11d27";
+const groupId: string = "7f08f1f1fc910bf1f25274aef11d27";
 // UserGroupRequest | Updated user group details (optional)
-const userGroupRequest = {
+const userGroupRequest: UserGroupRequest = {
     name: "Designers",
+    extendedDetails: false,
   };
 
 // Example using parameters

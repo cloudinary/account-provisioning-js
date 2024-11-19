@@ -5,48 +5,35 @@
 
 import { RequestFile } from './models';
 
-export class AccessKeyUpdateRequest {
+/**
+* User group summary.
+*/
+export class UserGroupSummary {
     /**
-    * The name of the access key.
+    * The user group\'s ID.
+    */
+    'id'?: string;
+    /**
+    * The user group\'s name.
     */
     'name'?: string;
-    /**
-    * Whether the access key is enabled or disabled.
-    */
-    'enabled'?: boolean;
-    /**
-    * Designates the access key for a specific purpose while allowing it to be used for other purposes, as well.  This action replaces any previously assigned key. **Possible values**: `webhooks` 
-    */
-    'dedicatedFor'?: AccessKeyUpdateRequest.DedicatedForEnum;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "id",
+            "baseName": "id",
             "type": "string"
         },
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean"
-        },
-        {
-            "name": "dedicatedFor",
-            "baseName": "dedicated_for",
-            "type": "AccessKeyUpdateRequest.DedicatedForEnum"
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
-        return AccessKeyUpdateRequest.attributeTypeMap;
+        return UserGroupSummary.attributeTypeMap;
     }
-}
-
-export namespace AccessKeyUpdateRequest {
-    export type DedicatedForEnum = 'webhooks';
-    export const DedicatedForEnum = {
-        Webhooks: 'webhooks' as DedicatedForEnum
-    };
 }
 

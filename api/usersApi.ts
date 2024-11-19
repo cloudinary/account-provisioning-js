@@ -1,6 +1,6 @@
 /**
  * Cloudinary Account Provisioning API
- * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise). 
+ * Accounts with provisioning API access can create and manage their **product environments**, **users** and **user groups** using the RESTful Provisioning API.   Provisioning API access is available [upon request](https://cloudinary.com/contact?plan=enterprise) for accounts on an [Enterprise plan](https://cloudinary.com/pricing#pricing-enterprise).  The API uses **Basic Authentication** over HTTPS. Your **Provisioning Key** and **Provisioning Secret** are used for the authentication. These credentials (as well as your ACCOUNT_ID) are located in the [Cloudinary Console](https://console.cloudinary.com/pm) under **Settings > Account > Provisioning API Access**, or they can be obtained from the provisioning environment variable available on your Cloudinary Console [Dashboard](https://console.cloudinary.com/pm/developer-dashboard).  The Provisioning API has dedicated SDKs for the following languages:  * [JavaScript](https://github.com/cloudinary/account-provisioning-js) * [PHP](https://github.com/cloudinary/account-provisioning-php) * [Java](https://github.com/cloudinary/account-provisioning-java)  Useful links: * [Provisioning API reference (Classic)](https://cloudinary.com/documentation/provisioning_api_1) 
  */
 
 
@@ -30,7 +30,7 @@ let defaultBasePath = 'https://api.cloudinary.com/v1_1/provisioning/accounts/ACC
 export enum UsersApiApiKeys {
 }
 
-const USER_AGENT = `CloudinaryProvisioningNodeJS/0.1.5 (Node ${process.versions.node})`;
+const USER_AGENT = `CloudinaryProvisioningNodeJS/0.2.0 (Node ${process.versions.node})`;
 
 export class UsersApi {
     protected _basePath = defaultBasePath;
@@ -352,14 +352,19 @@ export class UsersApi {
      * @summary Get users
      * @param pending Whether to return pending users. **Default**: &#x60;false&#x60; (all users) 
      * @param ids A list of up to 100 user IDs.  When provided, other parameters are ignored.
+     * @param emails A list of up to 100 user Emails.  When provided, other parameters are ignored.
      * @param prefix Returns users where the name begins with the specified case-insensitive string.
      * @param subAccountId Only returns users who have access to the specified account.
      * @param lastLogin Specifies a date range for last login.
      * @param from All last logins after this date, given in the format: yyyy-mm-dd. 
      * @param to All last logins before this date, given in the format: yyyy-mm-dd. 
      * @param unionType Whether to return users who last logged in within the specified date range (include) or those who didn\&#39;t last log in within the range (exclude). **Possible values**: &#x60;include&#x60;, &#x60;exclude&#x60;. **Default**: &#x60;include&#x60;. 
+     * @param sortOrder Control the order of returned users. **Possible values**: &#x60;desc&#x60; (default), &#x60;asc&#x60;. 
+     * @param sortBy 
+     * @param page 
+     * @param pageSize 
      */
-    public async getUsers (pending?: boolean, ids?: Array<string>, prefix?: string, subAccountId?: string, lastLogin?: boolean, from?: string, to?: string, unionType?: 'include' | 'exclude', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UsersResponse;  }> {
+    public async getUsers (pending?: boolean, ids?: Array<string>, emails?: Array<string>, prefix?: string, subAccountId?: string, lastLogin?: boolean, from?: string, to?: string, unionType?: 'include' | 'exclude', sortOrder?: 'desc' | 'asc', sortBy?: 'name' | 'role' | 'status' | 'activity' | 'created_at', page?: number, pageSize?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response?: http.IncomingMessage; body: UsersResponse;  }> {
         const localVarPath = this.basePath + '/users';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -378,6 +383,10 @@ export class UsersApi {
 
         if (ids !== undefined) {
             localVarQueryParameters['ids'] = ObjectSerializer.serialize(ids, "Array<string>");
+        }
+
+        if (emails !== undefined) {
+            localVarQueryParameters['emails'] = ObjectSerializer.serialize(emails, "Array<string>");
         }
 
         if (prefix !== undefined) {
@@ -402,6 +411,22 @@ export class UsersApi {
 
         if (unionType !== undefined) {
             localVarQueryParameters['union_type'] = ObjectSerializer.serialize(unionType, "'include' | 'exclude'");
+        }
+
+        if (sortOrder !== undefined) {
+            localVarQueryParameters['sort_order'] = ObjectSerializer.serialize(sortOrder, "'desc' | 'asc'");
+        }
+
+        if (sortBy !== undefined) {
+            localVarQueryParameters['sort_by'] = ObjectSerializer.serialize(sortBy, "'name' | 'role' | 'status' | 'activity' | 'created_at'");
+        }
+
+        if (page !== undefined) {
+            localVarQueryParameters['page'] = ObjectSerializer.serialize(page, "number");
+        }
+
+        if (pageSize !== undefined) {
+            localVarQueryParameters['page_size'] = ObjectSerializer.serialize(pageSize, "number");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

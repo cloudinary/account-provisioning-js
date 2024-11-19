@@ -16,6 +16,7 @@ export * from './successResponse';
 export * from './user';
 export * from './userGroup';
 export * from './userGroupRequest';
+export * from './userGroupSummary';
 export * from './userGroupUser';
 export * from './userGroupUsersResponse';
 export * from './userGroupsResponse';
@@ -23,6 +24,7 @@ export * from './userRequest';
 export * from './usersResponse';
 
 import * as fs from 'fs';
+import { Buffer } from 'buffer';
 
 export interface RequestDetailedFile {
     value: Buffer;
@@ -51,6 +53,7 @@ import { SuccessResponse } from './successResponse';
 import { User } from './user';
 import { UserGroup } from './userGroup';
 import { UserGroupRequest } from './userGroupRequest';
+import { UserGroupSummary } from './userGroupSummary';
 import { UserGroupUser } from './userGroupUser';
 import { UserGroupUsersResponse } from './userGroupUsersResponse';
 import { UserGroupsResponse } from './userGroupsResponse';
@@ -92,6 +95,7 @@ let typeMap: {[index: string]: any} = {
     "User": User,
     "UserGroup": UserGroup,
     "UserGroupRequest": UserGroupRequest,
+    "UserGroupSummary": UserGroupSummary,
     "UserGroupUser": UserGroupUser,
     "UserGroupUsersResponse": UserGroupUsersResponse,
     "UserGroupsResponse": UserGroupsResponse,
