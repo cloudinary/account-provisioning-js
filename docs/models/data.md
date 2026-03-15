@@ -36,7 +36,7 @@ let value: Data = {
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `principals`                                              | [models.PrincipalRole](../models/principal-role.md)[]     | :heavy_minus_sign:                                        | N/A                                                       |
-| `customPolicies`                                          | [models.EffectivePolicy](../models/effective-policy.md)[] | :heavy_minus_sign:                                        | N/A                                                       |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `principals`                                             | [models.PrincipalRole](../models/principalrole.md)[]     | :heavy_minus_sign:                                       | N/A                                                      |
+| `customPolicies`                                         | [models.EffectivePolicy](../models/effectivepolicy.md)[] | :heavy_minus_sign:                                       | N/A                                                      |

@@ -49,7 +49,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsList } from "@cloudinary/account-provisioning/funcs/user-groups-list.js";
+import { userGroupsList } from "@cloudinary/account-provisioning/funcs/userGroupsList.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -102,7 +102,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsList } from "@cloudinary/account-provisioning/funcs/user-groups-list.js";
+import { userGroupsList } from "@cloudinary/account-provisioning/funcs/userGroupsList.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -138,14 +138,14 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroupsResponse](../../models/user-groups-response.md)\>**
+**Promise\<[models.UserGroupsResponse](../../models/usergroupsresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 401, 404, 420, 429                 | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ErrorResponse | 401, 404, 420, 429   | application/json     |
+| models.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## create
 
@@ -186,7 +186,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsCreate } from "@cloudinary/account-provisioning/funcs/user-groups-create.js";
+import { userGroupsCreate } from "@cloudinary/account-provisioning/funcs/userGroupsCreate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -226,14 +226,14 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroup](../../models/user-group.md)\>**
+**Promise\<[models.UserGroup](../../models/usergroup.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## get
 
@@ -271,7 +271,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsGet } from "@cloudinary/account-provisioning/funcs/user-groups-get.js";
+import { userGroupsGet } from "@cloudinary/account-provisioning/funcs/userGroupsGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -324,7 +324,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsGet } from "@cloudinary/account-provisioning/funcs/user-groups-get.js";
+import { userGroupsGet } from "@cloudinary/account-provisioning/funcs/userGroupsGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -361,14 +361,14 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroup](../../models/user-group.md)\>**
+**Promise\<[models.UserGroup](../../models/usergroup.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 401, 404, 420, 429                 | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ErrorResponse | 401, 404, 420, 429   | application/json     |
+| models.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## update
 
@@ -408,7 +408,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsUpdate } from "@cloudinary/account-provisioning/funcs/user-groups-update.js";
+import { userGroupsUpdate } from "@cloudinary/account-provisioning/funcs/userGroupsUpdate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -466,7 +466,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsUpdate } from "@cloudinary/account-provisioning/funcs/user-groups-update.js";
+import { userGroupsUpdate } from "@cloudinary/account-provisioning/funcs/userGroupsUpdate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -499,21 +499,21 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `groupId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the user group.                                                                                                                                                      | 7f08f1f1fc910bf1f25274aef11d27                                                                                                                                                 |
-| `userGroupRequest`                                                                                                                                                             | [models.UserGroupRequest](../../models/user-group-request.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | User group details to update.                                                                                                                                                  |                                                                                                                                                                                |
+| `userGroupRequest`                                                                                                                                                             | [models.UserGroupRequest](../../models/usergrouprequest.md)                                                                                                                    | :heavy_check_mark:                                                                                                                                                             | User group details to update.                                                                                                                                                  |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
-**Promise\<[models.UserGroup](../../models/user-group.md)\>**
+**Promise\<[models.UserGroup](../../models/usergroup.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -551,7 +551,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsDelete } from "@cloudinary/account-provisioning/funcs/user-groups-delete.js";
+import { userGroupsDelete } from "@cloudinary/account-provisioning/funcs/userGroupsDelete.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -587,14 +587,14 @@ run();
 
 ### Response
 
-**Promise\<[models.SuccessResponse](../../models/success-response.md)\>**
+**Promise\<[models.SuccessResponse](../../models/successresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 404, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## listUsers
 
@@ -632,7 +632,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsListUsers } from "@cloudinary/account-provisioning/funcs/user-groups-list-users.js";
+import { userGroupsListUsers } from "@cloudinary/account-provisioning/funcs/userGroupsListUsers.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -668,14 +668,14 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroupUsersResponse](../../models/user-group-users-response.md)\>**
+**Promise\<[models.UserGroupUsersResponse](../../models/usergroupusersresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 401, 404, 420, 429                 | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ErrorResponse | 401, 404, 420, 429   | application/json     |
+| models.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## addUser
 
@@ -713,7 +713,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsAddUser } from "@cloudinary/account-provisioning/funcs/user-groups-add-user.js";
+import { userGroupsAddUser } from "@cloudinary/account-provisioning/funcs/userGroupsAddUser.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -750,14 +750,14 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroupUser](../../models/user-group-user.md)\>**
+**Promise\<[models.UserGroupUser](../../models/usergroupuser.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## removeUser
 
@@ -795,7 +795,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { userGroupsRemoveUser } from "@cloudinary/account-provisioning/funcs/user-groups-remove-user.js";
+import { userGroupsRemoveUser } from "@cloudinary/account-provisioning/funcs/userGroupsRemoveUser.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -832,11 +832,11 @@ run();
 
 ### Response
 
-**Promise\<[models.UserGroupUsersResponse](../../models/user-group-users-response.md)\>**
+**Promise\<[models.UserGroupUsersResponse](../../models/usergroupusersresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 404, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |

@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicGetCatalog } from "@cloudinary/account-provisioning/funcs/public-get-catalog.js";
+import { publicGetCatalog } from "@cloudinary/account-provisioning/funcs/publicGetCatalog.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -77,13 +77,13 @@ run();
 
 ### Response
 
-**Promise\<[models.SystemRolesAndPoliciesCatalogResponse](../../models/system-roles-and-policies-catalog-response.md)\>**
+**Promise\<[models.SystemRolesAndPoliciesCatalogResponse](../../models/systemrolesandpoliciescatalogresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## validatePolicy
 
@@ -119,7 +119,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicValidatePolicy } from "@cloudinary/account-provisioning/funcs/public-validate-policy.js";
+import { publicValidatePolicy } from "@cloudinary/account-provisioning/funcs/publicValidatePolicy.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -149,20 +149,20 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ValidateCedarPolicyRequest](../../models/validate-cedar-policy-request.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ValidateCedarPolicyRequest](../../models/validatecedarpolicyrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ValidateCedarPolicyResponse](../../models/validate-cedar-policy-response.md)\>**
+**Promise\<[models.ValidateCedarPolicyResponse](../../models/validatecedarpolicyresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## getSchema
 
@@ -196,7 +196,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicGetSchema } from "@cloudinary/account-provisioning/funcs/public-get-schema.js";
+import { publicGetSchema } from "@cloudinary/account-provisioning/funcs/publicGetSchema.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -230,10 +230,10 @@ run();
 
 ### Response
 
-**Promise\<[models.CedarSchemaResponse](../../models/cedar-schema-response.md)\>**
+**Promise\<[models.CedarSchemaResponse](../../models/cedarschemaresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |

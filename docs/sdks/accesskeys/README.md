@@ -50,7 +50,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { accessKeysList } from "@cloudinary/account-provisioning/funcs/access-keys-list.js";
+import { accessKeysList } from "@cloudinary/account-provisioning/funcs/accessKeysList.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -83,21 +83,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetAccessKeysRequest](../../models/get-access-keys-request.md)                                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetAccessKeysRequest](../../models/getaccesskeysrequest.md)                                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.AccessKeysResponse](../../models/access-keys-response.md)\>**
+**Promise\<[models.AccessKeysResponse](../../models/accesskeysresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 401, 404, 420, 429                 | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| models.ErrorResponse | 401, 404, 420, 429   | application/json     |
+| models.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## generate
 
@@ -138,7 +138,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { accessKeysGenerate } from "@cloudinary/account-provisioning/funcs/access-keys-generate.js";
+import { accessKeysGenerate } from "@cloudinary/account-provisioning/funcs/accessKeysGenerate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -171,21 +171,21 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `subAccountId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the product environment.                                                                                                                                             | abcde1fghij2klmno3pqrst4uvwxy5z                                                                                                                                                |
-| `accessKeyRequest`                                                                                                                                                             | [models.AccessKeyRequest](../../models/access-key-request.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | Access key details.                                                                                                                                                            |                                                                                                                                                                                |
+| `accessKeyRequest`                                                                                                                                                             | [models.AccessKeyRequest](../../models/accesskeyrequest.md)                                                                                                                    | :heavy_check_mark:                                                                                                                                                             | Access key details.                                                                                                                                                            |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
-**Promise\<[models.AccessKey](../../models/access-key.md)\>**
+**Promise\<[models.AccessKey](../../models/accesskey.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## deleteByName
 
@@ -223,7 +223,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { accessKeysDeleteByName } from "@cloudinary/account-provisioning/funcs/access-keys-delete-by-name.js";
+import { accessKeysDeleteByName } from "@cloudinary/account-provisioning/funcs/accessKeysDeleteByName.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -260,14 +260,14 @@ run();
 
 ### Response
 
-**Promise\<[models.SuccessResponse](../../models/success-response.md)\>**
+**Promise\<[models.SuccessResponse](../../models/successresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 404, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## update
 
@@ -309,7 +309,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { accessKeysUpdate } from "@cloudinary/account-provisioning/funcs/access-keys-update.js";
+import { accessKeysUpdate } from "@cloudinary/account-provisioning/funcs/accessKeysUpdate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -344,21 +344,21 @@ run();
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `subAccountId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the product environment.                                                                                                                                             | abcde1fghij2klmno3pqrst4uvwxy5z                                                                                                                                                |
 | `key`                                                                                                                                                                          | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The access key (api key).                                                                                                                                                      | 814814814814814                                                                                                                                                                |
-| `accessKeyUpdateRequest`                                                                                                                                                       | [models.AccessKeyUpdateRequest](../../models/access-key-update-request.md)                                                                                                     | :heavy_check_mark:                                                                                                                                                             | Access key details for update.                                                                                                                                                 |                                                                                                                                                                                |
+| `accessKeyUpdateRequest`                                                                                                                                                       | [models.AccessKeyUpdateRequest](../../models/accesskeyupdaterequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | Access key details for update.                                                                                                                                                 |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
-**Promise\<[models.AccessKey](../../models/access-key.md)\>**
+**Promise\<[models.AccessKey](../../models/accesskey.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -396,7 +396,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { accessKeysDelete } from "@cloudinary/account-provisioning/funcs/access-keys-delete.js";
+import { accessKeysDelete } from "@cloudinary/account-provisioning/funcs/accessKeysDelete.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -433,11 +433,11 @@ run();
 
 ### Response
 
-**Promise\<[models.SuccessResponse](../../models/success-response.md)\>**
+**Promise\<[models.SuccessResponse](../../models/successresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 404, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |

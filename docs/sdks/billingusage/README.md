@@ -51,7 +51,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billing-usage-get.js";
+import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billingUsageGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -104,7 +104,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billing-usage-get.js";
+import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billingUsageGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -157,7 +157,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billing-usage-get.js";
+import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billingUsageGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -210,7 +210,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billing-usage-get.js";
+import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billingUsageGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -263,7 +263,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billing-usage-get.js";
+import { billingUsageGet } from "@cloudinary/account-provisioning/funcs/billingUsageGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -304,7 +304,7 @@ run();
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 429            | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorResponse    | 400, 401, 403, 404, 429 | application/json        |
+| models.SDKError         | 4XX, 5XX                | \*/\*                   |

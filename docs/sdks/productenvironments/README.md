@@ -48,7 +48,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsList } from "@cloudinary/account-provisioning/funcs/product-environments-list.js";
+import { productEnvironmentsList } from "@cloudinary/account-provisioning/funcs/productEnvironmentsList.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -87,14 +87,14 @@ run();
 
 ### Response
 
-**Promise\<[models.ProductEnvironmentsResponse](../../models/product-environments-response.md)\>**
+**Promise\<[models.ProductEnvironmentsResponse](../../models/productenvironmentsresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## create
 
@@ -138,7 +138,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsCreate } from "@cloudinary/account-provisioning/funcs/product-environments-create.js";
+import { productEnvironmentsCreate } from "@cloudinary/account-provisioning/funcs/productEnvironmentsCreate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -174,21 +174,21 @@ run();
 | `name`                                                                                                                                                                         | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The display name for the product environment.                                                                                                                                  | Product3 Application                                                                                                                                                           |
 | `cloudName`                                                                                                                                                                    | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The Cloudinary cloud name (optional, default is auto-generated).                                                                                                               | product3                                                                                                                                                                       |
 | `baseSubAccountId`                                                                                                                                                             | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The ID of another product environment to copy settings from (optional).                                                                                                        | 0aaaaa1bbbbb2ccccc3ddddd4eeeee5f                                                                                                                                               |
-| `customAttributes`                                                                                                                                                             | [models.CustomAttributes](../../models/custom-attributes.md)                                                                                                                   | :heavy_minus_sign:                                                                                                                                                             | Custom attributes associated with the product environment (optional).                                                                                                          |                                                                                                                                                                                |
+| `customAttributes`                                                                                                                                                             | [models.CustomAttributes](../../models/customattributes.md)                                                                                                                    | :heavy_minus_sign:                                                                                                                                                             | Custom attributes associated with the product environment (optional).                                                                                                          |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
-**Promise\<[models.ProductEnvironment](../../models/product-environment.md)\>**
+**Promise\<[models.ProductEnvironment](../../models/productenvironment.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 409, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 409, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## get
 
@@ -226,7 +226,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsGet } from "@cloudinary/account-provisioning/funcs/product-environments-get.js";
+import { productEnvironmentsGet } from "@cloudinary/account-provisioning/funcs/productEnvironmentsGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -279,7 +279,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsGet } from "@cloudinary/account-provisioning/funcs/product-environments-get.js";
+import { productEnvironmentsGet } from "@cloudinary/account-provisioning/funcs/productEnvironmentsGet.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -315,14 +315,14 @@ run();
 
 ### Response
 
-**Promise\<[models.ProductEnvironment](../../models/product-environment.md)\>**
+**Promise\<[models.ProductEnvironment](../../models/productenvironment.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 404, 420, 429            | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type              | Status Code             | Content Type            |
+| ----------------------- | ----------------------- | ----------------------- |
+| models.ErrorResponse    | 400, 401, 404, 420, 429 | application/json        |
+| models.SDKError         | 4XX, 5XX                | \*/\*                   |
 
 ## update
 
@@ -363,7 +363,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsUpdate } from "@cloudinary/account-provisioning/funcs/product-environments-update.js";
+import { productEnvironmentsUpdate } from "@cloudinary/account-provisioning/funcs/productEnvironmentsUpdate.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -396,21 +396,21 @@ run();
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `subAccountId`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the product environment.                                                                                                                                             | abcde1fghij2klmno3pqrst4uvwxy5z                                                                                                                                                |
-| `productEnvironmentUpdateRequest`                                                                                                                                              | [models.ProductEnvironmentUpdateRequest](../../models/product-environment-update-request.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | Product environment details to update.                                                                                                                                         |                                                                                                                                                                                |
+| `productEnvironmentUpdateRequest`                                                                                                                                              | [models.ProductEnvironmentUpdateRequest](../../models/productenvironmentupdaterequest.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | Product environment details to update.                                                                                                                                         |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
 
 ### Response
 
-**Promise\<[models.ProductEnvironment](../../models/product-environment.md)\>**
+**Promise\<[models.ProductEnvironment](../../models/productenvironment.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 409, 420, 429  | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                        | Status Code                       | Content Type                      |
+| --------------------------------- | --------------------------------- | --------------------------------- |
+| models.ErrorResponse              | 400, 401, 403, 404, 409, 420, 429 | application/json                  |
+| models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## delete
 
@@ -448,7 +448,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsDelete } from "@cloudinary/account-provisioning/funcs/product-environments-delete.js";
+import { productEnvironmentsDelete } from "@cloudinary/account-provisioning/funcs/productEnvironmentsDelete.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -484,11 +484,11 @@ run();
 
 ### Response
 
-**Promise\<[models.SuccessResponse](../../models/success-response.md)\>**
+**Promise\<[models.SuccessResponse](../../models/successresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.ErrorResponse               | 400, 401, 403, 404, 420, 429       | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                   | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models.ErrorResponse         | 400, 401, 403, 404, 420, 429 | application/json             |
+| models.SDKError              | 4XX, 5XX                     | \*/\*                        |

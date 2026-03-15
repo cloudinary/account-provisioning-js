@@ -57,7 +57,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsListRoles } from "@cloudinary/account-provisioning/funcs/principals-list-roles.js";
+import { principalsListRoles } from "@cloudinary/account-provisioning/funcs/principalsListRoles.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -134,7 +134,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsListRoles } from "@cloudinary/account-provisioning/funcs/principals-list-roles.js";
+import { principalsListRoles } from "@cloudinary/account-provisioning/funcs/principalsListRoles.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -175,22 +175,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.GetPrincipalRolesRequest](../../models/get-principal-roles-request.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.GetPrincipalRolesRequest](../../models/getprincipalrolesrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PrincipalRolesResponse](../../models/principal-roles-response.md)\>**
+**Promise\<[models.PrincipalRolesResponse](../../models/principalrolesresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.PermissionsErrorResponse    | 400, 401, 404                      | application/json                   |
-| models.PermissionsErrorResponse    | 500                                | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.PermissionsErrorResponse | 400, 401, 404                   | application/json                |
+| models.PermissionsErrorResponse | 500                             | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |
 
 ## updateRoles
 
@@ -238,7 +238,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsUpdateRoles } from "@cloudinary/account-provisioning/funcs/principals-update-roles.js";
+import { principalsUpdateRoles } from "@cloudinary/account-provisioning/funcs/principalsUpdateRoles.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -317,7 +317,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsUpdateRoles } from "@cloudinary/account-provisioning/funcs/principals-update-roles.js";
+import { principalsUpdateRoles } from "@cloudinary/account-provisioning/funcs/principalsUpdateRoles.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -359,9 +359,9 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `operation`                                                                                                                                                                    | [models.OperationEnum](../../models/operation-enum.md)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                             | Specifies the operation to perform. Use `add` to associate or `remove` to disassociate.                                                                                        | add                                                                                                                                                                            |
+| `operation`                                                                                                                                                                    | [models.OperationEnum](../../models/operationenum.md)                                                                                                                          | :heavy_minus_sign:                                                                                                                                                             | Specifies the operation to perform. Use `add` to associate or `remove` to disassociate.                                                                                        | add                                                                                                                                                                            |
 | `principal`                                                                                                                                                                    | [models.Principal](../../models/principal.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `roles`                                                                                                                                                                        | [models.RoleToManage](../../models/role-to-manage.md)[]                                                                                                                        | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
+| `roles`                                                                                                                                                                        | [models.RoleToManage](../../models/roletomanage.md)[]                                                                                                                          | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
@@ -372,10 +372,10 @@ run();
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.PermissionsErrorResponse    | 400, 401, 403, 404                 | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.PermissionsErrorResponse | 400, 401, 403, 404              | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |
 
 ## inspect
 
@@ -433,7 +433,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principals-inspect.js";
+import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principalsInspect.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -504,7 +504,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principals-inspect.js";
+import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principalsInspect.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -575,7 +575,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principals-inspect.js";
+import { principalsInspect } from "@cloudinary/account-provisioning/funcs/principalsInspect.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -613,22 +613,22 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.InspectRequest1](../../models/inspect-request1.md)                                                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.InspectRequest1](../../models/inspectrequest1.md)                                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PrincipalRolesInspectResponse](../../models/principal-roles-inspect-response.md)\>**
+**Promise\<[models.PrincipalRolesInspectResponse](../../models/principalrolesinspectresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.PermissionsErrorResponse    | 400, 401, 404                      | application/json                   |
-| models.PermissionsErrorResponse    | 500                                | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.PermissionsErrorResponse | 400, 401, 404                   | application/json                |
+| models.PermissionsErrorResponse | 500                             | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |
 
 ## inspectMultiple
 
@@ -694,7 +694,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsInspectMultiple } from "@cloudinary/account-provisioning/funcs/principals-inspect-multiple.js";
+import { principalsInspectMultiple } from "@cloudinary/account-provisioning/funcs/principalsInspectMultiple.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -773,7 +773,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { principalsInspectMultiple } from "@cloudinary/account-provisioning/funcs/principals-inspect-multiple.js";
+import { principalsInspectMultiple } from "@cloudinary/account-provisioning/funcs/principalsInspectMultiple.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -810,19 +810,19 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.InspectRequest](../../models/inspect-request.md)                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.InspectRequest](../../models/inspectrequest.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.PrincipalRolesInspectResponse](../../models/principal-roles-inspect-response.md)\>**
+**Promise\<[models.PrincipalRolesInspectResponse](../../models/principalrolesinspectresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| models.PermissionsErrorResponse    | 400, 401, 404                      | application/json                   |
-| models.PermissionsErrorResponse    | 500                                | application/json                   |
-| models.CldProvisioningDefaultError | 4XX, 5XX                           | \*/\*                              |
+| Error Type                      | Status Code                     | Content Type                    |
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| models.PermissionsErrorResponse | 400, 401, 404                   | application/json                |
+| models.PermissionsErrorResponse | 500                             | application/json                |
+| models.SDKError                 | 4XX, 5XX                        | \*/\*                           |

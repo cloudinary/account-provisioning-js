@@ -3,16 +3,16 @@
  */
 
 import { ClientSDK } from "../lib/sdks.js";
-import { AccessKeys } from "./access-keys.js";
-import { BillingUsage } from "./billing-usage.js";
-import { CustomPolicies } from "./custom-policies.js";
-import { EffectivePolicies } from "./effective-policies.js";
+import { AccessKeys } from "./accesskeys.js";
+import { BillingUsage } from "./billingusage.js";
+import { CustomPolicies } from "./custompolicies.js";
+import { EffectivePolicies } from "./effectivepolicies.js";
 import { Principals } from "./principals.js";
-import { ProductEnvironments } from "./product-environments.js";
+import { ProductEnvironments } from "./productenvironments.js";
 import { Public } from "./public.js";
 import { Roles } from "./roles.js";
-import { SystemPolicies } from "./system-policies.js";
-import { UserGroups } from "./user-groups.js";
+import { SystemPolicies } from "./systempolicies.js";
+import { UserGroups } from "./usergroups.js";
 import { Users } from "./users.js";
 
 export class CldProvisioning extends ClientSDK {
