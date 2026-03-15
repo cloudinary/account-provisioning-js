@@ -1,0 +1,20 @@
+# EffectivePolicy
+
+## Example Usage
+
+```typescript
+import { EffectivePolicy } from "@cloudinary/account-provisioning";
+
+let value: EffectivePolicy = {
+  id: "cld::global::api_keys::manage",
+  policyStatement:
+    "permit (principal, action, resource == Cloudinary::Feature::\"cld::global::api_keys::view\");",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                       | Type                                                                                                                                                                        | Required                                                                                                                                                                    | Description                                                                                                                                                                 | Example                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                                                                                                                                        | *string*                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                          | The unique identifier of the permission policy.                                                                                                                             | cld::global::api_keys::manage                                                                                                                                               |
+| `policyStatement`                                                                                                                                                           | *string*                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                          | A Cedar statement that permits or forbids a principal to perform an action on a resource. Refer to the [Permissions API guide](permissions_api_guide) for more information. | permit (principal, action, resource == Cloudinary::Feature::"cld::global::api_keys::view");                                                                                 |
