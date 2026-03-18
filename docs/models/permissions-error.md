@@ -1,0 +1,18 @@
+# PermissionsError
+
+## Example Usage
+
+```typescript
+import { PermissionsError } from "@cloudinary/account-provisioning";
+
+let value: PermissionsError = {};
+```
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `category`                                                                          | *string*                                                                            | :heavy_minus_sign:                                                                  | A classification of the error, indicating the general area or type of problem.      |
+| `code`                                                                              | *string*                                                                            | :heavy_minus_sign:                                                                  | A specific error code that uniquely identifies the error condition.                 |
+| `message`                                                                           | *string*                                                                            | :heavy_minus_sign:                                                                  | A human-readable message providing a brief explanation of the error and its cause.  |
+| `details`                                                                           | [models.Details](../models/details.md)                                              | :heavy_minus_sign:                                                                  | Additional contextual information about the error, which may include relevant data. |
