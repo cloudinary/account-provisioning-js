@@ -1,6 +1,5 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

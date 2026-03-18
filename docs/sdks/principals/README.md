@@ -20,7 +20,6 @@ Retrieve all roles associated with a specific principal.
 
 <!-- UsageSnippet language="typescript" operationID="getPrincipalRoles" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles" example="GetPrincipalRolesExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -92,7 +91,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getPrincipalRoles" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles" example="GetPrincipalRolesWithParamKeyValueExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -190,7 +188,6 @@ Add or remove roles associated with a principal.
 
 <!-- UsageSnippet language="typescript" operationID="updatePrincipalRoles" method="put" path="/v2/accounts/{account_id}/permissions/principal_roles" example="InvalidOperationFieldErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -264,7 +261,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="updatePrincipalRoles" method="put" path="/v2/accounts/{account_id}/permissions/principal_roles" example="missingPrincipalFieldsErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -377,7 +373,6 @@ This endpoint is useful when you want to:
 
 <!-- UsageSnippet language="typescript" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleAllFolders" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -443,7 +438,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleFolder" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -509,7 +503,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="inspect" method="get" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectExampleProdEnv" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -614,7 +607,6 @@ This endpoint is useful for:
 
 <!-- UsageSnippet language="typescript" operationID="inspectMultiple" method="post" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectMultipleRequestExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -698,7 +690,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="inspectMultiple" method="post" path="/v2/accounts/{account_id}/permissions/principal_roles/inspect" example="InspectMultipleResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

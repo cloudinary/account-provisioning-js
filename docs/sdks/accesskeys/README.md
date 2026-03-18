@@ -21,7 +21,6 @@ Learn more about retrieving access keys.
 
 <!-- UsageSnippet language="typescript" operationID="getAccessKeys" method="get" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}/access_keys" example="AccessKeys" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -105,7 +104,6 @@ Learn more about generating access keys.
 
 <!-- UsageSnippet language="typescript" operationID="generateAccessKey" method="post" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}/access_keys" example="MainAccessKey" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -193,7 +191,6 @@ Learn more about deleting access keys.
 
 <!-- UsageSnippet language="typescript" operationID="deleteAccessKeyByName" method="delete" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}/access_keys" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -275,7 +272,6 @@ Learn more about updating access keys.
 
 <!-- UsageSnippet language="typescript" operationID="updateAccessKey" method="put" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}/access_keys/{key}" example="MainAccessKey" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -367,7 +363,6 @@ Learn more about deleting access keys.
 
 <!-- UsageSnippet language="typescript" operationID="deleteAccessKey" method="delete" path="/v1_1/provisioning/accounts/{account_id}/sub_accounts/{sub_account_id}/access_keys/{key}" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

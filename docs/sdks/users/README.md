@@ -30,7 +30,6 @@ Learn more about retrieving users.
 
 <!-- UsageSnippet language="typescript" operationID="getUsers" method="get" path="/v1_1/provisioning/accounts/{account_id}/users" example="Users" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 import { RFCDate } from "@cloudinary/account-provisioning/types";
 
@@ -118,7 +117,6 @@ Learn more about creating users.
 
 <!-- UsageSnippet language="typescript" operationID="createUser" method="post" path="/v1_1/provisioning/accounts/{account_id}/users" example="CreateUserExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -174,7 +172,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createUser" method="post" path="/v1_1/provisioning/accounts/{account_id}/users" example="UserResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -260,7 +257,6 @@ Learn more about retrieving a specific user.
 
 <!-- UsageSnippet language="typescript" operationID="getUser" method="get" path="/v1_1/provisioning/accounts/{account_id}/users/{user_id}" example="UserResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -340,7 +336,6 @@ Learn more about updating a specific user.
 
 <!-- UsageSnippet language="typescript" operationID="updateUser" method="put" path="/v1_1/provisioning/accounts/{account_id}/users/{user_id}" example="UserJohn" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -432,7 +427,6 @@ Learn more about deleting a specific user.
 
 <!-- UsageSnippet language="typescript" operationID="deleteUser" method="delete" path="/v1_1/provisioning/accounts/{account_id}/users/{user_id}" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -512,7 +506,6 @@ Learn more about retrieving user groups.
 
 <!-- UsageSnippet language="typescript" operationID="getGroupsForUser" method="get" path="/v1_1/provisioning/accounts/{account_id}/users/{user_id}/groups" example="UserGroupsList" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -592,7 +585,6 @@ Learn more about retrieving user sub-accounts.
 
 <!-- UsageSnippet language="typescript" operationID="getSubAccountsForUser" method="get" path="/v1_1/provisioning/accounts/{account_id}/users/{user_id}/sub_accounts" example="UserSubAccounts" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

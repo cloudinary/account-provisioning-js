@@ -28,7 +28,6 @@ Retrieve all system and custom roles of a specific `permission_type` (global or 
 
 <!-- UsageSnippet language="typescript" operationID="getRoles" method="get" path="/v2/accounts/{account_id}/permissions/roles" example="GetRolesExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -110,7 +109,6 @@ Create a new custom role.
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createAcctRoleExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -178,7 +176,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createAcctRoleResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -246,7 +243,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createContentRoleExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -314,7 +310,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createContentRoleResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -382,7 +377,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createGlobalRoleExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -450,7 +444,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="createGlobalRoleResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -518,7 +511,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="invalidFieldErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -586,7 +578,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="createRole" method="post" path="/v2/accounts/{account_id}/permissions/roles" example="missingFieldsErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -680,7 +671,6 @@ Get a specific system or custom role.
 
 <!-- UsageSnippet language="typescript" operationID="getRole" method="get" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" example="GetRoleExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -772,7 +762,6 @@ Update a specific custom role by providing all relevant details, including those
 
 <!-- UsageSnippet language="typescript" operationID="updateRole" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" example="invalidPolicyIDFieldErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -840,7 +829,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="updateRole" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" example="missingFieldsErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -908,7 +896,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="updateRole" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" example="updatePolicyResponse" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -976,7 +963,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="updateRole" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" example="updateRoleExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -1070,7 +1056,6 @@ Delete a specific custom role.
 
 <!-- UsageSnippet language="typescript" operationID="deleteRole" method="delete" path="/v2/accounts/{account_id}/permissions/roles/{role_id}" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -1147,7 +1132,6 @@ Retrieve all principals associated with a specific role.
 
 <!-- UsageSnippet language="typescript" operationID="getRolePrincipals" method="get" path="/v2/accounts/{account_id}/permissions/roles/{role_id}/principals" example="GetRolePrincipalsExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -1213,7 +1197,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getRolePrincipals" method="get" path="/v2/accounts/{account_id}/permissions/roles/{role_id}/principals" example="GetRolePrincipalsWithParamKeyValueExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -1304,7 +1287,6 @@ Add or remove principals associated with a role.
 
 <!-- UsageSnippet language="typescript" operationID="updateRolePrincipals" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}/principals" example="invalidOperationFieldErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -1378,7 +1360,6 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="updateRolePrincipals" method="put" path="/v2/accounts/{account_id}/permissions/roles/{role_id}/principals" example="missingFieldsErrorExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

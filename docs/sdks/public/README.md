@@ -19,7 +19,6 @@ Retrieves the catalog of predefined system roles and their associated policies.
 
 <!-- UsageSnippet language="typescript" operationID="getSystemRolesAndPoliciesCatalog" method="get" path="/v2/accounts/permissions/public/catalog" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -89,7 +88,6 @@ Validate a Cedar policy
 
 <!-- UsageSnippet language="typescript" operationID="validateCedarPolicy" method="post" path="/v2/accounts/permissions/public/validate" example="ValidateCedarPolicyResponseExample" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
@@ -164,7 +162,6 @@ Get Cedar schema
 
 <!-- UsageSnippet language="typescript" operationID="getCedarSchema" method="get" path="/v2/accounts/permissions/public/schema" -->
 ```typescript
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();

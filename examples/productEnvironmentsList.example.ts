@@ -11,7 +11,6 @@ dotenv.config();
  * npm run build && npx tsx productEnvironmentsList.example.ts
  */
 
-import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
 const cldProvisioning = new CldProvisioning();
