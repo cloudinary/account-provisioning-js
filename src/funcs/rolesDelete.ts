@@ -33,8 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export function rolesDelete(
   client: CldProvisioningCore,
-  roleId: string,
-  force?: boolean | undefined,
+  request: models.DeleteRoleRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,16 +51,14 @@ export function rolesDelete(
 > {
   return new APIPromise($do(
     client,
-    roleId,
-    force,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  roleId: string,
-  force?: boolean | undefined,
+  request: models.DeleteRoleRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -80,13 +77,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteRoleRequest = {
-    roleId: roleId,
-    force: force,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.DeleteRoleRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

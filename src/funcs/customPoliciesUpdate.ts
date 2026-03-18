@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function customPoliciesUpdate(
   client: CldProvisioningCore,
-  policyId: string,
-  updateCustomPolicy: models.UpdateCustomPolicy,
+  request: models.UpdateCustomPolicyRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function customPoliciesUpdate(
 > {
   return new APIPromise($do(
     client,
-    policyId,
-    updateCustomPolicy,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  policyId: string,
-  updateCustomPolicy: models.UpdateCustomPolicy,
+  request: models.UpdateCustomPolicyRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.UpdateCustomPolicyRequest = {
-    policyId: policyId,
-    updateCustomPolicy: updateCustomPolicy,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.UpdateCustomPolicyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

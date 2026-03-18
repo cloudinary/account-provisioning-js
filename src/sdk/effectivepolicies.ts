@@ -17,18 +17,12 @@ export class EffectivePolicies extends ClientSDK {
    * Optionally specify a principal to only include roles and policies associated with that principal.
    */
   async list(
-    scopeType?: models.ScopeTypeEnum | undefined,
-    scopeId?: string | undefined,
-    principalType?: models.PrincipalTypeEnum | undefined,
-    principalId?: string | undefined,
+    request?: models.GetEffectivePoliciesRequest | undefined,
     options?: RequestOptions,
   ): Promise<models.EffectivePoliciesResponse> {
     return unwrapAsync(effectivePoliciesList(
       this,
-      scopeType,
-      scopeId,
-      principalType,
-      principalId,
+      request,
       options,
     ));
   }

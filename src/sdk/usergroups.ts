@@ -24,12 +24,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_user_groups} - Learn more about retrieving user groups.
    */
   async list(
-    extendedDetails?: boolean | undefined,
+    request?: models.GetUserGroupsRequest | undefined,
     options?: RequestOptions,
   ): Promise<models.UserGroupsResponse> {
     return unwrapAsync(userGroupsList(
       this,
-      extendedDetails,
+      request,
       options,
     ));
   }
@@ -62,14 +62,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_user_group} - Learn more about retrieving a specific user group.
    */
   async get(
-    groupId: string,
-    extendedDetails?: boolean | undefined,
+    request: models.GetUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroup> {
     return unwrapAsync(userGroupsGet(
       this,
-      groupId,
-      extendedDetails,
+      request,
       options,
     ));
   }
@@ -83,14 +81,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#update_user_group} - Learn more about updating a specific user group.
    */
   async update(
-    groupId: string,
-    userGroupRequest: models.UserGroupRequest,
+    request: models.UpdateUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroup> {
     return unwrapAsync(userGroupsUpdate(
       this,
-      groupId,
-      userGroupRequest,
+      request,
       options,
     ));
   }
@@ -104,12 +100,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#delete_user_group} - Learn more about deleting a specific user group.
    */
   async delete(
-    groupId: string,
+    request: models.DeleteUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.SuccessResponse> {
     return unwrapAsync(userGroupsDelete(
       this,
-      groupId,
+      request,
       options,
     ));
   }
@@ -123,12 +119,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_user_group_users} - Learn more about retrieving users in a specific user group.
    */
   async listUsers(
-    groupId: string,
+    request: models.GetUsersInUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroupUsersResponse> {
     return unwrapAsync(userGroupsListUsers(
       this,
-      groupId,
+      request,
       options,
     ));
   }
@@ -142,14 +138,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#add_user_to_group} - Learn more about adding users to a specific user group.
    */
   async addUser(
-    groupId: string,
-    userId: string,
+    request: models.AddUserToUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroupUser> {
     return unwrapAsync(userGroupsAddUser(
       this,
-      groupId,
-      userId,
+      request,
       options,
     ));
   }
@@ -163,14 +157,12 @@ export class UserGroups extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#remove_user_from_group} - Learn more about removing users from a specific user group.
    */
   async removeUser(
-    groupId: string,
-    userId: string,
+    request: models.RemoveUserFromUserGroupRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroupUsersResponse> {
     return unwrapAsync(userGroupsRemoveUser(
       this,
-      groupId,
-      userId,
+      request,
       options,
     ));
   }

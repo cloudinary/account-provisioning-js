@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function userGroupsRemoveUser(
   client: CldProvisioningCore,
-  groupId: string,
-  userId: string,
+  request: models.RemoveUserFromUserGroupRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function userGroupsRemoveUser(
 > {
   return new APIPromise($do(
     client,
-    groupId,
-    userId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  groupId: string,
-  userId: string,
+  request: models.RemoveUserFromUserGroupRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.RemoveUserFromUserGroupRequest = {
-    groupId: groupId,
-    userId: userId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.RemoveUserFromUserGroupRequest$outboundSchema.parse(value),
     "Input validation failed",

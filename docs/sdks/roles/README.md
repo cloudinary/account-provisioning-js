@@ -39,7 +39,11 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.roles.list("global", "prodenv", "system");
+  const result = await cldProvisioning.roles.list({
+    scopeType: "prodenv",
+    permissionType: "global",
+    managementType: "system",
+  });
 
   console.log(result);
 }
@@ -66,7 +70,11 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesList(cldProvisioning, "global", "prodenv", "system");
+  const res = await rolesList(cldProvisioning, {
+    scopeType: "prodenv",
+    permissionType: "global",
+    managementType: "system",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -80,15 +88,12 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                                                              | Type                                                                                                                                                                                                                                                                                                                                   | Required                                                                                                                                                                                                                                                                                                                               | Description                                                                                                                                                                                                                                                                                                                            | Example                                                                                                                                                                                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `permissionType`                                                                                                                                                                                                                                                                                                                       | [models.PermissionTypeEnum](../../models/permissiontypeenum.md)                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                     | Specifies whether to retrieve roles whose permissions apply globally across all contexts within the scope (i.e., security settings for the account, or all folders in a product environment), or specifically to designated content instances (i.e., folder with external ID "fg3841spr").                                             | global                                                                                                                                                                                                                                                                                                                                 |
-| `scopeType`                                                                                                                                                                                                                                                                                                                            | [models.ScopeTypeEnum](../../models/scopetypeenum.md)                                                                                                                                                                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | Specifies the level for retrieving policies or roles, either at the account level or within product environments.                                                                                                                                                                                                                      | prodenv                                                                                                                                                                                                                                                                                                                                |
-| `managementType`                                                                                                                                                                                                                                                                                                                       | [models.ManagementTypeEnum](../../models/managementtypeenum.md)                                                                                                                                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | Specifies whether the role's policies are managed by Cloudinary (`system`) or by the user (`custom`).                                                                                                                                                                                                                                  | system                                                                                                                                                                                                                                                                                                                                 |
-| `policyParameters`                                                                                                                                                                                                                                                                                                                     | *string*[]                                                                                                                                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:<br/>- The content type can be: `folder_id` or `collection_id`.<br/>- When assigning the role, provide the instance, e.g. `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement` (Cedar).<br/> |                                                                                                                                                                                                                                                                                                                                        |
-| `options`                                                                                                                                                                                                                                                                                                                              | RequestOptions                                                                                                                                                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | Used to set various options for making HTTP requests.                                                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                        |
-| `options.fetchOptions`                                                                                                                                                                                                                                                                                                                 | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                                                                                                         |                                                                                                                                                                                                                                                                                                                                        |
-| `options.retries`                                                                                                                                                                                                                                                                                                                      | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                     | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                        |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetRolesRequest](../../models/getrolesrequest.md)                                                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -828,13 +833,16 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.roles.update("<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const result = await cldProvisioning.roles.update({
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
 
   console.log(result);
@@ -862,13 +870,16 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdate(cldProvisioning, "<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const res = await rolesUpdate(cldProvisioning, {
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -895,13 +906,16 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.roles.update("<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const result = await cldProvisioning.roles.update({
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
 
   console.log(result);
@@ -929,13 +943,16 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdate(cldProvisioning, "<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const res = await rolesUpdate(cldProvisioning, {
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -962,13 +979,16 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.roles.update("<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const result = await cldProvisioning.roles.update({
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
 
   console.log(result);
@@ -996,13 +1016,16 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdate(cldProvisioning, "<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing upload presets and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const res = await rolesUpdate(cldProvisioning, {
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing upload presets and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1029,13 +1052,16 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.roles.update("<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing uploads and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const result = await cldProvisioning.roles.update({
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing uploads and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
 
   console.log(result);
@@ -1063,13 +1089,16 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdate(cldProvisioning, "<id>", {
-    name: "Upload manager",
-    description: "Responsible for managing uploads and uploading new assets.",
-    systemPolicyIds: [
-      "cld::policy::global::upload_presets::manage",
-      "cld::policy::global::folder_and_asset_management::create_asset",
-    ],
+  const res = await rolesUpdate(cldProvisioning, {
+    roleId: "<id>",
+    role: {
+      name: "Upload manager",
+      description: "Responsible for managing uploads and uploading new assets.",
+      systemPolicyIds: [
+        "cld::policy::global::upload_presets::manage",
+        "cld::policy::global::folder_and_asset_management::create_asset",
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1086,8 +1115,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `roleId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | A unique identifier for the role.                                                                                                                                              |
-| `role`                                                                                                                                                                         | [models.Role](../../models/role.md)                                                                                                                                            | :heavy_check_mark:                                                                                                                                                             | Role details                                                                                                                                                                   |
+| `request`                                                                                                                                                                      | [models.UpdateRoleRequest](../../models/updaterolerequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -1123,7 +1151,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  await cldProvisioning.roles.delete("<id>");
+  await cldProvisioning.roles.delete({
+    roleId: "<id>",
+  });
 
 
 }
@@ -1150,7 +1180,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesDelete(cldProvisioning, "<id>");
+  const res = await rolesDelete(cldProvisioning, {
+    roleId: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     
@@ -1164,13 +1196,12 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                               | Type                                                                                                                                                                                                                                                                                                    | Required                                                                                                                                                                                                                                                                                                | Description                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `roleId`                                                                                                                                                                                                                                                                                                | *string*                                                                                                                                                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                                                                                                      | A unique identifier for the role.                                                                                                                                                                                                                                                                       |
-| `force`                                                                                                                                                                                                                                                                                                 | *boolean*                                                                                                                                                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                                                                                                                                                      | Determines whether the role should be deleted when it has associated principals.<br/>- `true`: Deletes the role even if it has associated principals.<br/>- `false` (default): Prevents deletion if the role has associated principals. You must manually unassociate the principals before deleting the role.<br/> |
-| `options`                                                                                                                                                                                                                                                                                               | RequestOptions                                                                                                                                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                                                                                                                                                      | Used to set various options for making HTTP requests.                                                                                                                                                                                                                                                   |
-| `options.fetchOptions`                                                                                                                                                                                                                                                                                  | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                                                                                                      | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                                                                          |
-| `options.retries`                                                                                                                                                                                                                                                                                       | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                                                                                                                                                      | Enables retrying HTTP requests under certain failure conditions.                                                                                                                                                                                                                                        |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.DeleteRoleRequest](../../models/deleterolerequest.md)                                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -1369,16 +1400,19 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  await cldProvisioning.roles.updatePrincipals("<id>", {
-    operation: "add",
-    principals: [
-      {
-        principalType: "user",
-        principalId: "1234abc",
-        scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
-      },
-    ],
+  await cldProvisioning.roles.updatePrincipals({
+    roleId: "<id>",
+    updateRolePrincipalsRequest: {
+      operation: "add",
+      principals: [
+        {
+          principalType: "user",
+          principalId: "1234abc",
+          scopeId: "975l29lz02jt0836fhwi",
+          policyParameters: {},
+        },
+      ],
+    },
   });
 
 
@@ -1406,16 +1440,19 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdatePrincipals(cldProvisioning, "<id>", {
-    operation: "add",
-    principals: [
-      {
-        principalType: "user",
-        principalId: "1234abc",
-        scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
-      },
-    ],
+  const res = await rolesUpdatePrincipals(cldProvisioning, {
+    roleId: "<id>",
+    updateRolePrincipalsRequest: {
+      operation: "add",
+      principals: [
+        {
+          principalType: "user",
+          principalId: "1234abc",
+          scopeId: "975l29lz02jt0836fhwi",
+          policyParameters: {},
+        },
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1442,16 +1479,19 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  await cldProvisioning.roles.updatePrincipals("<id>", {
-    operation: "add",
-    principals: [
-      {
-        principalType: "user",
-        principalId: "1234abc",
-        scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
-      },
-    ],
+  await cldProvisioning.roles.updatePrincipals({
+    roleId: "<id>",
+    updateRolePrincipalsRequest: {
+      operation: "add",
+      principals: [
+        {
+          principalType: "user",
+          principalId: "1234abc",
+          scopeId: "975l29lz02jt0836fhwi",
+          policyParameters: {},
+        },
+      ],
+    },
   });
 
 
@@ -1479,16 +1519,19 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await rolesUpdatePrincipals(cldProvisioning, "<id>", {
-    operation: "add",
-    principals: [
-      {
-        principalType: "user",
-        principalId: "1234abc",
-        scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
-      },
-    ],
+  const res = await rolesUpdatePrincipals(cldProvisioning, {
+    roleId: "<id>",
+    updateRolePrincipalsRequest: {
+      operation: "add",
+      principals: [
+        {
+          principalType: "user",
+          principalId: "1234abc",
+          scopeId: "975l29lz02jt0836fhwi",
+          policyParameters: {},
+        },
+      ],
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -1505,8 +1548,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `roleId`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | A unique identifier for the role.                                                                                                                                              |
-| `updateRolePrincipalsRequest`                                                                                                                                                  | [models.UpdateRolePrincipalsRequest](../../models/updateroleprincipalsrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | Principals details.                                                                                                                                                            |
+| `request`                                                                                                                                                                      | [models.UpdateRolePrincipalsRequest1](../../models/updateroleprincipalsrequest1.md)                                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

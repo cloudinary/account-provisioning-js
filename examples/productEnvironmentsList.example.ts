@@ -22,12 +22,10 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function main() {
-  const result = await cldProvisioning.productEnvironments.list(
-    true,
-    undefined,
-    undefined,
-    "product",
-  );
+  const result = await cldProvisioning.productEnvironments.list({
+    enabled: true,
+    prefix: "product",
+  });
 
   console.log(result);
 }

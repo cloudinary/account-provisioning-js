@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function accessKeysGenerate(
   client: CldProvisioningCore,
-  subAccountId: string,
-  accessKeyRequest: models.AccessKeyRequest,
+  request: models.GenerateAccessKeyRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function accessKeysGenerate(
 > {
   return new APIPromise($do(
     client,
-    subAccountId,
-    accessKeyRequest,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  subAccountId: string,
-  accessKeyRequest: models.AccessKeyRequest,
+  request: models.GenerateAccessKeyRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GenerateAccessKeyRequest = {
-    subAccountId: subAccountId,
-    accessKeyRequest: accessKeyRequest,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.GenerateAccessKeyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

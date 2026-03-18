@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function usersListSubAccounts(
   client: CldProvisioningCore,
-  userId: string,
+  request: models.GetSubAccountsForUserRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +52,14 @@ export function usersListSubAccounts(
 > {
   return new APIPromise($do(
     client,
-    userId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  userId: string,
+  request: models.GetSubAccountsForUserRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,12 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetSubAccountsForUserRequest = {
-    userId: userId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.GetSubAccountsForUserRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

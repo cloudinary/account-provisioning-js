@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export function customPoliciesDelete(
   client: CldProvisioningCore,
-  policyId: string,
+  request: models.DeleteCustomPolicyRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -51,14 +51,14 @@ export function customPoliciesDelete(
 > {
   return new APIPromise($do(
     client,
-    policyId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  policyId: string,
+  request: models.DeleteCustomPolicyRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -77,12 +77,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteCustomPolicyRequest = {
-    policyId: policyId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.DeleteCustomPolicyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

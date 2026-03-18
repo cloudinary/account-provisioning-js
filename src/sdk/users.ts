@@ -61,12 +61,12 @@ export class Users extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_user} - Learn more about retrieving a specific user.
    */
   async get(
-    userId: string,
+    request: models.GetUserRequest,
     options?: RequestOptions,
   ): Promise<models.User> {
     return unwrapAsync(usersGet(
       this,
-      userId,
+      request,
       options,
     ));
   }
@@ -80,14 +80,12 @@ export class Users extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#update_user} - Learn more about updating a specific user.
    */
   async update(
-    userId: string,
-    userRequest: models.UserRequest,
+    request: models.UpdateUserRequest,
     options?: RequestOptions,
   ): Promise<models.User> {
     return unwrapAsync(usersUpdate(
       this,
-      userId,
-      userRequest,
+      request,
       options,
     ));
   }
@@ -101,12 +99,12 @@ export class Users extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#delete_user} - Learn more about deleting a specific user.
    */
   async delete(
-    userId: string,
+    request: models.DeleteUserRequest,
     options?: RequestOptions,
   ): Promise<models.SuccessResponse> {
     return unwrapAsync(usersDelete(
       this,
-      userId,
+      request,
       options,
     ));
   }
@@ -120,12 +118,12 @@ export class Users extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_users_groups} - Learn more about retrieving user groups.
    */
   async getGroups(
-    userId: string,
+    request: models.GetGroupsForUserRequest,
     options?: RequestOptions,
   ): Promise<models.UserGroupsListResponse> {
     return unwrapAsync(usersGetGroups(
       this,
-      userId,
+      request,
       options,
     ));
   }
@@ -139,12 +137,12 @@ export class Users extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_user_sub_accounts} - Learn more about retrieving user sub-accounts.
    */
   async listSubAccounts(
-    userId: string,
+    request: models.GetSubAccountsForUserRequest,
     options?: RequestOptions,
   ): Promise<models.UserSubAccountsResponse> {
     return unwrapAsync(usersListSubAccounts(
       this,
-      userId,
+      request,
       options,
     ));
   }

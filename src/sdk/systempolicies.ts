@@ -17,14 +17,12 @@ export class SystemPolicies extends ClientSDK {
    * **Note:** If `scope_type` isn't specified as `prodenv`, the account-level policies will be returned.
    */
   async list(
-    permissionType?: models.PermissionTypeEnum | undefined,
-    scopeType?: models.ScopeTypeEnum | undefined,
+    request?: models.GetSystemPoliciesRequest | undefined,
     options?: RequestOptions,
   ): Promise<models.SystemPoliciesResponse> {
     return unwrapAsync(systemPoliciesList(
       this,
-      permissionType,
-      scopeType,
+      request,
       options,
     ));
   }

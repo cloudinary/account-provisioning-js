@@ -35,7 +35,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.list("prodenv");
+  const result = await cldProvisioning.customPolicies.list({
+    scopeType: "prodenv",
+  });
 
   console.log(result);
 }
@@ -62,7 +64,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesList(cldProvisioning, "prodenv");
+  const res = await customPoliciesList(cldProvisioning, {
+    scopeType: "prodenv",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -76,15 +80,12 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scopeType`                                                                                                                                                                    | [models.ScopeTypeEnum](../../models/scopetypeenum.md)                                                                                                                          | :heavy_minus_sign:                                                                                                                                                             | Specifies the level for retrieving policies or roles, either at the account level or within product environments.                                                              | prodenv                                                                                                                                                                        |
-| `scopeId`                                                                                                                                                                      | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The ID of a specific product environment where the policy is applied. This parameter is only relevant if `scope_type` is "prodenv".<br/>- <product_environment_id><br/>        |                                                                                                                                                                                |
-| `enabled`                                                                                                                                                                      | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | Filter policies by enabled status (true/false).                                                                                                                                |                                                                                                                                                                                |
-| `cursor`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | A pagination cursor for fetching subsequent results.                                                                                                                           |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetCustomPoliciesRequest](../../models/getcustompoliciesrequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
@@ -471,7 +472,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.get("<id>");
+  const result = await cldProvisioning.customPolicies.get({
+    policyId: "<id>",
+  });
 
   console.log(result);
 }
@@ -498,7 +501,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesGet(cldProvisioning, "<id>");
+  const res = await customPoliciesGet(cldProvisioning, {
+    policyId: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -514,7 +519,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `policyId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | A unique identifier for the custom permission policy.                                                                                                                          |
+| `request`                                                                                                                                                                      | [models.GetCustomPolicyRequest](../../models/getcustompolicyrequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -552,12 +557,15 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.update("<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const result = await cldProvisioning.customPolicies.update({
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
 
   console.log(result);
@@ -585,12 +593,15 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesUpdate(cldProvisioning, "<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const res = await customPoliciesUpdate(cldProvisioning, {
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -617,12 +628,15 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.update("<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const result = await cldProvisioning.customPolicies.update({
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
 
   console.log(result);
@@ -650,12 +664,15 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesUpdate(cldProvisioning, "<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const res = await customPoliciesUpdate(cldProvisioning, {
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -682,12 +699,15 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.update("<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const result = await cldProvisioning.customPolicies.update({
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
 
   console.log(result);
@@ -715,12 +735,15 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesUpdate(cldProvisioning, "<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const res = await customPoliciesUpdate(cldProvisioning, {
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -747,12 +770,15 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.update("<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\"1234\",action==Cloudinary::Action::\"read\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
-    description: "Permit read access to the Accessories folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Accessories folder",
+  const result = await cldProvisioning.customPolicies.update({
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\"1234\",action==Cloudinary::Action::\"read\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
+      description: "Permit read access to the Accessories folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Accessories folder",
+    },
   });
 
   console.log(result);
@@ -780,12 +806,15 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesUpdate(cldProvisioning, "<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\"1234\",action==Cloudinary::Action::\"read\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
-    description: "Permit read access to the Accessories folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Accessories folder",
+  const res = await customPoliciesUpdate(cldProvisioning, {
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\"1234\",action==Cloudinary::Action::\"read\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
+      description: "Permit read access to the Accessories folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Accessories folder",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -812,12 +841,15 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.customPolicies.update("<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const result = await cldProvisioning.customPolicies.update({
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
 
   console.log(result);
@@ -845,12 +877,15 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesUpdate(cldProvisioning, "<id>", {
-    policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
-    description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
-    scopeType: "prodenv",
-    scopeId: "975l29lz02jt0836fhwi",
-    name: "Read access to Clothing folder",
+  const res = await customPoliciesUpdate(cldProvisioning, {
+    policyId: "<id>",
+    updateCustomPolicy: {
+      policyStatement: "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
+      description: "Permit read access to the Clothing folder with external ID asdfjkl12347890.",
+      scopeType: "prodenv",
+      scopeId: "975l29lz02jt0836fhwi",
+      name: "Read access to Clothing folder",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
@@ -867,8 +902,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `policyId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | A unique identifier for the custom permission policy.                                                                                                                          |
-| `updateCustomPolicy`                                                                                                                                                           | [models.UpdateCustomPolicy](../../models/updatecustompolicy.md)                                                                                                                | :heavy_check_mark:                                                                                                                                                             | Policy details                                                                                                                                                                 |
+| `request`                                                                                                                                                                      | [models.UpdateCustomPolicyRequest](../../models/updatecustompolicyrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
@@ -904,7 +938,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  await cldProvisioning.customPolicies.delete("<id>");
+  await cldProvisioning.customPolicies.delete({
+    policyId: "<id>",
+  });
 
 
 }
@@ -931,7 +967,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await customPoliciesDelete(cldProvisioning, "<id>");
+  const res = await customPoliciesDelete(cldProvisioning, {
+    policyId: "<id>",
+  });
   if (res.ok) {
     const { value: result } = res;
     
@@ -947,7 +985,7 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `policyId`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | A unique identifier for the custom permission policy.                                                                                                                          |
+| `request`                                                                                                                                                                      | [models.DeleteCustomPolicyRequest](../../models/deletecustompolicyrequest.md)                                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |

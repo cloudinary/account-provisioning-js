@@ -40,14 +40,12 @@ export class AccessKeys extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#generate_an_access_key} - Learn more about generating access keys.
    */
   async generate(
-    subAccountId: string,
-    accessKeyRequest: models.AccessKeyRequest,
+    request: models.GenerateAccessKeyRequest,
     options?: RequestOptions,
   ): Promise<models.AccessKey> {
     return unwrapAsync(accessKeysGenerate(
       this,
-      subAccountId,
-      accessKeyRequest,
+      request,
       options,
     ));
   }
@@ -61,14 +59,12 @@ export class AccessKeys extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#delete_an_access_key} - Learn more about deleting access keys.
    */
   async deleteByName(
-    subAccountId: string,
-    name: string,
+    request: models.DeleteAccessKeyByNameRequest,
     options?: RequestOptions,
   ): Promise<models.SuccessResponse> {
     return unwrapAsync(accessKeysDeleteByName(
       this,
-      subAccountId,
-      name,
+      request,
       options,
     ));
   }
@@ -82,16 +78,12 @@ export class AccessKeys extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#update_an_access_key} - Learn more about updating access keys.
    */
   async update(
-    subAccountId: string,
-    key: string,
-    accessKeyUpdateRequest: models.AccessKeyUpdateRequest,
+    request: models.UpdateAccessKeyRequest,
     options?: RequestOptions,
   ): Promise<models.AccessKey> {
     return unwrapAsync(accessKeysUpdate(
       this,
-      subAccountId,
-      key,
-      accessKeyUpdateRequest,
+      request,
       options,
     ));
   }
@@ -105,14 +97,12 @@ export class AccessKeys extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#delete_an_access_key} - Learn more about deleting access keys.
    */
   async delete(
-    subAccountId: string,
-    key: string,
+    request: models.DeleteAccessKeyRequest,
     options?: RequestOptions,
   ): Promise<models.SuccessResponse> {
     return unwrapAsync(accessKeysDelete(
       this,
-      subAccountId,
-      key,
+      request,
       options,
     ));
   }

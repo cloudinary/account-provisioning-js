@@ -33,7 +33,10 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await productEnvironmentsList(cldProvisioning, true, undefined, undefined, "product");
+  const res = await productEnvironmentsList(cldProvisioning, {
+    enabled: true,
+    prefix: "product",
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

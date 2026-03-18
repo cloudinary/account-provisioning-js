@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function productEnvironmentsUpdate(
   client: CldProvisioningCore,
-  subAccountId: string,
-  productEnvironmentUpdateRequest: models.ProductEnvironmentUpdateRequest,
+  request: models.UpdateProductEnvironmentRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function productEnvironmentsUpdate(
 > {
   return new APIPromise($do(
     client,
-    subAccountId,
-    productEnvironmentUpdateRequest,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  subAccountId: string,
-  productEnvironmentUpdateRequest: models.ProductEnvironmentUpdateRequest,
+  request: models.UpdateProductEnvironmentRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.UpdateProductEnvironmentRequest = {
-    subAccountId: subAccountId,
-    productEnvironmentUpdateRequest: productEnvironmentUpdateRequest,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.UpdateProductEnvironmentRequest$outboundSchema.parse(value),
     "Input validation failed",

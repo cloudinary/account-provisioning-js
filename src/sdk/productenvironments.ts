@@ -22,18 +22,12 @@ export class ProductEnvironments extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_product_environments} - Learn more about getting product environments.
    */
   async list(
-    enabled?: boolean | undefined,
-    ids?: Array<string> | undefined,
-    cloudNames?: Array<string> | undefined,
-    prefix?: string | undefined,
+    request?: models.GetProductEnvironmentsRequest | undefined,
     options?: RequestOptions,
   ): Promise<models.ProductEnvironmentsResponse> {
     return unwrapAsync(productEnvironmentsList(
       this,
-      enabled,
-      ids,
-      cloudNames,
-      prefix,
+      request,
       options,
     ));
   }
@@ -67,12 +61,12 @@ export class ProductEnvironments extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#get_product_environment} - Learn more about retrieving specific product environments.
    */
   async get(
-    subAccountId: string,
+    request: models.GetProductEnvironmentRequest,
     options?: RequestOptions,
   ): Promise<models.ProductEnvironment> {
     return unwrapAsync(productEnvironmentsGet(
       this,
-      subAccountId,
+      request,
       options,
     ));
   }
@@ -86,14 +80,12 @@ export class ProductEnvironments extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#update_product_environment} - Learn more about updating product environments.
    */
   async update(
-    subAccountId: string,
-    productEnvironmentUpdateRequest: models.ProductEnvironmentUpdateRequest,
+    request: models.UpdateProductEnvironmentRequest,
     options?: RequestOptions,
   ): Promise<models.ProductEnvironment> {
     return unwrapAsync(productEnvironmentsUpdate(
       this,
-      subAccountId,
-      productEnvironmentUpdateRequest,
+      request,
       options,
     ));
   }
@@ -107,12 +99,12 @@ export class ProductEnvironments extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/provisioning_api#delete_product_environment} - Learn more about deleting product environments.
    */
   async delete(
-    subAccountId: string,
+    request: models.DeleteProductEnvironmentRequest,
     options?: RequestOptions,
   ): Promise<models.SuccessResponse> {
     return unwrapAsync(productEnvironmentsDelete(
       this,
-      subAccountId,
+      request,
       options,
     ));
   }

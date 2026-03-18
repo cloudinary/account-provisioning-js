@@ -37,10 +37,7 @@ import { Result } from "../types/fp.js";
  */
 export function customPoliciesList(
   client: CldProvisioningCore,
-  scopeType?: models.ScopeTypeEnum | undefined,
-  scopeId?: string | undefined,
-  enabled?: boolean | null | undefined,
-  cursor?: string | undefined,
+  request?: models.GetCustomPoliciesRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -58,20 +55,14 @@ export function customPoliciesList(
 > {
   return new APIPromise($do(
     client,
-    scopeType,
-    scopeId,
-    enabled,
-    cursor,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  scopeType?: models.ScopeTypeEnum | undefined,
-  scopeId?: string | undefined,
-  enabled?: boolean | null | undefined,
-  cursor?: string | undefined,
+  request?: models.GetCustomPoliciesRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -90,15 +81,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetCustomPoliciesRequest | undefined = {
-    scopeType: scopeType,
-    scopeId: scopeId,
-    enabled: enabled,
-    cursor: cursor,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.GetCustomPoliciesRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

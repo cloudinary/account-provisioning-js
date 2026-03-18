@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function userGroupsList(
   client: CldProvisioningCore,
-  extendedDetails?: boolean | undefined,
+  request?: models.GetUserGroupsRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +52,14 @@ export function userGroupsList(
 > {
   return new APIPromise($do(
     client,
-    extendedDetails,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  extendedDetails?: boolean | undefined,
+  request?: models.GetUserGroupsRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,12 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetUserGroupsRequest | undefined = {
-    extendedDetails: extendedDetails,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.GetUserGroupsRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

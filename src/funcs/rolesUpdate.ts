@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function rolesUpdate(
   client: CldProvisioningCore,
-  roleId: string,
-  role: models.Role,
+  request: models.UpdateRoleRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function rolesUpdate(
 > {
   return new APIPromise($do(
     client,
-    roleId,
-    role,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  roleId: string,
-  role: models.Role,
+  request: models.UpdateRoleRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.UpdateRoleRequest = {
-    roleId: roleId,
-    role: role,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.UpdateRoleRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

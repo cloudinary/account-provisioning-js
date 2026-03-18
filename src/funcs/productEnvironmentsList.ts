@@ -35,10 +35,7 @@ import { Result } from "../types/fp.js";
  */
 export function productEnvironmentsList(
   client: CldProvisioningCore,
-  enabled?: boolean | undefined,
-  ids?: Array<string> | undefined,
-  cloudNames?: Array<string> | undefined,
-  prefix?: string | undefined,
+  request?: models.GetProductEnvironmentsRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -56,20 +53,14 @@ export function productEnvironmentsList(
 > {
   return new APIPromise($do(
     client,
-    enabled,
-    ids,
-    cloudNames,
-    prefix,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  enabled?: boolean | undefined,
-  ids?: Array<string> | undefined,
-  cloudNames?: Array<string> | undefined,
-  prefix?: string | undefined,
+  request?: models.GetProductEnvironmentsRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -88,15 +79,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetProductEnvironmentsRequest | undefined = {
-    enabled: enabled,
-    ids: ids,
-    cloudNames: cloudNames,
-    prefix: prefix,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.GetProductEnvironmentsRequest$outboundSchema.optional().parse(
         value,

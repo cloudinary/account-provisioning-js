@@ -37,10 +37,7 @@ import { Result } from "../types/fp.js";
  */
 export function rolesList(
   client: CldProvisioningCore,
-  permissionType: models.PermissionTypeEnum,
-  scopeType?: models.ScopeTypeEnum | undefined,
-  managementType?: models.ManagementTypeEnum | undefined,
-  policyParameters?: Array<string> | undefined,
+  request: models.GetRolesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -58,20 +55,14 @@ export function rolesList(
 > {
   return new APIPromise($do(
     client,
-    permissionType,
-    scopeType,
-    managementType,
-    policyParameters,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  permissionType: models.PermissionTypeEnum,
-  scopeType?: models.ScopeTypeEnum | undefined,
-  managementType?: models.ManagementTypeEnum | undefined,
-  policyParameters?: Array<string> | undefined,
+  request: models.GetRolesRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -90,15 +81,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetRolesRequest = {
-    permissionType: permissionType,
-    scopeType: scopeType,
-    managementType: managementType,
-    policyParameters: policyParameters,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.GetRolesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

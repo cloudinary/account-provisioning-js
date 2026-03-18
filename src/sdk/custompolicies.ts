@@ -24,18 +24,12 @@ export class CustomPolicies extends ClientSDK {
    *   * If `scope_type` is specified as `prodenv`, `scope_id` is required.
    */
   async list(
-    scopeType?: models.ScopeTypeEnum | undefined,
-    scopeId?: string | undefined,
-    enabled?: boolean | null | undefined,
-    cursor?: string | undefined,
+    request?: models.GetCustomPoliciesRequest | undefined,
     options?: RequestOptions,
   ): Promise<models.CustomPoliciesResponse> {
     return unwrapAsync(customPoliciesList(
       this,
-      scopeType,
-      scopeId,
-      enabled,
-      cursor,
+      request,
       options,
     ));
   }
@@ -66,12 +60,12 @@ export class CustomPolicies extends ClientSDK {
    * Get a specific custom policy.
    */
   async get(
-    policyId: string,
+    request: models.GetCustomPolicyRequest,
     options?: RequestOptions,
   ): Promise<models.CustomPolicyResponse> {
     return unwrapAsync(customPoliciesGet(
       this,
-      policyId,
+      request,
       options,
     ));
   }
@@ -85,14 +79,12 @@ export class CustomPolicies extends ClientSDK {
    * *Note:* Updating a policy with an identical `policy_statement` will trigger a 409 error.
    */
   async update(
-    policyId: string,
-    updateCustomPolicy: models.UpdateCustomPolicy,
+    request: models.UpdateCustomPolicyRequest,
     options?: RequestOptions,
   ): Promise<models.CustomPolicyResponse> {
     return unwrapAsync(customPoliciesUpdate(
       this,
-      policyId,
-      updateCustomPolicy,
+      request,
       options,
     ));
   }
@@ -104,12 +96,12 @@ export class CustomPolicies extends ClientSDK {
    * Delete a specific custom policy.
    */
   async delete(
-    policyId: string,
+    request: models.DeleteCustomPolicyRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(customPoliciesDelete(
       this,
-      policyId,
+      request,
       options,
     ));
   }

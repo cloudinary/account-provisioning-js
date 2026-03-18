@@ -26,14 +26,12 @@ export class BillingUsage extends ClientSDK {
    * **Note**: Usage metrics are updated daily, so calling this endpoint once per day gives you the latest data.
    */
   async get(
-    year?: number | undefined,
-    includeProdenvBreakdown?: boolean | undefined,
+    request?: models.GetBillingUsageRequest | undefined,
     options?: RequestOptions,
   ): Promise<Array<models.BillingUsageResponse>> {
     return unwrapAsync(billingUsageGet(
       this,
-      year,
-      includeProdenvBreakdown,
+      request,
       options,
     ));
   }

@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function accessKeysDelete(
   client: CldProvisioningCore,
-  subAccountId: string,
-  key: string,
+  request: models.DeleteAccessKeyRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function accessKeysDelete(
 > {
   return new APIPromise($do(
     client,
-    subAccountId,
-    key,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  subAccountId: string,
-  key: string,
+  request: models.DeleteAccessKeyRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteAccessKeyRequest = {
-    subAccountId: subAccountId,
-    key: key,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.DeleteAccessKeyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function userGroupsDelete(
   client: CldProvisioningCore,
-  groupId: string,
+  request: models.DeleteUserGroupRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +52,14 @@ export function userGroupsDelete(
 > {
   return new APIPromise($do(
     client,
-    groupId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  groupId: string,
+  request: models.DeleteUserGroupRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,12 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteUserGroupRequest = {
-    groupId: groupId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.DeleteUserGroupRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

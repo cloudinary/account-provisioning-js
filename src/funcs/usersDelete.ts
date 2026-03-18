@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function usersDelete(
   client: CldProvisioningCore,
-  userId: string,
+  request: models.DeleteUserRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +52,14 @@ export function usersDelete(
 > {
   return new APIPromise($do(
     client,
-    userId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  userId: string,
+  request: models.DeleteUserRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,12 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteUserRequest = {
-    userId: userId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.DeleteUserRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -37,7 +37,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.billingUsage.get(2024);
+  const result = await cldProvisioning.billingUsage.get({
+    year: 2024,
+  });
 
   console.log(result);
 }
@@ -64,7 +66,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await billingUsageGet(cldProvisioning, 2024);
+  const res = await billingUsageGet(cldProvisioning, {
+    year: 2024,
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -90,7 +94,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.billingUsage.get(2024);
+  const result = await cldProvisioning.billingUsage.get({
+    year: 2024,
+  });
 
   console.log(result);
 }
@@ -117,7 +123,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await billingUsageGet(cldProvisioning, 2024);
+  const res = await billingUsageGet(cldProvisioning, {
+    year: 2024,
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -143,7 +151,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.billingUsage.get(2024);
+  const result = await cldProvisioning.billingUsage.get({
+    year: 2024,
+  });
 
   console.log(result);
 }
@@ -170,7 +180,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await billingUsageGet(cldProvisioning, 2024);
+  const res = await billingUsageGet(cldProvisioning, {
+    year: 2024,
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -196,7 +208,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.billingUsage.get(2024);
+  const result = await cldProvisioning.billingUsage.get({
+    year: 2024,
+  });
 
   console.log(result);
 }
@@ -223,7 +237,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await billingUsageGet(cldProvisioning, 2024);
+  const res = await billingUsageGet(cldProvisioning, {
+    year: 2024,
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -249,7 +265,9 @@ const cldProvisioning = new CldProvisioning({
 });
 
 async function run() {
-  const result = await cldProvisioning.billingUsage.get(2024);
+  const result = await cldProvisioning.billingUsage.get({
+    year: 2024,
+  });
 
   console.log(result);
 }
@@ -276,7 +294,9 @@ const cldProvisioning = new CldProvisioningCore({
 });
 
 async function run() {
-  const res = await billingUsageGet(cldProvisioning, 2024);
+  const res = await billingUsageGet(cldProvisioning, {
+    year: 2024,
+  });
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -290,13 +310,12 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `year`                                                                                                                                                                         | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | The year to retrieve billing usage for. Behavior depends on subscription type (see above).                                                                                     | 2024                                                                                                                                                                           |
-| `includeProdenvBreakdown`                                                                                                                                                      | *boolean*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                             | Whether to include usage details by product environment. **Default**: false.<br/>                                                                                              |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetBillingUsageRequest](../../models/getbillingusagerequest.md)                                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 

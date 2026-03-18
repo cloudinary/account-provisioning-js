@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function usersUpdate(
   client: CldProvisioningCore,
-  userId: string,
-  userRequest: models.UserRequest,
+  request: models.UpdateUserRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function usersUpdate(
 > {
   return new APIPromise($do(
     client,
-    userId,
-    userRequest,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  userId: string,
-  userRequest: models.UserRequest,
+  request: models.UpdateUserRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.UpdateUserRequest = {
-    userId: userId,
-    userRequest: userRequest,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.UpdateUserRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

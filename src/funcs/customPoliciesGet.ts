@@ -32,7 +32,7 @@ import { Result } from "../types/fp.js";
  */
 export function customPoliciesGet(
   client: CldProvisioningCore,
-  policyId: string,
+  request: models.GetCustomPolicyRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -50,14 +50,14 @@ export function customPoliciesGet(
 > {
   return new APIPromise($do(
     client,
-    policyId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  policyId: string,
+  request: models.GetCustomPolicyRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -76,12 +76,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetCustomPolicyRequest = {
-    policyId: policyId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.GetCustomPolicyRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

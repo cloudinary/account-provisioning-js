@@ -34,8 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function systemPoliciesList(
   client: CldProvisioningCore,
-  permissionType?: models.PermissionTypeEnum | undefined,
-  scopeType?: models.ScopeTypeEnum | undefined,
+  request?: models.GetSystemPoliciesRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,16 +52,14 @@ export function systemPoliciesList(
 > {
   return new APIPromise($do(
     client,
-    permissionType,
-    scopeType,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  permissionType?: models.PermissionTypeEnum | undefined,
-  scopeType?: models.ScopeTypeEnum | undefined,
+  request?: models.GetSystemPoliciesRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -81,13 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetSystemPoliciesRequest | undefined = {
-    permissionType: permissionType,
-    scopeType: scopeType,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.GetSystemPoliciesRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

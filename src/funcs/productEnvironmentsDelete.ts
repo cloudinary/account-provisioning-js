@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  */
 export function productEnvironmentsDelete(
   client: CldProvisioningCore,
-  subAccountId: string,
+  request: models.DeleteProductEnvironmentRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,14 +52,14 @@ export function productEnvironmentsDelete(
 > {
   return new APIPromise($do(
     client,
-    subAccountId,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  subAccountId: string,
+  request: models.DeleteProductEnvironmentRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,12 +78,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.DeleteProductEnvironmentRequest = {
-    subAccountId: subAccountId,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.DeleteProductEnvironmentRequest$outboundSchema.parse(value),
     "Input validation failed",

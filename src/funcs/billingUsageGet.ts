@@ -44,8 +44,7 @@ import { Result } from "../types/fp.js";
  */
 export function billingUsageGet(
   client: CldProvisioningCore,
-  year?: number | undefined,
-  includeProdenvBreakdown?: boolean | undefined,
+  request?: models.GetBillingUsageRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -63,16 +62,14 @@ export function billingUsageGet(
 > {
   return new APIPromise($do(
     client,
-    year,
-    includeProdenvBreakdown,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  year?: number | undefined,
-  includeProdenvBreakdown?: boolean | undefined,
+  request?: models.GetBillingUsageRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -91,13 +88,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.GetBillingUsageRequest | undefined = {
-    year: year,
-    includeProdenvBreakdown: includeProdenvBreakdown,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       models.GetBillingUsageRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

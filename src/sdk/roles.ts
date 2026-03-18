@@ -21,18 +21,12 @@ export class Roles extends ClientSDK {
    * Retrieve all system and custom roles of a specific `permission_type` (global or content-specific). Optionally filter by `scope_type`, `management_type`, and `policy_parameters`.
    */
   async list(
-    permissionType: models.PermissionTypeEnum,
-    scopeType?: models.ScopeTypeEnum | undefined,
-    managementType?: models.ManagementTypeEnum | undefined,
-    policyParameters?: Array<string> | undefined,
+    request: models.GetRolesRequest,
     options?: RequestOptions,
   ): Promise<models.RolesResponse> {
     return unwrapAsync(rolesList(
       this,
-      permissionType,
-      scopeType,
-      managementType,
-      policyParameters,
+      request,
       options,
     ));
   }
@@ -80,14 +74,12 @@ export class Roles extends ClientSDK {
    * *Note:* Updating a role with a name that already exists will trigger a 409 error.
    */
   async update(
-    roleId: string,
-    role: models.Role,
+    request: models.UpdateRoleRequest,
     options?: RequestOptions,
   ): Promise<models.RoleResponse> {
     return unwrapAsync(rolesUpdate(
       this,
-      roleId,
-      role,
+      request,
       options,
     ));
   }
@@ -99,14 +91,12 @@ export class Roles extends ClientSDK {
    * Delete a specific custom role.
    */
   async delete(
-    roleId: string,
-    force?: boolean | undefined,
+    request: models.DeleteRoleRequest,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(rolesDelete(
       this,
-      roleId,
-      force,
+      request,
       options,
     ));
   }
@@ -135,14 +125,12 @@ export class Roles extends ClientSDK {
    * Add or remove principals associated with a role.
    */
   async updatePrincipals(
-    roleId: string,
-    updateRolePrincipalsRequest: models.UpdateRolePrincipalsRequest,
+    request: models.UpdateRolePrincipalsRequest1,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(rolesUpdatePrincipals(
       this,
-      roleId,
-      updateRolePrincipalsRequest,
+      request,
       options,
     ));
   }

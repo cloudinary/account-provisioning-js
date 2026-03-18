@@ -33,8 +33,7 @@ import { Result } from "../types/fp.js";
  */
 export function rolesUpdatePrincipals(
   client: CldProvisioningCore,
-  roleId: string,
-  updateRolePrincipalsRequest: models.UpdateRolePrincipalsRequest,
+  request: models.UpdateRolePrincipalsRequest1,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -52,16 +51,14 @@ export function rolesUpdatePrincipals(
 > {
   return new APIPromise($do(
     client,
-    roleId,
-    updateRolePrincipalsRequest,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: CldProvisioningCore,
-  roleId: string,
-  updateRolePrincipalsRequest: models.UpdateRolePrincipalsRequest,
+  request: models.UpdateRolePrincipalsRequest1,
   options?: RequestOptions,
 ): Promise<
   [
@@ -80,13 +77,8 @@ async function $do(
     APICall,
   ]
 > {
-  const input: models.UpdateRolePrincipalsRequest1 = {
-    roleId: roleId,
-    updateRolePrincipalsRequest: updateRolePrincipalsRequest,
-  };
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => models.UpdateRolePrincipalsRequest1$outboundSchema.parse(value),
     "Input validation failed",
   );
