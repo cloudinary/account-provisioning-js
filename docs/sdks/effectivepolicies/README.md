@@ -17,15 +17,10 @@ Optionally specify a principal to only include roles and policies associated wit
 
 <!-- UsageSnippet language="typescript" operationID="getEffectivePolicies" method="get" path="/v2/accounts/{account_id}/permissions/policies/effective" example="EffectivePoliciesExample" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.effectivePolicies.list({

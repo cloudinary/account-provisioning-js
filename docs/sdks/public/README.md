@@ -19,14 +19,10 @@ Retrieves the catalog of predefined system roles and their associated policies.
 
 <!-- UsageSnippet language="typescript" operationID="getSystemRolesAndPoliciesCatalog" method="get" path="/v2/accounts/permissions/public/catalog" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.public.getCatalog();
@@ -93,14 +89,10 @@ Validate a Cedar policy
 
 <!-- UsageSnippet language="typescript" operationID="validateCedarPolicy" method="post" path="/v2/accounts/permissions/public/validate" example="ValidateCedarPolicyResponseExample" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.public.validatePolicy({
@@ -172,14 +164,10 @@ Get Cedar schema
 
 <!-- UsageSnippet language="typescript" operationID="getCedarSchema" method="get" path="/v2/accounts/permissions/public/schema" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.public.getSchema();

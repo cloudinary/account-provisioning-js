@@ -26,15 +26,10 @@ If `year` is not provided:
 
 <!-- UsageSnippet language="typescript" operationID="getBillingUsage" method="get" path="/v1_1/provisioning/accounts/{account_id}/billing_usage" example="AdvancedExtraPAYG" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.billingUsage.get({
@@ -83,15 +78,10 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getBillingUsage" method="get" path="/v1_1/provisioning/accounts/{account_id}/billing_usage" example="AdvancedPAYG" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.billingUsage.get({
@@ -140,15 +130,10 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getBillingUsage" method="get" path="/v1_1/provisioning/accounts/{account_id}/billing_usage" example="MultiPlan" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.billingUsage.get({
@@ -197,15 +182,10 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getBillingUsage" method="get" path="/v1_1/provisioning/accounts/{account_id}/billing_usage" example="ProPAYG" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.billingUsage.get({
@@ -254,15 +234,10 @@ run();
 
 <!-- UsageSnippet language="typescript" operationID="getBillingUsage" method="get" path="/v1_1/provisioning/accounts/{account_id}/billing_usage" example="ProPAYGPlus" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.billingUsage.get({

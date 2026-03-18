@@ -17,15 +17,10 @@ Retrieve all system-defined permission policies. Optionally filter the results b
 
 <!-- UsageSnippet language="typescript" operationID="getSystemPolicies" method="get" path="/v2/accounts/{account_id}/permissions/policies/system" example="SystemPoliciesExample" -->
 ```typescript
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function run() {
   const result = await cldProvisioning.systemPolicies.list({

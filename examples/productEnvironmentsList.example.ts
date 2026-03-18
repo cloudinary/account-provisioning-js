@@ -11,15 +11,10 @@ dotenv.config();
  * npm run build && npx tsx productEnvironmentsList.example.ts
  */
 
+import CldProvisioning from "@cloudinary/account-provisioning";
 import { CldProvisioning } from "@cloudinary/account-provisioning";
 
-const cldProvisioning = new CldProvisioning({
-  accountId: "<id>",
-  security: {
-    provisioningApiKey: "CLOUDINARY_PROVISIONING_API_KEY",
-    provisioningApiSecret: "CLOUDINARY_PROVISIONING_API_SECRET",
-  },
-});
+const cldProvisioning = new CldProvisioning();
 
 async function main() {
   const result = await cldProvisioning.productEnvironments.list({
