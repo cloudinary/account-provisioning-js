@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { productEnvironmentsList } from "@cloudinary/account-provisioning/funcs/productEnvironmentsList.js";
+import { productEnvironmentsList } from "@cloudinary/account-provisioning/funcs/product-environments-list.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

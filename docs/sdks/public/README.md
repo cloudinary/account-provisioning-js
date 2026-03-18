@@ -38,7 +38,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicGetCatalog } from "@cloudinary/account-provisioning/funcs/publicGetCatalog.js";
+import { publicGetCatalog } from "@cloudinary/account-provisioning/funcs/public-get-catalog.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -72,7 +72,7 @@ run();
 
 ### Response
 
-**Promise\<[models.SystemRolesAndPoliciesCatalogResponse](../../models/systemrolesandpoliciescatalogresponse.md)\>**
+**Promise\<[models.SystemRolesAndPoliciesCatalogResponse](../../models/system-roles-and-policies-catalog-response.md)\>**
 
 ### Errors
 
@@ -109,7 +109,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicValidatePolicy } from "@cloudinary/account-provisioning/funcs/publicValidatePolicy.js";
+import { publicValidatePolicy } from "@cloudinary/account-provisioning/funcs/public-validate-policy.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -139,14 +139,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [models.ValidateCedarPolicyRequest](../../models/validatecedarpolicyrequest.md)                                                                                                | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [models.ValidateCedarPolicyRequest](../../models/validate-cedar-policy-request.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[models.ValidateCedarPolicyResponse](../../models/validatecedarpolicyresponse.md)\>**
+**Promise\<[models.ValidateCedarPolicyResponse](../../models/validate-cedar-policy-response.md)\>**
 
 ### Errors
 
@@ -181,7 +181,7 @@ The standalone function version of this method:
 
 ```typescript
 import { CldProvisioningCore } from "@cloudinary/account-provisioning/core.js";
-import { publicGetSchema } from "@cloudinary/account-provisioning/funcs/publicGetSchema.js";
+import { publicGetSchema } from "@cloudinary/account-provisioning/funcs/public-get-schema.js";
 
 // Use `CldProvisioningCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -215,7 +215,7 @@ run();
 
 ### Response
 
-**Promise\<[models.CedarSchemaResponse](../../models/cedarschemaresponse.md)\>**
+**Promise\<[models.CedarSchemaResponse](../../models/cedar-schema-response.md)\>**
 
 ### Errors
 
