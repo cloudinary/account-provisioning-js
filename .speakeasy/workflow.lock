@@ -1,0 +1,40 @@
+speakeasyVersion: 1.757.1
+sources:
+    Cloudinary-Provisioning-OAS:
+        sourceNamespace: cloudinary-provisioning
+        sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
+        sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
+        tags:
+            - latest
+            - 0.2.1
+targets:
+    cloudinary:
+        source: Cloudinary-Provisioning-OAS
+        sourceNamespace: cloudinary-provisioning
+        sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
+        sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
+        codeSamplesNamespace: cloudinary-provisioning-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:a3f538e483694734894fcb1ac0ea990574dcbfe76e148061145b91754c473afa
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Cloudinary-Provisioning-OAS:
+            inputs:
+                - location: https://cloudinary.github.io/api-schemas/provisioning/schema.yml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+                - location: https://cloudinary.github.io/api-schemas/overlays/security-scheme-account-overlay.yaml
+            registry:
+                location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning
+    targets:
+        cloudinary:
+            target: typescript
+            source: Cloudinary-Provisioning-OAS
+            publish:
+                npm:
+                    token: $npm_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/cloudinary/cloudinary/cloudinary-provisioning-typescript-code-samples
+                blocking: true

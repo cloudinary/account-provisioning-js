@@ -1,0 +1,34 @@
+---
+description: SDK testing conventions and sanity test patterns
+globs: examples/**/*.ts
+alwaysApply: false
+---
+
+# SDK Testing
+
+## Sanity Test (`examples/sanity.test.ts`)
+
+- Tests all SDK resources against the live Cloudinary Provisioning API
+- Requires `CLOUDINARY_ACCOUNT_URL` env var (or individual `CLOUDINARY_PROVISIONING_*` vars)
+- Run: `npx tsx examples/sanity.test.ts` from the project root
+
+### Conventions
+
+- **Non-destructive by default**: read operations use existing data
+- **Create/update/delete**: only on items created during the test, prefixed with `sdk-test-{timestamp}`
+- **Cleanup**: all created resources are deleted in reverse order in a `finally` block
+- **Account limits**: gracefully skip (not fail) when hitting capacity limits (e.g., `max_users`)
+- **Feature gates**: skip tests for features not enabled on the account (e.g., custom roles)
+
+### Known API quirks
+
+- `users.getGroups()` returns `{ groups }` not `{ userGroups }`
+- `userGroups.addUser()` returns `{}` (empty object)
+- `userGroups.listUsers()` returns users with `.id` not `.userId`
+- `accessKeys.update/delete` use `key` field (not `apiKey`)
+- `customPolicies.list()` requires `scopeType` param to return meaningful data
+- `effectivePolicies.list()` requires `scopeType` param (omitting it returns a 400 error)
+
+## Example files
+
+Files in `examples/` prefixed with `*.example.ts` are Speakeasy-generated and will be overwritten on `speakeasy run`. The sanity test file is safe from regeneration.

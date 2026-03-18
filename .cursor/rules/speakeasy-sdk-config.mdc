@@ -1,0 +1,38 @@
+---
+description: Speakeasy SDK generation configuration and workflow conventions
+globs: .speakeasy/**/*.yaml
+alwaysApply: false
+---
+
+# Speakeasy SDK Configuration
+
+## gen.yaml
+
+Key TypeScript settings (new-SDK defaults):
+- `maxMethodParams: 0` — always use request objects, never positional args
+- `usageSDKInit: new CldProvisioning()` — clean snippet init (relies on envVarPrefix for credentials)
+- `usageSDKInitImports: []` — avoid duplicate imports in snippets
+- `envVarPrefix: CLOUDINARY` — env var auto-loading for security and globals
+- `moduleFormat: dual` — publish both CJS and ESM
+- `zodVersion: v4-mini`, `jsonpath: rfc9535`, `laxMode: lax`
+- `forwardCompatibleEnumsByDefault: true`, `forwardCompatibleUnionsByDefault: tagged-only`
+- `useOxlint: true`, `useTsgo: true`
+
+## workflow.yaml
+
+- npm token uses Speakeasy variable syntax: `token: $npm_token`
+- NOT GitHub Actions expression syntax `${{ secrets.* }}`
+- The GitHub secret name is `SDK_NPM_AUTH_TOKEN` (shared across Cloudinary JS SDKs)
+
+## Publishing (pr mode)
+
+- `sdk_generation.yaml` generates SDK and opens a PR (`mode: pr`)
+- `sdk_publish.yaml` publishes to npm when the PR merges (push to main + gen.lock change)
+- Both workflows must pass `npm_token: ${{ secrets.SDK_NPM_AUTH_TOKEN }}` in secrets
+
+## README sections
+
+To take over a Speakeasy-managed README section:
+1. Change `<!-- Start SectionName [tag] -->` to `<!-- Custom SectionName [tag] -->`
+2. **Remove** the `<!-- End SectionName [tag] -->` comment entirely
+3. If both markers remain, Speakeasy regenerates a duplicate section

@@ -1,28 +1,101 @@
 {
   "name": "@cloudinary/account-provisioning",
-  "version": "0.2.0",
-  "description": "NodeJS client for @cloudinary/account-provisioning",
-  "main": "./api.js",
-  "types": "./api.d.ts",
-  "scripts": {
-    "start": "npm install && npm run prepare",
-    "clean": "rm -Rf node_modules/ *.js",
-    "build": "tsc",
-    "test": "npm run build && node dist/client.js",
-    "prepare:dist": "cp -R ./docs README.md LICENSE.md package.json ./dist"
-  },
+  "version": "0.3.0",
   "author": "Cloudinary",
-  "license": "MIT",
-  "dependencies": {
-    "bluebird": "^3.5.0",
-    "request": "^2.81.0",
-    "@types/bluebird": "3.5.33",
-    "@types/request": "*",
-    "rewire": "^3.0.2",
-    "dotenv": "^16.0.1",
-    "@types/node": "8.10.34"
+  "type": "module",
+  "tshy": {
+    "compiler": "tsgo",
+    "sourceDialects": [
+      "@cloudinary/account-provisioning/source"
+    ],
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json",
+      "./types": "./src/types/index.ts",
+      "./models": "./src/models/index.ts",
+      "./*.js": "./src/*.ts",
+      "./*": "./src/*.ts"
+    }
   },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudinary/account-provisioning-js"
+  },
+  "scripts": {
+    "lint": "oxlint --max-warnings=0 --deny-warnings 'src/**/*.{ts,tsx}'",
+    "build": "tshy",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {},
   "devDependencies": {
-    "typescript": "^2.4.2"
-  }
+    "@typescript/native-preview": "7.0.0-dev.20260302.1",
+    "oxlint": "^1.50.0",
+    "tshy": "^3.3.2",
+    "typescript": "~5.8.3"
+  },
+  "dependencies": {
+    "zod": "^3.25.65 || ^4.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "@cloudinary/account-provisioning/source": "./src/index.ts",
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json",
+    "./types": {
+      "import": {
+        "@cloudinary/account-provisioning/source": "./src/types/index.ts",
+        "types": "./dist/esm/types/index.d.ts",
+        "default": "./dist/esm/types/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/types/index.d.ts",
+        "default": "./dist/commonjs/types/index.js"
+      }
+    },
+    "./models": {
+      "import": {
+        "@cloudinary/account-provisioning/source": "./src/models/index.ts",
+        "types": "./dist/esm/models/index.d.ts",
+        "default": "./dist/esm/models/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/models/index.d.ts",
+        "default": "./dist/commonjs/models/index.js"
+      }
+    },
+    "./*.js": {
+      "import": {
+        "@cloudinary/account-provisioning/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    },
+    "./*": {
+      "import": {
+        "@cloudinary/account-provisioning/source": "./src/*.ts",
+        "types": "./dist/esm/*.d.ts",
+        "default": "./dist/esm/*.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/*.d.ts",
+        "default": "./dist/commonjs/*.js"
+      }
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js"
 }
