@@ -36,7 +36,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/cloudinary/account-provisioning-js
 typescript:
-  version: 0.3.0
+  version: 0.3.1
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
