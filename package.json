@@ -24,6 +24,7 @@
   },
   "scripts": {
     "lint": "oxlint --max-warnings=0 --deny-warnings 'src/**/*.{ts,tsx}'",
+    "prebuild": "bash scripts/fix-readme.sh",
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },
