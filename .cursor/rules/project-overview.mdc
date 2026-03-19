@@ -14,12 +14,14 @@ Speakeasy-generated TypeScript SDK for the Cloudinary Provisioning and Permissio
 - **Config** (`.speakeasy/gen.yaml`, `.speakeasy/workflow.yaml`): controls generation behavior
 - **Overlays** (`.speakeasy/speakeasy-modifications-overlay.yaml`): OpenAPI schema modifications
 - **Examples** (`examples/`): `*.example.ts` files are regenerated; `sanity.test.ts` is manual
+- **Scripts** (`scripts/`): post-generation fixes (e.g., `fix-readme.sh`) — portable bash, no dependencies
 
 ## Key commands
 
 - `speakeasy run` — regenerate SDK from OpenAPI schema
-- `npm run build` — build with tshy (dual CJS/ESM)
+- `npm run build` — runs `prebuild` (fix-readme.sh) then `tshy` (dual CJS/ESM)
 - `npx tsx examples/sanity.test.ts` — run sanity tests against live API
+- `bash scripts/fix-readme.sh` — reorder README operations to match schema tag order
 
 ## SDK resources
 
