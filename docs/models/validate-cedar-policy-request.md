@@ -1,0 +1,18 @@
+# ValidateCedarPolicyRequest
+
+## Example Usage
+
+```typescript
+import { ValidateCedarPolicyRequest } from "@cloudinary/account-provisioning";
+
+let value: ValidateCedarPolicyRequest = {
+  policy:
+    "permit(principal == Cloudinary::APIKy::\"1234\", action == Cloudinary::Action::\"read\", resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\"asdfjkl12347890\")} ;",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                            | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      | Example                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `policy`                                                                                                                                                                         | *string*                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                               | The Cedar policy statement to validate.                                                                                                                                          | permit(principal == Cloudinary::APIKy::"1234", action == Cloudinary::Action::"read", resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains("asdfjkl12347890")} ; |
