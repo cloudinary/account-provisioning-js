@@ -46,3 +46,14 @@ Based on:
 * Fix internal attributes
 * Fix docs templates
 * Fix Typescript Node string enums
+
+
+## 2026-03-19 11:45:10
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.757.1 (2.866.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.3.1] .
+### Releases
+- [NPM v0.3.1] https://www.npmjs.com/package/@cloudinary/account-provisioning/v/0.3.1 - .

@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:2eb14e9aa6662f5f4f1d9ef1039678b31573aebc5765ea3e64a4d2017f9073d4
         sourceBlobDigest: sha256:0c58d072e0b61c934870ce292789dd513ea1df64ec9a625f3e428fc17fcf2574
         codeSamplesNamespace: cloudinary-provisioning-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:a3f538e483694734894fcb1ac0ea990574dcbfe76e148061145b91754c473afa
+        codeSamplesRevisionDigest: sha256:be69a9780bcaeb03efefe557dc8d8ac5cd4d78c122fa8a0d26a7c4b9e95aed77
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

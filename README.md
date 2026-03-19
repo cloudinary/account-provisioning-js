@@ -220,6 +220,14 @@ run();
 <details open>
 <summary>Available methods</summary>
 
+### [ProductEnvironments](docs/sdks/productenvironments/README.md)
+
+* [list](docs/sdks/productenvironments/README.md#list) - Get product environments
+* [create](docs/sdks/productenvironments/README.md#create) - Create product environment
+* [get](docs/sdks/productenvironments/README.md#get) - Get product environment
+* [update](docs/sdks/productenvironments/README.md#update) - Update product environment
+* [delete](docs/sdks/productenvironments/README.md#delete) - Delete product environment
+
 ### [AccessKeys](docs/sdks/accesskeys/README.md)
 
 * [list](docs/sdks/accesskeys/README.md#list) - Get access keys
@@ -228,9 +236,44 @@ run();
 * [update](docs/sdks/accesskeys/README.md#update) - Update an access key
 * [delete](docs/sdks/accesskeys/README.md#delete) - Delete access key
 
+### [Users](docs/sdks/users/README.md)
+
+* [list](docs/sdks/users/README.md#list) - Get users
+* [create](docs/sdks/users/README.md#create) - Create user
+* [get](docs/sdks/users/README.md#get) - Get user
+* [update](docs/sdks/users/README.md#update) - Update user
+* [delete](docs/sdks/users/README.md#delete) - Delete user
+* [getGroups](docs/sdks/users/README.md#getgroups) - Get user groups
+* [listSubAccounts](docs/sdks/users/README.md#listsubaccounts) - Get user sub-accounts
+
+### [UserGroups](docs/sdks/usergroups/README.md)
+
+* [list](docs/sdks/usergroups/README.md#list) - Get User Groups
+* [create](docs/sdks/usergroups/README.md#create) - Create User Group
+* [get](docs/sdks/usergroups/README.md#get) - Get User Group
+* [update](docs/sdks/usergroups/README.md#update) - Update User Group
+* [delete](docs/sdks/usergroups/README.md#delete) - Delete User Group
+* [listUsers](docs/sdks/usergroups/README.md#listusers) - Get Users in User Group
+* [addUser](docs/sdks/usergroups/README.md#adduser) - Add User to User Group
+* [removeUser](docs/sdks/usergroups/README.md#removeuser) - Remove User from User Group
+
 ### [BillingUsage](docs/sdks/billingusage/README.md)
 
 * [get](docs/sdks/billingusage/README.md#get) - Get billing usage information
+
+### [SystemPolicies](docs/sdks/systempolicies/README.md)
+
+* [list](docs/sdks/systempolicies/README.md#list) - Get system policies
+
+### [Roles](docs/sdks/roles/README.md)
+
+* [list](docs/sdks/roles/README.md#list) - Get roles
+* [create](docs/sdks/roles/README.md#create) - Create custom role
+* [get](docs/sdks/roles/README.md#get) - Get role
+* [update](docs/sdks/roles/README.md#update) - Update custom role
+* [delete](docs/sdks/roles/README.md#delete) - Delete custom role
+* [listPrincipals](docs/sdks/roles/README.md#listprincipals) - Get a role's principals
+* [updatePrincipals](docs/sdks/roles/README.md#updateprincipals) - Assign principals to a role
 
 ### [CustomPolicies](docs/sdks/custompolicies/README.md)
 
@@ -251,54 +294,11 @@ run();
 * [inspect](docs/sdks/principals/README.md#inspect) - Inspect
 * [inspectMultiple](docs/sdks/principals/README.md#inspectmultiple) - Inspect multiple
 
-### [ProductEnvironments](docs/sdks/productenvironments/README.md)
-
-* [list](docs/sdks/productenvironments/README.md#list) - Get product environments
-* [create](docs/sdks/productenvironments/README.md#create) - Create product environment
-* [get](docs/sdks/productenvironments/README.md#get) - Get product environment
-* [update](docs/sdks/productenvironments/README.md#update) - Update product environment
-* [delete](docs/sdks/productenvironments/README.md#delete) - Delete product environment
-
 ### [Public](docs/sdks/public/README.md)
 
 * [getCatalog](docs/sdks/public/README.md#getcatalog) - Get system roles and policies catalog
 * [validatePolicy](docs/sdks/public/README.md#validatepolicy) - Validate a Cedar policy
 * [getSchema](docs/sdks/public/README.md#getschema) - Get Cedar schema
-
-### [Roles](docs/sdks/roles/README.md)
-
-* [list](docs/sdks/roles/README.md#list) - Get roles
-* [create](docs/sdks/roles/README.md#create) - Create custom role
-* [get](docs/sdks/roles/README.md#get) - Get role
-* [update](docs/sdks/roles/README.md#update) - Update custom role
-* [delete](docs/sdks/roles/README.md#delete) - Delete custom role
-* [listPrincipals](docs/sdks/roles/README.md#listprincipals) - Get a role's principals
-* [updatePrincipals](docs/sdks/roles/README.md#updateprincipals) - Assign principals to a role
-
-### [SystemPolicies](docs/sdks/systempolicies/README.md)
-
-* [list](docs/sdks/systempolicies/README.md#list) - Get system policies
-
-### [UserGroups](docs/sdks/usergroups/README.md)
-
-* [list](docs/sdks/usergroups/README.md#list) - Get User Groups
-* [create](docs/sdks/usergroups/README.md#create) - Create User Group
-* [get](docs/sdks/usergroups/README.md#get) - Get User Group
-* [update](docs/sdks/usergroups/README.md#update) - Update User Group
-* [delete](docs/sdks/usergroups/README.md#delete) - Delete User Group
-* [listUsers](docs/sdks/usergroups/README.md#listusers) - Get Users in User Group
-* [addUser](docs/sdks/usergroups/README.md#adduser) - Add User to User Group
-* [removeUser](docs/sdks/usergroups/README.md#removeuser) - Remove User from User Group
-
-### [Users](docs/sdks/users/README.md)
-
-* [list](docs/sdks/users/README.md#list) - Get users
-* [create](docs/sdks/users/README.md#create) - Create user
-* [get](docs/sdks/users/README.md#get) - Get user
-* [update](docs/sdks/users/README.md#update) - Update user
-* [delete](docs/sdks/users/README.md#delete) - Delete user
-* [getGroups](docs/sdks/users/README.md#getgroups) - Get user groups
-* [listSubAccounts](docs/sdks/users/README.md#listsubaccounts) - Get user sub-accounts
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
