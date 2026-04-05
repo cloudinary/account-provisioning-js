@@ -8,33 +8,16 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdk-validation-error.js";
 
-export type Schema = {};
-
 export type CedarSchemaResponse = {
-  schema: Schema;
+  schema: { [k: string]: any };
 };
-
-/** @internal */
-export const Schema$inboundSchema: z.ZodMiniType<Schema, unknown> = z.object(
-  {},
-);
-
-export function schemaFromJSON(
-  jsonString: string,
-): SafeParseResult<Schema, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema' from JSON`,
-  );
-}
 
 /** @internal */
 export const CedarSchemaResponse$inboundSchema: z.ZodMiniType<
   CedarSchemaResponse,
   unknown
 > = z.object({
-  schema: z.lazy(() => Schema$inboundSchema),
+  schema: z.record(z.string(), z.any()),
 });
 
 export function cedarSchemaResponseFromJSON(

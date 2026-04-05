@@ -8,33 +8,16 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdk-validation-error.js";
 
-export type Catalog = {};
-
 export type SystemRolesAndPoliciesCatalogResponse = {
-  catalog: Catalog;
+  catalog: { [k: string]: any };
 };
-
-/** @internal */
-export const Catalog$inboundSchema: z.ZodMiniType<Catalog, unknown> = z.object(
-  {},
-);
-
-export function catalogFromJSON(
-  jsonString: string,
-): SafeParseResult<Catalog, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Catalog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Catalog' from JSON`,
-  );
-}
 
 /** @internal */
 export const SystemRolesAndPoliciesCatalogResponse$inboundSchema: z.ZodMiniType<
   SystemRolesAndPoliciesCatalogResponse,
   unknown
 > = z.object({
-  catalog: z.lazy(() => Catalog$inboundSchema),
+  catalog: z.record(z.string(), z.any()),
 });
 
 export function systemRolesAndPoliciesCatalogResponseFromJSON(
