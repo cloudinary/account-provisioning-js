@@ -36,7 +36,7 @@ generation:
     skipResponseBodyAssertions: false
   repoUrl: https://github.com/cloudinary/account-provisioning-js
 typescript:
-  version: 0.3.1
+  version: 0.3.2
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
@@ -59,6 +59,7 @@ typescript:
   enumFormat: union
   envVarPrefix: CLOUDINARY
   exportZodModelNamespace: false
+  fixEnumNameSanitization: false
   flatAdditionalProperties: true
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first

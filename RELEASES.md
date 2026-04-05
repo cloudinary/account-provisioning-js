@@ -57,3 +57,13 @@ Based on:
 - [typescript v0.3.1] .
 ### Releases
 - [NPM v0.3.1] https://www.npmjs.com/package/@cloudinary/account-provisioning/v/0.3.1 - .
+
+## 2026-04-05 15:27:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.761.1 (2.879.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.3.2] .
+### Releases
+- [NPM v0.3.2] https://www.npmjs.com/package/@cloudinary/account-provisioning/v/0.3.2 - .
