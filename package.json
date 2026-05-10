@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/account-provisioning",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "Cloudinary",
   "type": "module",
   "tshy": {
@@ -23,14 +23,14 @@
     "url": "https://github.com/cloudinary/account-provisioning-js"
   },
   "scripts": {
-    "lint": "oxlint --max-warnings=0 --deny-warnings 'src/**/*.{ts,tsx}'",
+    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {},
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
-    "oxlint": "^1.50.0",
+    "oxlint": "^1.60.0",
     "tshy": "^3.3.2",
     "typescript": "~5.8.3"
   },
