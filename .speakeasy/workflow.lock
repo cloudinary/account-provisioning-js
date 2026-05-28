@@ -1,4 +1,4 @@
-speakeasyVersion: 1.761.1
+speakeasyVersion: 1.768.2
 sources:
     Cloudinary-Provisioning-OAS:
         sourceNamespace: cloudinary-provisioning
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:e2fd5f6aa6b9fa1e5db8e0b8730ab4ba03eab339533987917f9fcd1b17b98d27
         sourceBlobDigest: sha256:ab6edeae93ec2d1ec61d5a5e88231cc8c57e93b249c107c193b82f7f750f8808
         codeSamplesNamespace: cloudinary-provisioning-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:0fd194c2b046b53d9a0e61ffec14a041802a0484cbe113c9fcbb7a3c666fd2f6
+        codeSamplesRevisionDigest: sha256:59961baaee310aeebf967700f4d6f15e4f7ce6dfa3f9d0fe6b26123c6bbb6abd
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
