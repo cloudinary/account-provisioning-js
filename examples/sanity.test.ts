@@ -14,6 +14,11 @@
  */
 
 import { CldProvisioning } from "@cloudinary/account-provisioning";
+import {
+  InspectRequest$outboundSchema,
+  RoleToManage$outboundSchema,
+  UpdateRolePrincipal$outboundSchema,
+} from "@cloudinary/account-provisioning/models";
 
 const sdk = new CldProvisioning();
 const RUN_ID = `sdk-test-${Date.now()}`;
@@ -500,6 +505,143 @@ async function testPrincipals() {
 }
 
 // ---------------------------------------------------------------------------
+// Overlay coverage — verifies that policy_parameters is not silently stripped
+// by the generated Zod schemas. Regression guard for the
+// additional-properties-overlay (covers the customer report where
+// `policyParameters: { folder_id: ... }` was being serialized as `{}`).
+// ---------------------------------------------------------------------------
+async function testOverlayPassthrough() {
+  log("\n── Overlay passthrough ──");
+
+  await test("RoleToManage preserves arbitrary policy_parameters", async () => {
+    const out = RoleToManage$outboundSchema.parse({
+      id: "marketing_content_contributor_1357fhe",
+      scopeId: "975l29lz02jt0836fhwi",
+      policyParameters: { folder_id: "asdfjkl12347890" },
+    });
+    assert(
+      (out.policy_parameters as Record<string, unknown>)?.folder_id
+        === "asdfjkl12347890",
+      "folder_id should survive serialization",
+    );
+  });
+
+  await test("UpdateRolePrincipal preserves arbitrary policy_parameters", async () => {
+    const out = UpdateRolePrincipal$outboundSchema.parse({
+      principalType: "user",
+      principalId: "1234abc",
+      policyParameters: { collection_id: "coll_42" },
+    });
+    assert(
+      (out.policy_parameters as Record<string, unknown>)?.collection_id
+        === "coll_42",
+      "collection_id should survive serialization",
+    );
+  });
+
+  await test("InspectRequest preserves arbitrary policy_parameters", async () => {
+    const out = InspectRequest$outboundSchema.parse({
+      scopeType: "prodenv",
+      principals: [{ type: "user", id: "1234abc" }],
+      policyParameters: { folder_id: "asdfjkl12347890" },
+    });
+    assert(
+      (out.policy_parameters as Record<string, unknown>)?.folder_id
+        === "asdfjkl12347890",
+      "folder_id should survive serialization",
+    );
+  });
+
+  await test("updateRoles sends folder_id (exact customer repro)", async () => {
+    // Exact reproduction of the customer's Slack report:
+    // - principal.type: "group"
+    // - roles[].id, scopeId, policyParameters.folder_id all provided
+    // We pick a real content-scoped role so the server actually validates
+    // policy_parameters (instead of short-circuiting on role-not-found).
+    // We also pick a real user group from this account so the principal
+    // exists; the only thing under test is whether folder_id makes it
+    // through to the server.
+    const contentRoles = await sdk.roles.list({ permissionType: "content" });
+    const contentRole = contentRoles.data?.[0];
+    if (!contentRole?.id) {
+      throw new Error("no content-scoped role available on this account");
+    }
+    const envs = await sdk.productEnvironments.list({ enabled: true });
+    const scopeId = envs.subAccounts?.[0]?.id;
+    if (!scopeId) throw new Error("no enabled product environment");
+
+    const groups = await sdk.userGroups.list({});
+    const groupId = groups.userGroups?.[0]?.id;
+    if (!groupId) throw new Error("no user group available on this account");
+
+    let rawBody = "";
+    let threw = false;
+    try {
+      await sdk.principals.updateRoles({
+        operation: "add",
+        principal: {
+          type: "group",
+          id: groupId,
+        },
+        roles: [
+          {
+            id: contentRole.id,
+            scopeId,
+            policyParameters: { folder_id: "cf39d108a132c00ee63e510e9dc769b6db" },
+          },
+        ],
+      });
+    } catch (err: any) {
+      threw = true;
+      rawBody = String(err?.body ?? err?.message ?? err);
+    }
+
+    // The customer's bug: server reports `details.actual: {}` and
+    // `details.required: ["folder_id"]`. If the overlay is working, either
+    // the call succeeds, or it fails for a different reason (e.g. group not
+    // found) — but NOT with the "actual: {}" signature.
+    if (threw) {
+      const lower = rawBody.toLowerCase();
+      const hasMissingFolderError =
+        lower.includes("\"actual\":{}")
+        || lower.includes("\"actual\": {}")
+        || (lower.includes("policy parameters") && lower.includes("folder_id"));
+      assert(
+        !hasMissingFolderError,
+        `SDK stripped folder_id — server reported it as missing. Raw body: ${rawBody}`,
+      );
+    }
+  });
+
+  await test("PrincipalRolesData round-trips policy_parameters", async () => {
+    // Response-side coverage: if any principal in the account has a
+    // content-scoped role, its policy_parameters must come back populated
+    // (not stripped by the inbound Zod schema).
+    const users = await sdk.users.list({});
+    const userId = users.users?.[0]?.id;
+    if (!userId) throw new Error("no users available");
+
+    const res = await sdk.principals.listRoles({
+      principalType: "user",
+      principalId: userId,
+      permissionType: "content",
+    });
+    // We don't require the account to actually have content-scoped
+    // assignments; if it does, every entry's policy_parameters must be
+    // an object with at least one key (not stripped to {}).
+    for (const role of res.data ?? []) {
+      const pp = (role as any).policyParameters;
+      if (pp !== undefined && pp !== null) {
+        assert(
+          typeof pp === "object" && Object.keys(pp).length > 0,
+          `policy_parameters should not be stripped to {} — got ${JSON.stringify(pp)}`,
+        );
+      }
+    }
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Custom Policies (Permissions API - Beta)
 // ---------------------------------------------------------------------------
 async function testCustomPolicies() {
@@ -608,6 +750,7 @@ async function main() {
     await testBillingUsage();
     await testRoles();
     await testPrincipals();
+    await testOverlayPassthrough();
     await testCustomPolicies();
     await testEffectivePolicies();
     await testSystemPolicies();
