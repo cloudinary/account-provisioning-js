@@ -10,11 +10,6 @@ import {
   PrincipalTypeEnum$outboundSchema,
 } from "./principal-type-enum.js";
 
-/**
- * For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement`, written in Cedar language.
- */
-export type UpdateRolePrincipalPolicyParameters = {};
-
 export type UpdateRolePrincipal = {
   /**
    * The type of principal.
@@ -31,34 +26,15 @@ export type UpdateRolePrincipal = {
   /**
    * For roles with `permission_type` set to `content`, provide the ID of the specific folder or collection you want the role to apply to, for example, `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement`, written in Cedar language.
    */
-  policyParameters?: UpdateRolePrincipalPolicyParameters | undefined;
+  policyParameters?: { [k: string]: any } | undefined;
 };
-
-/** @internal */
-export type UpdateRolePrincipalPolicyParameters$Outbound = {};
-
-/** @internal */
-export const UpdateRolePrincipalPolicyParameters$outboundSchema: z.ZodMiniType<
-  UpdateRolePrincipalPolicyParameters$Outbound,
-  UpdateRolePrincipalPolicyParameters
-> = z.object({});
-
-export function updateRolePrincipalPolicyParametersToJSON(
-  updateRolePrincipalPolicyParameters: UpdateRolePrincipalPolicyParameters,
-): string {
-  return JSON.stringify(
-    UpdateRolePrincipalPolicyParameters$outboundSchema.parse(
-      updateRolePrincipalPolicyParameters,
-    ),
-  );
-}
 
 /** @internal */
 export type UpdateRolePrincipal$Outbound = {
   principal_type: string;
   principal_id: string;
   scope_id?: string | null | undefined;
-  policy_parameters?: UpdateRolePrincipalPolicyParameters$Outbound | undefined;
+  policy_parameters?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -70,9 +46,7 @@ export const UpdateRolePrincipal$outboundSchema: z.ZodMiniType<
     principalType: PrincipalTypeEnum$outboundSchema,
     principalId: z.string(),
     scopeId: z.optional(z.nullable(z.string())),
-    policyParameters: z.optional(
-      z.lazy(() => UpdateRolePrincipalPolicyParameters$outboundSchema),
-    ),
+    policyParameters: z.optional(z.record(z.string(), z.any())),
   }),
   z.transform((v) => {
     return remap$(v, {

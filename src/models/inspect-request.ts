@@ -15,8 +15,6 @@ import {
   ScopeTypeEnum$outboundSchema,
 } from "./scope-type-enum.js";
 
-export type InspectRequestPolicyParameters = {};
-
 export type InspectRequest = {
   /**
    * Specifies where the role/policy is applied, either at the account level or within product environments.
@@ -24,35 +22,16 @@ export type InspectRequest = {
   scopeType: ScopeTypeEnum;
   scopeId?: string | undefined;
   principals: Array<Principal>;
-  policyParameters?: InspectRequestPolicyParameters | undefined;
+  policyParameters?: { [k: string]: any } | undefined;
   cursor?: string | undefined;
 };
-
-/** @internal */
-export type InspectRequestPolicyParameters$Outbound = {};
-
-/** @internal */
-export const InspectRequestPolicyParameters$outboundSchema: z.ZodMiniType<
-  InspectRequestPolicyParameters$Outbound,
-  InspectRequestPolicyParameters
-> = z.object({});
-
-export function inspectRequestPolicyParametersToJSON(
-  inspectRequestPolicyParameters: InspectRequestPolicyParameters,
-): string {
-  return JSON.stringify(
-    InspectRequestPolicyParameters$outboundSchema.parse(
-      inspectRequestPolicyParameters,
-    ),
-  );
-}
 
 /** @internal */
 export type InspectRequest$Outbound = {
   scope_type: string;
   scope_id?: string | undefined;
   principals: Array<Principal$Outbound>;
-  policy_parameters?: InspectRequestPolicyParameters$Outbound | undefined;
+  policy_parameters?: { [k: string]: any } | undefined;
   cursor?: string | undefined;
 };
 
@@ -65,9 +44,7 @@ export const InspectRequest$outboundSchema: z.ZodMiniType<
     scopeType: ScopeTypeEnum$outboundSchema,
     scopeId: z.optional(z.string()),
     principals: z.array(Principal$outboundSchema),
-    policyParameters: z.optional(
-      z.lazy(() => InspectRequestPolicyParameters$outboundSchema),
-    ),
+    policyParameters: z.optional(z.record(z.string(), z.any())),
     cursor: z.optional(z.string()),
   }),
   z.transform((v) => {
