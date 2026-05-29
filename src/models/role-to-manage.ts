@@ -6,11 +6,6 @@
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
 
-/**
- * Defines the content instance that the role applies to. Specify the content type (`folder_id` or `collection_id`) and its corresponding ID. For example, `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement` (Cedar).
- */
-export type RoleToManagePolicyParameters = {};
-
 export type RoleToManage = {
   /**
    * The unique identifier of the role you want to assign.
@@ -23,33 +18,14 @@ export type RoleToManage = {
   /**
    * Defines the content instance that the role applies to. Specify the content type (`folder_id` or `collection_id`) and its corresponding ID. For example, `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement` (Cedar).
    */
-  policyParameters?: RoleToManagePolicyParameters | undefined;
+  policyParameters?: { [k: string]: any } | undefined;
 };
-
-/** @internal */
-export type RoleToManagePolicyParameters$Outbound = {};
-
-/** @internal */
-export const RoleToManagePolicyParameters$outboundSchema: z.ZodMiniType<
-  RoleToManagePolicyParameters$Outbound,
-  RoleToManagePolicyParameters
-> = z.object({});
-
-export function roleToManagePolicyParametersToJSON(
-  roleToManagePolicyParameters: RoleToManagePolicyParameters,
-): string {
-  return JSON.stringify(
-    RoleToManagePolicyParameters$outboundSchema.parse(
-      roleToManagePolicyParameters,
-    ),
-  );
-}
 
 /** @internal */
 export type RoleToManage$Outbound = {
   id: string;
   scope_id?: string | undefined;
-  policy_parameters?: RoleToManagePolicyParameters$Outbound | undefined;
+  policy_parameters?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -60,9 +36,7 @@ export const RoleToManage$outboundSchema: z.ZodMiniType<
   z.object({
     id: z.string(),
     scopeId: z.optional(z.string()),
-    policyParameters: z.optional(
-      z.lazy(() => RoleToManagePolicyParameters$outboundSchema),
-    ),
+    policyParameters: z.optional(z.record(z.string(), z.any())),
   }),
   z.transform((v) => {
     return remap$(v, {

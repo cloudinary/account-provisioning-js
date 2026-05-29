@@ -22,15 +22,6 @@ import {
 } from "./scope-type-enum.js";
 import { SDKValidationError } from "./sdk-validation-error.js";
 
-/**
- * For roles with `permission_type` set to `content`, this defines the type of content the role's policies apply to:
- *
- * @remarks
- * - The content type can be: `folder_id` or `collection_id`.
- * - When assigning the role, provide the instance, e.g. `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement` (Cedar).
- */
-export type PolicyParameters = {};
-
 export type PrincipalRolesData = {
   /**
    * The unique identifier of the role.
@@ -67,7 +58,7 @@ export type PrincipalRolesData = {
    * - The content type can be: `folder_id` or `collection_id`.
    * - When assigning the role, provide the instance, e.g. `{"folder_id":"asdfjkl12347890"}`. This specification is passed to the `policy_statement` (Cedar).
    */
-  policyParameters?: PolicyParameters | null | undefined;
+  policyParameters?: { [k: string]: any } | null | undefined;
   /**
    * Creation time of the policy in epoch time.
    */
@@ -77,22 +68,6 @@ export type PrincipalRolesData = {
    */
   updatedAt: number;
 };
-
-/** @internal */
-export const PolicyParameters$inboundSchema: z.ZodMiniType<
-  PolicyParameters,
-  unknown
-> = z.object({});
-
-export function policyParametersFromJSON(
-  jsonString: string,
-): SafeParseResult<PolicyParameters, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PolicyParameters$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PolicyParameters' from JSON`,
-  );
-}
 
 /** @internal */
 export const PrincipalRolesData$inboundSchema: z.ZodMiniType<
@@ -107,9 +82,7 @@ export const PrincipalRolesData$inboundSchema: z.ZodMiniType<
     permission_type: PermissionTypeEnum$inboundSchema,
     scope_type: ScopeTypeEnum$inboundSchema,
     scope_id: z.optional(z.nullable(types.string())),
-    policy_parameters: z.optional(
-      z.nullable(z.lazy(() => PolicyParameters$inboundSchema)),
-    ),
+    policy_parameters: z.optional(z.nullable(z.record(z.string(), z.any()))),
     created_at: types.number(),
     updated_at: types.number(),
   }),
