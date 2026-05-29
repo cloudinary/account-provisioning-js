@@ -9,11 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdk-validation-error.js";
 
-/**
- * Additional contextual information about the error, which may include relevant data.
- */
-export type Details = {};
-
 export type PermissionsError = {
   /**
    * A classification of the error, indicating the general area or type of problem.
@@ -30,23 +25,8 @@ export type PermissionsError = {
   /**
    * Additional contextual information about the error, which may include relevant data.
    */
-  details?: Details | undefined;
+  details?: { [k: string]: any } | undefined;
 };
-
-/** @internal */
-export const Details$inboundSchema: z.ZodMiniType<Details, unknown> = z.object(
-  {},
-);
-
-export function detailsFromJSON(
-  jsonString: string,
-): SafeParseResult<Details, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Details$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Details' from JSON`,
-  );
-}
 
 /** @internal */
 export const PermissionsError$inboundSchema: z.ZodMiniType<
@@ -56,7 +36,7 @@ export const PermissionsError$inboundSchema: z.ZodMiniType<
   category: types.optional(types.string()),
   code: types.optional(types.string()),
   message: types.optional(types.string()),
-  details: types.optional(z.lazy(() => Details$inboundSchema)),
+  details: types.optional(z.record(z.string(), z.any())),
 });
 
 export function permissionsErrorFromJSON(

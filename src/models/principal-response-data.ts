@@ -18,8 +18,6 @@ import {
 } from "./scope-type-enum.js";
 import { SDKValidationError } from "./sdk-validation-error.js";
 
-export type PrincipalResponseDataPolicyParameters = {};
-
 export type PrincipalResponseData = {
   /**
    * The unique identifier of the principal.
@@ -30,7 +28,7 @@ export type PrincipalResponseData = {
    */
   type: PrincipalTypeEnum;
   roleId?: string | undefined;
-  policyParameters?: PrincipalResponseDataPolicyParameters | undefined;
+  policyParameters?: { [k: string]: any } | undefined;
   /**
    * Specifies where the role/policy is applied, either at the account level or within product environments.
    */
@@ -41,23 +39,6 @@ export type PrincipalResponseData = {
 };
 
 /** @internal */
-export const PrincipalResponseDataPolicyParameters$inboundSchema: z.ZodMiniType<
-  PrincipalResponseDataPolicyParameters,
-  unknown
-> = z.object({});
-
-export function principalResponseDataPolicyParametersFromJSON(
-  jsonString: string,
-): SafeParseResult<PrincipalResponseDataPolicyParameters, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PrincipalResponseDataPolicyParameters$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PrincipalResponseDataPolicyParameters' from JSON`,
-  );
-}
-
-/** @internal */
 export const PrincipalResponseData$inboundSchema: z.ZodMiniType<
   PrincipalResponseData,
   unknown
@@ -66,9 +47,7 @@ export const PrincipalResponseData$inboundSchema: z.ZodMiniType<
     id: types.string(),
     type: PrincipalTypeEnum$inboundSchema,
     role_id: types.optional(types.string()),
-    policy_parameters: types.optional(
-      z.lazy(() => PrincipalResponseDataPolicyParameters$inboundSchema),
-    ),
+    policy_parameters: types.optional(z.record(z.string(), z.any())),
     scope_type: types.optional(ScopeTypeEnum$inboundSchema),
     scope_id: z.optional(z.nullable(types.string())),
     created_at: types.optional(types.number()),

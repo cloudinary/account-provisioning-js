@@ -1301,7 +1301,9 @@ async function run() {
           principalType: "user",
           principalId: "1234abc",
           scopeId: "975l29lz02jt0836fhwi",
-          policyParameters: {},
+          policyParameters: {
+
+          },
         },
       ],
     },
@@ -1341,7 +1343,9 @@ async function run() {
           principalType: "user",
           principalId: "1234abc",
           scopeId: "975l29lz02jt0836fhwi",
-          policyParameters: {},
+          policyParameters: {
+  
+          },
         },
       ],
     },
@@ -1374,7 +1378,9 @@ async function run() {
           principalType: "user",
           principalId: "1234abc",
           scopeId: "975l29lz02jt0836fhwi",
-          policyParameters: {},
+          policyParameters: {
+
+          },
         },
       ],
     },
@@ -1414,7 +1420,9 @@ async function run() {
           principalType: "user",
           principalId: "1234abc",
           scopeId: "975l29lz02jt0836fhwi",
-          policyParameters: {},
+          policyParameters: {
+  
+          },
         },
       ],
     },
