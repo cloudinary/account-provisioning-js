@@ -14,7 +14,9 @@ let value: UpdateRolePrincipalsRequest1 = {
         principalType: "user",
         principalId: "1234abc",
         scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
+        policyParameters: {
+          "folder_id": "asdfjkl12347890",
+        },
       },
     ],
   },

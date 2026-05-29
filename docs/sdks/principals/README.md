@@ -203,7 +203,9 @@ async function run() {
       {
         id: "marketing_content_contributor_1357fhe",
         scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
+        policyParameters: {
+
+        },
       },
     ],
   });
@@ -243,7 +245,9 @@ async function run() {
       {
         id: "marketing_content_contributor_1357fhe",
         scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
+        policyParameters: {
+  
+        },
       },
     ],
   });
@@ -276,7 +280,9 @@ async function run() {
       {
         id: "marketing_content_contributor_1357fhe",
         scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
+        policyParameters: {
+
+        },
       },
     ],
   });
@@ -316,7 +322,9 @@ async function run() {
       {
         id: "marketing_content_contributor_1357fhe",
         scopeId: "975l29lz02jt0836fhwi",
-        policyParameters: {},
+        policyParameters: {
+  
+        },
       },
     ],
   });
@@ -629,7 +637,9 @@ async function run() {
         id: "a382ltieo893jhioqpg8urp",
       },
     ],
-    policyParameters: {},
+    policyParameters: {
+      "folder_id": "asdfjkl12347890",
+    },
   });
 
   console.log(result);
@@ -674,7 +684,9 @@ async function run() {
         id: "a382ltieo893jhioqpg8urp",
       },
     ],
-    policyParameters: {},
+    policyParameters: {
+      "folder_id": "asdfjkl12347890",
+    },
   });
   if (res.ok) {
     const { value: result } = res;
