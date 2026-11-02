@@ -4,7 +4,7 @@
 
 All roles include one or more predefined **system policies**, and can be applied to principals to enforce these policies.
 
-You can **manage custom roles**, where you select the system policies.
+You can **manage custom roles**, where you select the system policies. 
 
 You can **view system roles**, which contain a fixed set of system policies and are provided by Cloudinary.
 
@@ -769,7 +769,7 @@ const cldProvisioning = new CldProvisioning();
 async function run() {
   const result = await cldProvisioning.roles.update({
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -806,7 +806,7 @@ const cldProvisioning = new CldProvisioningCore({
 async function run() {
   const res = await rolesUpdate(cldProvisioning, {
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -836,7 +836,7 @@ const cldProvisioning = new CldProvisioning();
 async function run() {
   const result = await cldProvisioning.roles.update({
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -873,7 +873,7 @@ const cldProvisioning = new CldProvisioningCore({
 async function run() {
   const res = await rolesUpdate(cldProvisioning, {
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -903,7 +903,7 @@ const cldProvisioning = new CldProvisioning();
 async function run() {
   const result = await cldProvisioning.roles.update({
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -940,7 +940,7 @@ const cldProvisioning = new CldProvisioningCore({
 async function run() {
   const res = await rolesUpdate(cldProvisioning, {
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing upload presets and uploading new assets.",
       systemPolicyIds: [
@@ -970,7 +970,7 @@ const cldProvisioning = new CldProvisioning();
 async function run() {
   const result = await cldProvisioning.roles.update({
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing uploads and uploading new assets.",
       systemPolicyIds: [
@@ -1007,7 +1007,7 @@ const cldProvisioning = new CldProvisioningCore({
 async function run() {
   const res = await rolesUpdate(cldProvisioning, {
     roleId: "<id>",
-    role: {
+    updateRole: {
       name: "Upload manager",
       description: "Responsible for managing uploads and uploading new assets.",
       systemPolicyIds: [

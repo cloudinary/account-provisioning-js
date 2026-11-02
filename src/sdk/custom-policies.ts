@@ -44,7 +44,7 @@ export class CustomPolicies extends ClientSDK {
    * @see {@link https://cloudinary.com/documentation/permissions_api_guide#create_a_policy_statement} - Learn more about creating a new custom policy
    */
   async create(
-    request: models.CustomPolicy,
+    request: models.CreateCustomPolicy,
     options?: RequestOptions,
   ): Promise<models.CustomPolicyResponse> {
     return unwrapAsync(customPoliciesCreate(

@@ -7,7 +7,7 @@ import { UpdateRoleRequest } from "@cloudinary/account-provisioning";
 
 let value: UpdateRoleRequest = {
   roleId: "<id>",
-  role: {
+  updateRole: {
     name: "Upload manager",
     description:
       "Responsible for managing upload presets and uploading new assets.",
@@ -21,7 +21,7 @@ let value: UpdateRoleRequest = {
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `roleId`                          | *string*                          | :heavy_check_mark:                | A unique identifier for the role. |
-| `role`                            | [models.Role](../models/role.md)  | :heavy_check_mark:                | Role details                      |
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `roleId`                                      | *string*                                      | :heavy_check_mark:                            | A unique identifier for the role.             |
+| `updateRole`                                  | [models.UpdateRole](../models/update-role.md) | :heavy_check_mark:                            | Role details                                  |

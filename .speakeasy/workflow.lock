@@ -1,20 +1,20 @@
-speakeasyVersion: 1.768.2
+speakeasyVersion: 1.805.0
 sources:
     Cloudinary-Provisioning-OAS:
         sourceNamespace: cloudinary-provisioning
-        sourceRevisionDigest: sha256:0a30a70ab84a16d7f949b8bb9a4e2dade52165e9c5a84411f1640625a63af1b4
-        sourceBlobDigest: sha256:2ca8a989e7281f38cfec87dbcb14d03a050391cfd74f466651b90302d78691b3
+        sourceRevisionDigest: sha256:9a636fa6742c3e9f8ca38502330053b2551aff80a6a8225de22a418282179637
+        sourceBlobDigest: sha256:b8e0d0049e58dacb9002274e8c7b55b1be9bf34f95dc44f40ece34d80afcb753
         tags:
             - latest
-            - 0.2.1
+            - 0.2.2
 targets:
     cloudinary:
         source: Cloudinary-Provisioning-OAS
         sourceNamespace: cloudinary-provisioning
-        sourceRevisionDigest: sha256:0a30a70ab84a16d7f949b8bb9a4e2dade52165e9c5a84411f1640625a63af1b4
-        sourceBlobDigest: sha256:2ca8a989e7281f38cfec87dbcb14d03a050391cfd74f466651b90302d78691b3
+        sourceRevisionDigest: sha256:9a636fa6742c3e9f8ca38502330053b2551aff80a6a8225de22a418282179637
+        sourceBlobDigest: sha256:b8e0d0049e58dacb9002274e8c7b55b1be9bf34f95dc44f40ece34d80afcb753
         codeSamplesNamespace: cloudinary-provisioning-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:cea4ce13766bf2baf7be5354d358d78fe82d15764aa1ca3df51fdda08bf4fafb
+        codeSamplesRevisionDigest: sha256:837f81d0be8c67c49a737dc24b907111c303c8da664c0e1656add5351081369f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
