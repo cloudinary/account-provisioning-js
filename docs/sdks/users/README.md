@@ -178,8 +178,12 @@ async function run() {
   const result = await cldProvisioning.users.create({
     name: "John",
     email: "john@example.com",
-    role: "technical_admin",
     enabled: true,
+    roles: [
+      {
+        id: "media_library_admin",
+      },
+    ],
   });
 
   console.log(result);
@@ -210,8 +214,12 @@ async function run() {
   const res = await usersCreate(cldProvisioning, {
     name: "John",
     email: "john@example.com",
-    role: "technical_admin",
     enabled: true,
+    roles: [
+      {
+        id: "media_library_admin",
+      },
+    ],
   });
   if (res.ok) {
     const { value: result } = res;
@@ -341,11 +349,14 @@ const cldProvisioning = new CldProvisioning();
 async function run() {
   const result = await cldProvisioning.users.update({
     userId: "0abed8dfcc039ea05e2a1d494fd442",
-    userRequest: {
+    requestBody: {
       name: "John",
       email: "john@example.com",
-      role: "technical_admin",
       enabled: true,
+      roleManagement: {
+        operation: "add",
+        roles: [],
+      },
     },
   });
 
@@ -376,11 +387,14 @@ const cldProvisioning = new CldProvisioningCore({
 async function run() {
   const res = await usersUpdate(cldProvisioning, {
     userId: "0abed8dfcc039ea05e2a1d494fd442",
-    userRequest: {
+    requestBody: {
       name: "John",
       email: "john@example.com",
-      role: "technical_admin",
       enabled: true,
+      roleManagement: {
+        operation: "add",
+        roles: [],
+      },
     },
   });
   if (res.ok) {

@@ -6,6 +6,11 @@
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
+import {
+  RoleAssignment,
+  RoleAssignment$Outbound,
+  RoleAssignment$outboundSchema,
+} from "./role-assignment.js";
 
 export type CreateUserGlobals = {
   /**
@@ -15,9 +20,11 @@ export type CreateUserGlobals = {
 };
 
 /**
- * The role to assign.
+ * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+ *
+ * @deprecated enum: Use `roles` (create) or `role_management` (update) instead..
  */
-export const CreateUserRole = {
+export const Role = {
   MasterAdmin: "master_admin",
   Admin: "admin",
   Billing: "billing",
@@ -27,9 +34,11 @@ export const CreateUserRole = {
   MediaLibraryUser: "media_library_user",
 } as const;
 /**
- * The role to assign.
+ * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+ *
+ * @deprecated enum: Use `roles` (create) or `role_management` (update) instead..
  */
-export type CreateUserRole = ClosedEnum<typeof CreateUserRole>;
+export type Role = ClosedEnum<typeof Role>;
 
 /**
  * User details.
@@ -44,9 +53,11 @@ export type CreateUserRequestBody = {
    */
   email: string;
   /**
-   * The role to assign.
+   * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+   *
+   * @deprecated field: Use `roles` (create) or `role_management` (update) instead..
    */
-  role?: CreateUserRole | undefined;
+  role?: Role | undefined;
   /**
    * A list of product environment IDs that this user can access. Ignored if the role is `master_admin`.
    *
@@ -60,12 +71,14 @@ export type CreateUserRequestBody = {
    * @remarks
    */
   enabled?: boolean | undefined;
+  /**
+   * The roles to assign. Can't be sent together with `role`.
+   */
+  roles?: Array<RoleAssignment> | undefined;
 };
 
 /** @internal */
-export const CreateUserRole$outboundSchema: z.ZodMiniEnum<
-  typeof CreateUserRole
-> = z.enum(CreateUserRole);
+export const Role$outboundSchema: z.ZodMiniEnum<typeof Role> = z.enum(Role);
 
 /** @internal */
 export type CreateUserRequestBody$Outbound = {
@@ -74,6 +87,7 @@ export type CreateUserRequestBody$Outbound = {
   role?: string | undefined;
   sub_account_ids?: Array<string> | undefined;
   enabled?: boolean | undefined;
+  roles?: Array<RoleAssignment$Outbound> | undefined;
 };
 
 /** @internal */
@@ -84,9 +98,10 @@ export const CreateUserRequestBody$outboundSchema: z.ZodMiniType<
   z.object({
     name: z.string(),
     email: z.string(),
-    role: z.optional(CreateUserRole$outboundSchema),
+    role: z.optional(Role$outboundSchema),
     subAccountIds: z.optional(z.array(z.string())),
     enabled: z.optional(z.boolean()),
+    roles: z.optional(z.array(RoleAssignment$outboundSchema)),
   }),
   z.transform((v) => {
     return remap$(v, {

@@ -1,11 +1,11 @@
-# CustomPolicy
+# CreateCustomPolicy
 
 ## Example Usage
 
 ```typescript
-import { CustomPolicy } from "@cloudinary/account-provisioning";
+import { CreateCustomPolicy } from "@cloudinary/account-provisioning";
 
-let value: CustomPolicy = {
+let value: CreateCustomPolicy = {
   policyStatement:
     "permit(principal == Cloudinary::APIKey::\\\"1234\\\",action==Cloudinary::Action::\\\"read\\\",resource is Cloudinary::Folder ) when {resource.ancestor_ids.contains(\\\"asdfjkl12347890\\\")} ;\n",
   description:

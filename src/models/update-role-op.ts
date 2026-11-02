@@ -5,7 +5,11 @@
 
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
-import { Role, Role$Outbound, Role$outboundSchema } from "./role.js";
+import {
+  UpdateRole,
+  UpdateRole$Outbound,
+  UpdateRole$outboundSchema,
+} from "./update-role.js";
 
 export type UpdateRoleGlobals = {
   /**
@@ -22,13 +26,13 @@ export type UpdateRoleRequest = {
   /**
    * Role details
    */
-  role: Role;
+  updateRole: UpdateRole;
 };
 
 /** @internal */
 export type UpdateRoleRequest$Outbound = {
   role_id: string;
-  Role: Role$Outbound;
+  UpdateRole: UpdateRole$Outbound;
 };
 
 /** @internal */
@@ -38,12 +42,12 @@ export const UpdateRoleRequest$outboundSchema: z.ZodMiniType<
 > = z.pipe(
   z.object({
     roleId: z.string(),
-    role: Role$outboundSchema,
+    updateRole: UpdateRole$outboundSchema,
   }),
   z.transform((v) => {
     return remap$(v, {
       roleId: "role_id",
-      role: "Role",
+      updateRole: "UpdateRole",
     });
   }),
 );
