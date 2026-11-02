@@ -90,7 +90,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.Role, { explode: true });
+  const body = encodeJSON("body", payload.UpdateRole, { explode: true });
 
   const pathParams = {
     account_id: encodeSimple("account_id", client._options.accountId, {

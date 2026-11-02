@@ -37,7 +37,7 @@ import { Result } from "../types/fp.js";
  */
 export function customPoliciesCreate(
   client: CldProvisioningCore,
-  request: models.CustomPolicy,
+  request: models.CreateCustomPolicy,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -62,7 +62,7 @@ export function customPoliciesCreate(
 
 async function $do(
   client: CldProvisioningCore,
-  request: models.CustomPolicy,
+  request: models.CreateCustomPolicy,
   options?: RequestOptions,
 ): Promise<
   [
@@ -83,7 +83,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => z.parse(models.CustomPolicy$outboundSchema, value),
+    (value) => z.parse(models.CreateCustomPolicy$outboundSchema, value),
     "Input validation failed",
   );
   if (!parsed.ok) {

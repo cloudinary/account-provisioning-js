@@ -90,7 +90,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.UserRequest, { explode: true });
+  const body = encodeJSON("body", payload.RequestBody, { explode: true });
 
   const pathParams = {
     account_id: encodeSimple("account_id", client._options.accountId, {

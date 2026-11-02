@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/account-provisioning",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "author": "Cloudinary",
   "type": "module",
   "tshy": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/cloudinary/account-provisioning-js"
   },
   "scripts": {
-    "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
+    "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },

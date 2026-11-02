@@ -5,17 +5,76 @@
 
 import * as z from "zod/v4-mini";
 import { remap as remap$ } from "../lib/primitives.js";
+import { ClosedEnum } from "../types/enums.js";
 import {
-  UserRequest,
-  UserRequest$Outbound,
-  UserRequest$outboundSchema,
-} from "./user-request.js";
+  RoleManagementRequest,
+  RoleManagementRequest$Outbound,
+  RoleManagementRequest$outboundSchema,
+} from "./role-management-request.js";
 
 export type UpdateUserGlobals = {
   /**
    * Account ID
    */
   accountId?: string | undefined;
+};
+
+/**
+ * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+ *
+ * @deprecated enum: Use `roles` (create) or `role_management` (update) instead..
+ */
+export const UpdateUserRole = {
+  MasterAdmin: "master_admin",
+  Admin: "admin",
+  Billing: "billing",
+  TechnicalAdmin: "technical_admin",
+  Reports: "reports",
+  MediaLibraryAdmin: "media_library_admin",
+  MediaLibraryUser: "media_library_user",
+} as const;
+/**
+ * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+ *
+ * @deprecated enum: Use `roles` (create) or `role_management` (update) instead..
+ */
+export type UpdateUserRole = ClosedEnum<typeof UpdateUserRole>;
+
+/**
+ * User details to update.
+ */
+export type UpdateUserRequestBody = {
+  /**
+   * The user's name.
+   */
+  name?: string | undefined;
+  /**
+   * A unique email address, which serves as the login name and notification address.
+   */
+  email?: string | undefined;
+  /**
+   * The legacy role to assign. Deprecated: use `roles` (create) or `role_management` (update) instead. Can't be combined with `roles` or `role_management`.
+   *
+   * @deprecated field: Use `roles` (create) or `role_management` (update) instead..
+   */
+  role?: UpdateUserRole | undefined;
+  /**
+   * A list of product environment IDs that this user can access. Ignored if the role is `master_admin`.
+   *
+   * @remarks
+   * **Default**: all product environments.
+   */
+  subAccountIds?: Array<string> | undefined;
+  /**
+   * Whether the user is enabled. **Default**: true.
+   *
+   * @remarks
+   */
+  enabled?: boolean | undefined;
+  /**
+   * A role management operation and the roles it applies to.
+   */
+  roleManagement?: RoleManagementRequest | undefined;
 };
 
 export type UpdateUserRequest = {
@@ -26,13 +85,57 @@ export type UpdateUserRequest = {
   /**
    * User details to update.
    */
-  userRequest: UserRequest;
+  requestBody: UpdateUserRequestBody;
 };
+
+/** @internal */
+export const UpdateUserRole$outboundSchema: z.ZodMiniEnum<
+  typeof UpdateUserRole
+> = z.enum(UpdateUserRole);
+
+/** @internal */
+export type UpdateUserRequestBody$Outbound = {
+  name?: string | undefined;
+  email?: string | undefined;
+  role?: string | undefined;
+  sub_account_ids?: Array<string> | undefined;
+  enabled?: boolean | undefined;
+  role_management?: RoleManagementRequest$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateUserRequestBody$outboundSchema: z.ZodMiniType<
+  UpdateUserRequestBody$Outbound,
+  UpdateUserRequestBody
+> = z.pipe(
+  z.object({
+    name: z.optional(z.string()),
+    email: z.optional(z.string()),
+    role: z.optional(UpdateUserRole$outboundSchema),
+    subAccountIds: z.optional(z.array(z.string())),
+    enabled: z.optional(z.boolean()),
+    roleManagement: z.optional(RoleManagementRequest$outboundSchema),
+  }),
+  z.transform((v) => {
+    return remap$(v, {
+      subAccountIds: "sub_account_ids",
+      roleManagement: "role_management",
+    });
+  }),
+);
+
+export function updateUserRequestBodyToJSON(
+  updateUserRequestBody: UpdateUserRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateUserRequestBody$outboundSchema.parse(updateUserRequestBody),
+  );
+}
 
 /** @internal */
 export type UpdateUserRequest$Outbound = {
   user_id: string;
-  UserRequest: UserRequest$Outbound;
+  RequestBody: UpdateUserRequestBody$Outbound;
 };
 
 /** @internal */
@@ -42,12 +145,12 @@ export const UpdateUserRequest$outboundSchema: z.ZodMiniType<
 > = z.pipe(
   z.object({
     userId: z.string(),
-    userRequest: UserRequest$outboundSchema,
+    requestBody: z.lazy(() => UpdateUserRequestBody$outboundSchema),
   }),
   z.transform((v) => {
     return remap$(v, {
       userId: "user_id",
-      userRequest: "UserRequest",
+      requestBody: "RequestBody",
     });
   }),
 );
